@@ -1,0 +1,39 @@
+{
+    "name": "jwiegant/laravel-tikkie",
+    "description": "ls",
+    "type": "laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Job Wiegant",
+            "email": "job@cloudmazing.nl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Cloudmazing\\Tikkie\\": "src/",
+            "Cloudmazing\\Tikkie\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cloudmazing\\Tikkie\\TikkieServiceProvider"
+            ],
+            "aliases": {
+                "Tikkie": "Cloudmazing\\Tikkie\\Facades\\Tikkie"
+            }
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.1",
+        "guzzlehttp/guzzle": "^6.3.1"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "require": {
+        "fzaninotto/faker": "^1.9"
+    }
+}
