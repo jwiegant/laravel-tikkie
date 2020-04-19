@@ -1,5 +1,7 @@
 # Laravel Tikkie
 
+[![License][ico-license]][link-license]
+
 The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. <https://github.com/cloudmazing/laravel-tikkie>
 
 ## Installation
@@ -35,3 +37,6 @@ If you discover any security related issues, please email author email instead o
 ## License
 
 Please see the [license file](license.md) for more information.
+
+[ico-license]: https://poser.pugx.org/jwiegant/laravel-tikkie/license
+[link-license]: https://github.com/jwiegant/laravel-tikkie/blob/HEAD/license.md
