@@ -6,17 +6,16 @@ use Cloudmazing\Tikkie\Response\ApplicationResponse;
 use Exception;
 
 /**
- * Class Application
+ * Class Application.
  *
  * @category Calls
- * @package  Cloudmazing\Tikkie
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 class Application extends BaseRequest
 {
     /**
-     * Create a sandbox Application
+     * Create a sandbox Application.
      *
      * @param Request\Application $application
      * @return Response\ErrorListResponse

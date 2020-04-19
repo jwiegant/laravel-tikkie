@@ -18,24 +18,23 @@ use Illuminate\Config\Repository;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class BaseRequest
+ * Class BaseRequest.
  *
  * @category Calls
- * @package  Cloudmazing\Tikkie
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 abstract class BaseRequest
 {
     /**
-     * Constants
+     * Constants.
      */
     const HTTPS_API_ABNAMRO_COM = 'https://api.abnamro.com';
     const HTTPS_API_SANDBOX_ABNAMRO_COM = 'https://api-sandbox.abnamro.com';
     const TIKKIE_VERSION_POINT = '/v2/tikkie/';
 
     /**
-     * Action calls
+     * Action calls.
      */
     const PAYMENT_REQUESTS = 'paymentrequests';
     const SANDBOX_APPS = 'sandboxapps';
