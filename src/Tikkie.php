@@ -13,7 +13,7 @@ use Cloudmazing\Tikkie\Request\SubscriptionCreate;
 use Cloudmazing\Tikkie\Request\SubscriptionDelete;
 use Cloudmazing\Tikkie\Response\PaymentRequestResponse;
 use Exception;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 /**
  * Class Tikkie
