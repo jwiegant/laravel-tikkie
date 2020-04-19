@@ -23,6 +23,14 @@
             "Cloudmazing\\Tikkie\\Tests\\": "tests"
         }
     },
+    "require": {
+        "illuminate/support": "~5|^6.0|^7.0",
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.1",
+        "guzzlehttp/guzzle": "^6.3.1",
+        "fzaninotto/faker": "^1.9"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -33,14 +41,7 @@
             }
         }
     },
-    "require-dev": {
-        "orchestra/testbench": "^5.1",
-        "guzzlehttp/guzzle": "^6.3.1"
-    },
     "scripts": {
         "test": "vendor/bin/phpunit"
-    },
-    "require": {
-        "fzaninotto/faker": "^1.9"
     }
 }
