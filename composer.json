@@ -1,12 +1,13 @@
 {
     "name": "jwiegant/laravel-tikkie",
-    "description": "ls",
+    "description": "Laravel Package for ABN-AMRO Tikkie API v2",
     "type": "laravel",
     "license": "MIT",
     "authors": [
         {
             "name": "Job Wiegant",
-            "email": "job@cloudmazing.nl"
+            "email": "job@cloudmazing.nl",
+            "homepage": "https://cloudmazing.nl"
         }
     ],
     "minimum-stability": "stable",
