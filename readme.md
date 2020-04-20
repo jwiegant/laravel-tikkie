@@ -2,6 +2,7 @@
 
 [![License][ico-travis]][link-travis]
 [![License][ico-license]][link-license]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie?ref=badge_shield)
 
 The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. <https://github.com/cloudmazing/laravel-tikkie>
 
@@ -43,3 +44,6 @@ Please see the [license file](license.md) for more information.
 [link-license]: https://github.com/jwiegant/laravel-tikkie/blob/HEAD/license.md
 [ico-travis]: https://travis-ci.org/jwiegant/laravel-tikkie.svg?branch=master
 [link-travis]: https://travis-ci.org/github/jwiegant/laravel-tikkie
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie?ref=badge_large)
