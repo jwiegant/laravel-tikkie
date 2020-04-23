@@ -23,7 +23,7 @@ class Subscription extends BaseRequest
      *
      * @param  SubscriptionCreate  $subscriptionCreate
      *
-     * @return Response\ErrorListResponse
+     * @return Response\SubscriptionResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function create(SubscriptionCreate $subscriptionCreate)
@@ -42,7 +42,7 @@ class Subscription extends BaseRequest
      *
      * @param  SubscriptionDelete  $subscriptionDelete
      *
-     * @return Response\ErrorListResponse
+     * @return Response\SubscriptionDeleteResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function delete(SubscriptionDelete $subscriptionDelete)

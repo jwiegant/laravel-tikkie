@@ -25,7 +25,7 @@ class PaymentRequest extends BaseRequest
      *
      * @param  PaymentRequestCreate  $paymentRequestCreate
      *
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function create(PaymentRequestCreate $paymentRequestCreate)
@@ -44,7 +44,7 @@ class PaymentRequest extends BaseRequest
      *
      * @param  PaymentRequestList  $paymentRequestList
      *
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentRequestListResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function list(PaymentRequestList $paymentRequestList)
@@ -63,7 +63,7 @@ class PaymentRequest extends BaseRequest
      *
      * @param  PaymentRequestItem  $paymentRequestItem
      *
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function get(PaymentRequestItem $paymentRequestItem)

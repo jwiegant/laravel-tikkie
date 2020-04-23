@@ -18,7 +18,7 @@ class Application extends BaseRequest
      * Create a sandbox Application.
      *
      * @param Request\Application $application
-     * @return Response\ErrorListResponse
+     * @return Response\ApplicationResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function create(Request\Application $application)

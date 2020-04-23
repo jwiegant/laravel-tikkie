@@ -76,7 +76,7 @@ class Tikkie
      * @param int $amountInCents
      * @param string $referenceId
      * @param $expiryDate
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|PaymentRequestResponse
      * @throws Exception
      */
     public function createPaymentRequest(string $description, int $amountInCents, string $referenceId, $expiryDate)
@@ -119,7 +119,7 @@ class Tikkie
      * @param null $fromDateTime
      * @param null $toDateTime
      * @param bool $includeRefunds
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|Response\PaymentRequestResponse
      * @throws Exception
      */
     public function listPaymentRequests(
@@ -155,7 +155,7 @@ class Tikkie
      * Get a payment request
      *
      * @param string $paymentRequestToken
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|Response\PaymentRequestResponse
      * @throws Exception
      */
     public function getPaymentRequest(string $paymentRequestToken)
@@ -185,7 +185,7 @@ class Tikkie
      * @param null $fromDateTime
      * @param null $toDateTime
      * @param bool $includeRefunds
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentListResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function listPayments(
@@ -220,7 +220,7 @@ class Tikkie
      *
      * @param string $paymentRequestToken
      * @param string $paymentToken
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function getPayment(string $paymentRequestToken, string $paymentToken)
@@ -250,7 +250,7 @@ class Tikkie
      * @param string $description
      * @param int $amountInCents
      * @param string $referenceId
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|Response\RefundResponse
      * @throws Exception
      */
     public function createRefund(
@@ -285,7 +285,7 @@ class Tikkie
      * @param string $paymentRequestToken
      * @param string $paymentToken
      * @param string $refundToken
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|Response\RefundResponse
      * @throws Exception
      */
     public function getRefund(
@@ -312,7 +312,7 @@ class Tikkie
      * Create a subscription
      *
      * @param string $url
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|Response\SubscriptionResponse
      * @throws Exception
      */
     public function createSubscription(string $url)
@@ -335,7 +335,7 @@ class Tikkie
     /**
      * Delete a subscription
      *
-     * @return Response\ErrorListResponse
+     * @return Response\ErrorListResponse|Response\SubscriptionDeleteResponse
      * @throws Exception
      */
     public function deleteSubscription()

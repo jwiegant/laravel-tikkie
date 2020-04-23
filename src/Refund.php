@@ -22,7 +22,7 @@ class Refund extends BaseRequest
      *
      * @param  RefundCreate  $refundCreate
      *
-     * @return Response\ErrorListResponse
+     * @return Response\RefundResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function create(RefundCreate $refundCreate)
@@ -41,7 +41,7 @@ class Refund extends BaseRequest
      *
      * @param  RefundItem  $refundItem
      *
-     * @return Response\ErrorListResponse
+     * @return Response\RefundResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function get(RefundItem $refundItem)

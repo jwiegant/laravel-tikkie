@@ -23,7 +23,7 @@ class Payment extends BaseRequest
      *
      * @param  PaymentItem  $paymentItem
      *
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function get(PaymentItem $paymentItem)
@@ -42,7 +42,7 @@ class Payment extends BaseRequest
      *
      * @param  PaymentList  $paymentList
      *
-     * @return Response\ErrorListResponse
+     * @return Response\PaymentListResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function list(PaymentList $paymentList)
