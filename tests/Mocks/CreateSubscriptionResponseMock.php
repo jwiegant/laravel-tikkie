@@ -25,7 +25,7 @@ class CreateSubscriptionResponseMock
                     [
                         "subscriptionId" => $subscriptionId
                     ]
-                    , 200, ['Headers']),
+                    , 201, ['Headers']),
             ]
         );
     }

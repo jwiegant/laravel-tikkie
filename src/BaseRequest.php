@@ -302,7 +302,8 @@ abstract class BaseRequest
             return new ErrorListResponse($json);
         }
 
-        if ($status !== $response->status()) {
+        // Status should be in the same 100 range
+        if (floor($status/100) !== floor($response->status()/100)) {
             // Return the Error List response
             throw new Exception("Incorrect status received. Expected {$status} Received {$response->status()}");
         }
