@@ -2,7 +2,7 @@
 
 namespace Cloudmazing\Tikkie\Tests\Helpers;
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Faker\Factory;
 
 class Helper

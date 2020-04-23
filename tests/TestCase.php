@@ -1050,10 +1050,5 @@ class TestCase extends OrchestraTestCase
             SubscriptionDeleteResponse::class,
             $subscriptionResponse
         );
-
-        $this->assertEquals(
-            $traceId,
-            $subscriptionResponse->getTaceId()
-        );
     }
 }

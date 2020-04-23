@@ -17,15 +17,11 @@ use Illuminate\Support\Facades\Http;
 class DeleteSubscriptionResponseMock
 {
     public function __construct(
-        string $traceId
-
     ) {
         Http::fake([
                 '*.abnamro.com/v2/tikkie/paymentrequestssubscription' => Http::response(
-                    [
-                        "traceId" => $traceId
-                    ]
-                    , 200, ['Headers']),
+                    []
+                    , 204, ['Headers']),
             ]
         );
     }

@@ -4,7 +4,7 @@
 namespace Cloudmazing\Tikkie\Tests\Mocks;
 
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 /**

@@ -14,6 +14,7 @@ use Cloudmazing\Tikkie\Request\SubscriptionCreate;
 use Cloudmazing\Tikkie\Request\SubscriptionDelete;
 use Cloudmazing\Tikkie\Response\ErrorListResponse;
 use Exception;
+use http\Client\Response;
 use Illuminate\Config\Repository;
 use Illuminate\Support\Facades\Http;
 
@@ -223,7 +224,7 @@ abstract class BaseRequest
      *
      * @param  Request\BaseRequest  $baseRequest
      *
-     * @return array
+     * @return \Illuminate\Http\Client\Response
      * @throws Exception
      */
     protected function postRequest(
@@ -235,8 +236,7 @@ abstract class BaseRequest
                    ->post(
                        $this->getEndPoint($baseRequest),
                        $baseRequest->getPayload()
-                   )
-                   ->json();
+                   );
     }
 
     /**
@@ -244,7 +244,7 @@ abstract class BaseRequest
      *
      * @param  Request\BaseRequest  $baseRequest
      *
-     * @return array
+     * @return \Illuminate\Http\Client\Response
      * @throws Exception
      */
     protected function deleteRequest(
@@ -256,8 +256,7 @@ abstract class BaseRequest
                    ->delete(
                        $this->getEndPoint($baseRequest),
                        $baseRequest->getPayload()
-                   )
-                   ->json();
+                   );
     }
 
     /**
@@ -265,7 +264,7 @@ abstract class BaseRequest
      *
      * @param  Request\BaseRequest  $baseRequest
      *
-     * @return array
+     * @return \Illuminate\Http\Client\Response
      * @throws Exception
      */
     protected function getRequest(
@@ -276,31 +275,39 @@ abstract class BaseRequest
                    ->get(
                        $this->getEndPoint($baseRequest),
                        $baseRequest->getPayload()
-                   )
-                   ->json();
+                   );
     }
 
     /**
      * Check the response of a request
      *
-     * @param  array  $response
+     * @param  \Illuminate\Http\Client\Response  $response
      * @param  string  $responseClass
+     * @param  int  $status
      *
      * @return ErrorListResponse
      * @throws Exception
      */
     protected function checkResponse(
-        array $response,
-        string $responseClass
+        \Illuminate\Http\Client\Response $response,
+        string $responseClass,
+        int $status = 200
     ) {
+
         // If the errors key exists in the response array the create an Error List
-        // response
-        if (array_key_exists("errors", $response)) {
+        $json = $response->json();
+
+        if (array_key_exists("errors", $json)) {
             // Return the Error List response
-            return new ErrorListResponse($response);
+            return new ErrorListResponse($json);
+        }
+
+        if ($status !== $response->status()) {
+            // Return the Error List response
+            throw new Exception("Incorrect status received. Expected {$status} Received {$response->status()}");
         }
 
         // Return the response in the given response class
-        return new $responseClass($response);
+        return new $responseClass($json);
     }
 }

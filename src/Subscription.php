@@ -52,7 +52,8 @@ class Subscription extends BaseRequest
             $this->deleteRequest(
                 $subscriptionDelete
             ),
-            SubscriptionDeleteResponse::class
+            SubscriptionDeleteResponse::class,
+            204
         );
     }
 }
