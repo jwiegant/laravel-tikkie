@@ -130,6 +130,11 @@ abstract class BaseRequest
                         // Format the date
                         $value = $carbonItem->format($format);
                         break;
+                    // Item is a boolean
+                    case 'bool':
+                        // Make a string value true of false based on the value
+                        $value = ($value ? 'true' : 'false');
+                        break;
                 }
             }
 

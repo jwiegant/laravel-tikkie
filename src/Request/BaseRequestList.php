@@ -67,6 +67,9 @@ class BaseRequestList extends BaseRequest
             'format'   => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
+        'includeRefunds' => [
+            'type'      => 'bool'
+        ]
     ];
 
     /**

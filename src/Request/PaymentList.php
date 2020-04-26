@@ -2,6 +2,8 @@
 
 namespace Cloudmazing\Tikkie\Request;
 
+use Exception;
+
 /**
  * Class PaymentList
  *
@@ -18,6 +20,21 @@ class PaymentList extends BaseRequestList
      * @var string
      */
     protected $paymentRequestToken;
+
+    /**
+     * PaymentList constructor.
+     *
+     * @param  array|null  $parameters
+     *
+     * @throws Exception
+     */
+    public function __construct(array $parameters = null)
+    {
+        parent::__construct($parameters);
+
+        // Add the payment request token to the payload
+        $this->payload[] = 'paymentRequestToken';
+    }
 
     /**
      * Get the payment request token
