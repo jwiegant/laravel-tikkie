@@ -7,7 +7,7 @@ use Cloudmazing\Tikkie\Response\ErrorResponse;
 use Exception;
 
 /**
- * Class BaseRequest
+ * Class BaseRequest.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -17,7 +17,7 @@ use Exception;
 abstract class BaseRequest
 {
     /**
-     * Constants
+     * Constants.
      */
     const TYPE = 'type';
     const FORMAT = 'format';
@@ -47,7 +47,7 @@ abstract class BaseRequest
     public function __construct(array $parameters = null)
     {
         // If the have parameters then parse them
-        if (!empty($parameters)) {
+        if (! empty($parameters)) {
             $this->parseParameters($parameters);
         }
     }

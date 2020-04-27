@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Response;
 
 /**
- * Class SubscriptionDeleteResponse
+ * Class SubscriptionDeleteResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -20,11 +20,11 @@ class SubscriptionDeleteResponse extends BaseResponse
     protected $traceId;
 
     /**
-     * Get the trace id
+     * Get the trace id.
      *
      * @return string
      */
-    public function getTaceId(): string
+    public function getTaceId() : string
     {
         return $this->traceId;
     }

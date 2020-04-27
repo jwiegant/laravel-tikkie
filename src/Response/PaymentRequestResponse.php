@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Response;
 use Carbon\Carbon;
 
 /**
- * Class PaymentRequestResponse
+ * Class PaymentRequestResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -15,7 +15,7 @@ use Carbon\Carbon;
 class PaymentRequestResponse extends BaseResponse
 {
     /**
-     * Constants
+     * Constants.
      */
     /**
      * A payment request is open and ready to be paid.
@@ -97,7 +97,7 @@ class PaymentRequestResponse extends BaseResponse
 
     /**
      * Current status of the payment request. Possible values are: 'OPEN', 'CLOSED',
-     * 'EXPIRED', 'MAX_YIELD_REACHED', and 'MAX_SUCCESSFUL_PAYMENTS_REACHED'
+     * 'EXPIRED', 'MAX_YIELD_REACHED', and 'MAX_SUCCESSFUL_PAYMENTS_REACHED'.
      *
      * @var string
      */
@@ -128,111 +128,111 @@ class PaymentRequestResponse extends BaseResponse
     ];
 
     /**
-     * Get the payment request token
+     * Get the payment request token.
      *
      * @return string
      */
-    public function getPaymentRequestToken(): string
+    public function getPaymentRequestToken() : string
     {
         return $this->paymentRequestToken;
     }
 
     /**
-     * Get the amount in cents
+     * Get the amount in cents.
      *
      * @return int
      */
-    public function getAmountInCents(): int
+    public function getAmountInCents() : int
     {
         return $this->amountInCents;
     }
 
     /**
-     * Get the reference id
+     * Get the reference id.
      *
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId() : string
     {
         return $this->referenceId;
     }
 
     /**
-     * Get the description
+     * Get the description.
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return $this->description;
     }
 
     /**
-     * Get the payment url
+     * Get the payment url.
      *
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl() : string
     {
         return $this->url;
     }
 
     /**
-     * Get the expiry date
+     * Get the expiry date.
      *
      * @return Carbon
      */
-    public function getExpiryDate(): Carbon
+    public function getExpiryDate() : Carbon
     {
         return $this->expiryDate;
     }
 
     /**
-     * Get the creation date
+     * Get the creation date.
      *
      * @return Carbon
      */
-    public function getCreatedDateTime(): Carbon
+    public function getCreatedDateTime() : Carbon
     {
         return $this->createdDateTime;
     }
 
     /**
-     * Get the status
+     * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus() : string
     {
         return $this->status;
     }
 
     /**
-     * Get the number of payments
+     * Get the number of payments.
      *
      * @return int
      */
-    public function getNumberOfPayments(): int
+    public function getNumberOfPayments() : int
     {
         return $this->numberOfPayments;
     }
 
     /**
-     * Get the amount paid in cents
+     * Get the amount paid in cents.
      *
      * @return int
      */
-    public function getTotalAmountPaidInCents(): int
+    public function getTotalAmountPaidInCents() : int
     {
         return $this->totalAmountPaidInCents;
     }
 
     /**
-     * Is the payment request open
+     * Is the payment request open.
      *
      * @return bool
      */
-    public function isOpen(): bool
+    public function isOpen() : bool
     {
         return $this->getStatus() === self::OPEN;
     }

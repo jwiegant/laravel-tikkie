@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Request;
 use Carbon\Carbon;
 
 /**
- * Class BaseRequestList
+ * Class BaseRequestList.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -22,7 +22,7 @@ class BaseRequestList extends BaseRequest
     protected $pageNumber = 0;
 
     /**
-     * Number of items on a page. Range: 1-50
+     * Number of items on a page. Range: 1-50.
      *
      * @var int
      */
@@ -30,7 +30,7 @@ class BaseRequestList extends BaseRequest
 
     /**
      * Point in time where to start searching for items. Format:
-     * YYYY-MM-DDTHH:mm:ss.SSSZ
+     * YYYY-MM-DDTHH:mm:ss.SSSZ.
      *
      * @var Carbon
      */
@@ -58,17 +58,17 @@ class BaseRequestList extends BaseRequest
      */
     protected $casts = [
         'fromDateTime' => [
-            'type'     => 'carbon',
-            'format'   => 'Y-m-d\TH:i:s.000\Z',
+            'type' => 'carbon',
+            'format' => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
-        'toDateTime'   => [
-            'type'     => 'carbon',
-            'format'   => 'Y-m-d\TH:i:s.000\Z',
+        'toDateTime' => [
+            'type' => 'carbon',
+            'format' => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
         'includeRefunds' => [
-            'type'      => 'bool'
+            'type' => 'bool'
         ]
     ];
 
@@ -90,7 +90,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return int
      */
-    public function getPageNumber(): int
+    public function getPageNumber() : int
     {
         return $this->pageNumber;
     }
@@ -100,7 +100,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  int  $pageNumber
      */
-    public function setPageNumber(int $pageNumber): void
+    public function setPageNumber(int $pageNumber) : void
     {
         $this->pageNumber = $pageNumber;
     }
@@ -110,7 +110,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return int
      */
-    public function getPageSize(): int
+    public function getPageSize() : int
     {
         return $this->pageSize;
     }
@@ -120,7 +120,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  int  $pageSize
      */
-    public function setPageSize(int $pageSize): void
+    public function setPageSize(int $pageSize) : void
     {
         $this->pageSize = $pageSize;
     }
@@ -130,7 +130,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return Carbon
      */
-    public function getFromDateTime(): Carbon
+    public function getFromDateTime() : Carbon
     {
         return $this->fromDateTime;
     }
@@ -140,7 +140,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  Carbon  $fromDateTime
      */
-    public function setFromDateTime(Carbon $fromDateTime): void
+    public function setFromDateTime(Carbon $fromDateTime) : void
     {
         $this->fromDateTime = $fromDateTime;
     }
@@ -150,7 +150,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return Carbon
      */
-    public function getToDateTime(): Carbon
+    public function getToDateTime() : Carbon
     {
         return $this->toDateTime;
     }
@@ -160,7 +160,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  Carbon  $toDateTime
      */
-    public function setToDateTime(Carbon $toDateTime): void
+    public function setToDateTime(Carbon $toDateTime) : void
     {
         $this->toDateTime = $toDateTime;
     }
@@ -170,7 +170,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  bool  $includeRefunds
      */
-    public function setIncludeRefunds(bool $includeRefunds): void
+    public function setIncludeRefunds(bool $includeRefunds) : void
     {
         $this->includeRefunds = $includeRefunds;
     }
@@ -180,7 +180,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return bool
      */
-    public function isIncludeRefunds(): bool
+    public function isIncludeRefunds() : bool
     {
         return $this->includeRefunds;
     }

@@ -10,7 +10,7 @@ use Cloudmazing\Tikkie\Response\PaymentRequestResponse;
 use Exception;
 
 /**
- * Class PaymentRequest
+ * Class PaymentRequest.
  *
  * @category Calls
  * @package Cloudmazing\Tikkie
@@ -19,9 +19,8 @@ use Exception;
  */
 class PaymentRequest extends BaseRequest
 {
-
     /**
-     * Create a payment request
+     * Create a payment request.
      *
      * @param  PaymentRequestCreate  $paymentRequestCreate
      *
@@ -40,7 +39,7 @@ class PaymentRequest extends BaseRequest
     }
 
     /**
-     * List the payment requests
+     * List the payment requests.
      *
      * @param  PaymentRequestList  $paymentRequestList
      *
@@ -59,7 +58,7 @@ class PaymentRequest extends BaseRequest
     }
 
     /**
-     * Get a payment request
+     * Get a payment request.
      *
      * @param  PaymentRequestItem  $paymentRequestItem
      *

@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Notification;
 
 /**
- * Class RefundNotification
+ * Class RefundNotification.
  *
  * @category Notification
  * @package  Cloudmazing\Tikkie

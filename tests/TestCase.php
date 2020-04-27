@@ -2,7 +2,7 @@
 
 namespace Cloudmazing\Tikkie\Tests;
 
-
+use Cloudmazing\Tikkie\Facades\Tikkie;
 use Cloudmazing\Tikkie\Response\ApplicationResponse;
 use Cloudmazing\Tikkie\Response\ErrorListResponse;
 use Cloudmazing\Tikkie\Response\ErrorResponse;
@@ -25,11 +25,10 @@ use Cloudmazing\Tikkie\Tests\Mocks\GetPaymentResponseMock;
 use Cloudmazing\Tikkie\Tests\Mocks\GetRefundResponseMock;
 use Cloudmazing\Tikkie\Tests\Mocks\ListPaymentRequestsResponseMock;
 use Cloudmazing\Tikkie\Tests\Mocks\ListPaymentsResponseMock;
+use Cloudmazing\Tikkie\TikkieServiceProvider;
 use Exception;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Cloudmazing\Tikkie\Facades\Tikkie;
-use Cloudmazing\Tikkie\TikkieServiceProvider;
 
 /**
  * This is the abstract test case class.
@@ -42,10 +41,10 @@ use Cloudmazing\Tikkie\TikkieServiceProvider;
 class TestCase extends OrchestraTestCase
 {
     /**
-     * Constants
+     * Constants.
      */
     /**
-     * Invalid token
+     * Invalid token.
      */
     const INVALID_TOKEN = 'INVALID TOKEN';
 
@@ -89,7 +88,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Creation of a Tikkie application
+     * Creation of a Tikkie application.
      *
      * @return string
      * @throws Exception
@@ -109,7 +108,7 @@ class TestCase extends OrchestraTestCase
         $createApplication = new \Cloudmazing\Tikkie\Application();
 
         /**
-         * Create the application
+         * Create the application.
          *
          * @var ApplicationResponse $applicationResponse
          */
@@ -128,7 +127,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Set and return the tikkie object
+     * Set and return the tikkie object.
      *
      * @return \Cloudmazing\Tikkie\Tikkie
      */
@@ -143,7 +142,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test the create payment request
+     * Test the create payment request.
      *
      * @throws Exception
      */
@@ -160,8 +159,16 @@ class TestCase extends OrchestraTestCase
         $expiryDate = Helper::getRandomFutureCarbonDate()->setTime(0, 0, 0, 0);
 
         // Set the mock response
-        new CreatePaymentRequestResponseMock($paymentRequestToken, $amountInCents, $referenceId, $description, $url,
-            $expiryDate, $createdDateTime, $status);
+        new CreatePaymentRequestResponseMock(
+            $paymentRequestToken,
+            $amountInCents,
+            $referenceId,
+            $description,
+            $url,
+            $expiryDate,
+            $createdDateTime,
+            $status
+        );
 
         // Get the Tikkie object
         $tikkie = $this->getTikke();
@@ -169,8 +176,12 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentRequestResponse $payment
          */
-        $payment = $tikkie->createPaymentRequest($description, $amountInCents, $referenceId,
-            $expiryDate);
+        $payment = $tikkie->createPaymentRequest(
+            $description,
+            $amountInCents,
+            $referenceId,
+            $expiryDate
+        );
 
         // Asserts
         $this->assertInstanceOf(
@@ -219,7 +230,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test the list of payment requests
+     * Test the list of payment requests.
      *
      * @throws Exception
      */
@@ -400,12 +411,12 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            !$payment->isOpen()
+            ! $payment->isOpen()
         );
     }
 
     /**
-     * Test get payment request
+     * Test get payment request.
      *
      * @throws Exception
      */
@@ -507,7 +518,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test the error response
+     * Test the error response.
      *
      * @throws Exception
      */
@@ -571,7 +582,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test the list of payments
+     * Test the list of payments.
      *
      * @throws Exception
      */
@@ -617,7 +628,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentListResponse $payment
          */
-        $payments = $tikkie->listPayments("PAYMENT-REQUEST-TOKEN");
+        $payments = $tikkie->listPayments('PAYMENT-REQUEST-TOKEN');
 
         $this->assertInstanceOf(
             PaymentListResponse::class,
@@ -702,7 +713,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test get the payment
+     * Test get the payment.
      *
      * @throws Exception
      */
@@ -746,10 +757,10 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentResponse $paymentResponse
          */
-        $paymentResponse = $tikkie->getPayment("PAYMENT-REQUEST-TOKEN", "PAYMENT-TOKEN");
+        $paymentResponse = $tikkie->getPayment('PAYMENT-REQUEST-TOKEN', 'PAYMENT-TOKEN');
 
         /**
-         * Asserts
+         * Asserts.
          */
         $this->assertInstanceOf(
             PaymentResponse::class,
@@ -826,7 +837,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test a refund creation
+     * Test a refund creation.
      *
      * @throws Exception
      */
@@ -903,12 +914,12 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid() : !$refundResponse->isPaid()
+            ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid() : ! $refundResponse->isPaid()
         );
     }
 
     /**
-     * Test get the refund
+     * Test get the refund.
      *
      * @throws Exception
      */
@@ -943,7 +954,7 @@ class TestCase extends OrchestraTestCase
         $refundResponse = $tikkie->getRefund($paymentRequestToken, $paymentToken, $refundToken);
 
         /**
-         * Asserts
+         * Asserts.
          */
         $this->assertInstanceOf(
             RefundResponse::class,
@@ -981,12 +992,12 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid() : !$refundResponse->isPaid())
+            ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid() : ! $refundResponse->isPaid())
         );
     }
 
     /**
-     * Test a subscription creation
+     * Test a subscription creation.
      *
      * @throws Exception
      */
@@ -1023,7 +1034,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Test a subscription deletion
+     * Test a subscription deletion.
      *
      * @throws Exception
      */

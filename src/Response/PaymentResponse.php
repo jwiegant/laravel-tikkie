@@ -7,7 +7,7 @@ use Cloudmazing\Tikkie\Request\RefundItem;
 use Illuminate\Support\Collection;
 
 /**
- * Class PaymentResponse
+ * Class PaymentResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -81,87 +81,87 @@ class PaymentResponse extends BaseResponse
      */
     protected $casts = [
         'createdDateTime' => ['type' => 'carbon'],
-        'refunds'         => ['type'  => 'collection',
-                              'class' => RefundResponse::class,
+        'refunds' => ['type' => 'collection',
+            'class' => RefundResponse::class,
         ],
     ];
 
     /**
-     * Get the payment token
+     * Get the payment token.
      *
      * @return string
      */
-    public function getPaymentToken(): string
+    public function getPaymentToken() : string
     {
         return $this->paymentToken;
     }
 
     /**
-     * Get the tikkie id
+     * Get the tikkie id.
      *
      * @return string
      */
-    public function getTikkieId(): string
+    public function getTikkieId() : string
     {
         return $this->tikkieId;
     }
 
     /**
-     * Get the counter party name
+     * Get the counter party name.
      *
      * @return string
      */
-    public function getCounterPartyName(): string
+    public function getCounterPartyName() : string
     {
         return $this->counterPartyName;
     }
 
     /**
-     * Get the counter party account number
+     * Get the counter party account number.
      *
      * @return string
      */
-    public function getCounterPartyAccountNumber(): string
+    public function getCounterPartyAccountNumber() : string
     {
         return $this->counterPartyAccountNumber;
     }
 
     /**
-     * Get the amount in cents
+     * Get the amount in cents.
      *
      * @return int
      */
-    public function getAmountInCents(): int
+    public function getAmountInCents() : int
     {
         return $this->amountInCents;
     }
 
     /**
-     * Get the description
+     * Get the description.
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return $this->description;
     }
 
     /**
-     * Get the created datetime
+     * Get the created datetime.
      *
      * @return Carbon
      */
-    public function getCreatedDateTime(): Carbon
+    public function getCreatedDateTime() : Carbon
     {
         return $this->createdDateTime;
     }
 
     /**
-     * Get the collection of refunds
+     * Get the collection of refunds.
      *
      * @return Collection
      */
-    public function getRefunds(): Collection
+    public function getRefunds() : Collection
     {
         return $this->refunds;
     }

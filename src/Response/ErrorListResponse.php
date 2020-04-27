@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Response;
 use Illuminate\Support\Collection;
 
 /**
- * Class ErrorListResponse
+ * Class ErrorListResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -27,15 +27,15 @@ class ErrorListResponse extends BaseResponse
      * @var array
      */
     protected $casts = [
-        'errors'   => ['type' => 'collection', 'class' => ErrorResponse::class],
+        'errors' => ['type' => 'collection', 'class' => ErrorResponse::class],
     ];
 
     /**
-     * Returns the errors collection
+     * Returns the errors collection.
      *
      * @return Collection
      */
-    public function getErrors(): Collection
+    public function getErrors() : Collection
     {
         return $this->errors;
     }

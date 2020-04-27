@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class TikkieServiceProvider
+ * Class TikkieServiceProvider.
  *
  * @category ServiceProvider
  * @package Cloudmazing\Tikkie

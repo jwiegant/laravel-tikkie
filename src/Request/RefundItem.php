@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Request;
 
 /**
- * Class RefundItem
+ * Class RefundItem.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -38,7 +38,7 @@ class RefundItem extends BaseRequest
      *
      * @return string
      */
-    public function getRefundToken(): string
+    public function getRefundToken() : string
     {
         return $this->refundToken;
     }
@@ -48,7 +48,7 @@ class RefundItem extends BaseRequest
      *
      * @param  string  $refundToken
      */
-    public function setRefundToken(string $refundToken): void
+    public function setRefundToken(string $refundToken) : void
     {
         $this->refundToken = $refundToken;
     }
@@ -58,7 +58,7 @@ class RefundItem extends BaseRequest
      *
      * @return string
      */
-    public function getPaymentToken(): string
+    public function getPaymentToken() : string
     {
         return $this->paymentToken;
     }
@@ -68,7 +68,7 @@ class RefundItem extends BaseRequest
      *
      * @param  string  $paymentToken
      */
-    public function setPaymentToken(string $paymentToken): void
+    public function setPaymentToken(string $paymentToken) : void
     {
         $this->paymentToken = $paymentToken;
     }
@@ -78,7 +78,7 @@ class RefundItem extends BaseRequest
      *
      * @return string
      */
-    public function getPaymentRequestToken(): string
+    public function getPaymentRequestToken() : string
     {
         return $this->paymentRequestToken;
     }
@@ -88,7 +88,7 @@ class RefundItem extends BaseRequest
      *
      * @param  string  $paymentRequestToken
      */
-    public function setPaymentRequestToken(string $paymentRequestToken): void
+    public function setPaymentRequestToken(string $paymentRequestToken) : void
     {
         $this->paymentRequestToken = $paymentRequestToken;
     }

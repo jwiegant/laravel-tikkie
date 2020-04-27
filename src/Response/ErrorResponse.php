@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Response;
 
 /**
- * Class ErrorResponse
+ * Class ErrorResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -13,7 +13,7 @@ namespace Cloudmazing\Tikkie\Response;
 class ErrorResponse extends BaseResponse
 {
     /**
-     * Constants
+     * Constants.
      */
 
     /**
@@ -171,51 +171,51 @@ class ErrorResponse extends BaseResponse
     protected $status;
 
     /**
-     * Get the code
+     * Get the code.
      *
      * @return string
      */
-    public function getCode(): string
+    public function getCode() : string
     {
         return $this->code;
     }
 
     /**
-     * Get the message
+     * Get the message.
      *
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage() : string
     {
         return $this->message;
     }
 
     /**
-     * Get the reference
+     * Get the reference.
      *
      * @return string
      */
-    public function getReference(): string
+    public function getReference() : string
     {
         return $this->reference;
     }
 
     /**
-     * Get the traceId
+     * Get the traceId.
      *
      * @return string
      */
-    public function getTraceId(): string
+    public function getTraceId() : string
     {
         return $this->traceId;
     }
 
     /**
-     * Get the status
+     * Get the status.
      *
      * @return int
      */
-    public function getStatus(): int
+    public function getStatus() : int
     {
         return $this->status;
     }

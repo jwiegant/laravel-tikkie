@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class CreatePaymentRequestResponseMock
+ * Class CreatePaymentRequestResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -39,19 +37,22 @@ class CreatePaymentRequestResponseMock
         Carbon $createdDateTime,
         string $status
     ) {
-        Http::fake([
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/paymentrequests' => Http::response(
                     [
-                        "paymentRequestToken" => $paymentRequestToken,
-                        "amountInCents" => $amountInCents,
-                        "referenceId" => $referenceId,
-                        "description" => $description,
-                        "url" => $url,
-                        "expiryDate" => $expiryDate->format('Y-m-d'),
-                        "createdDateTime" => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
-                        "status" => $status
-                    ]
-                    , 200, ['Headers']),
+                        'paymentRequestToken' => $paymentRequestToken,
+                        'amountInCents' => $amountInCents,
+                        'referenceId' => $referenceId,
+                        'description' => $description,
+                        'url' => $url,
+                        'expiryDate' => $expiryDate->format('Y-m-d'),
+                        'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
+                        'status' => $status
+                    ],
+                    200,
+                    ['Headers']
+                ),
             ]
         );
     }

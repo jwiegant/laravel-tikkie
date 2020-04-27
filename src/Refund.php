@@ -8,7 +8,7 @@ use Cloudmazing\Tikkie\Response\RefundResponse;
 use Exception;
 
 /**
- * Class Refund
+ * Class Refund.
  *
  * @category Calls
  * @package  Cloudmazing\Tikkie
@@ -18,7 +18,7 @@ use Exception;
 class Refund extends BaseRequest
 {
     /**
-     * Get the payment payment of a payment request
+     * Get the payment payment of a payment request.
      *
      * @param  RefundCreate  $refundCreate
      *
@@ -37,7 +37,7 @@ class Refund extends BaseRequest
     }
 
     /**
-     * Get a list of payments for a payment request
+     * Get a list of payments for a payment request.
      *
      * @param  RefundItem  $refundItem
      *

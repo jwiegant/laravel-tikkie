@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Response;
 
 /**
- * Class ApplicationResponse
+ * Class ApplicationResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -24,7 +24,7 @@ class ApplicationResponse extends BaseResponse
      *
      * @return string
      */
-    public function getAppToken(): string
+    public function getAppToken() : string
     {
         return $this->appToken;
     }

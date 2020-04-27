@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Request;
 use Exception;
 
 /**
- * Class PaymentList
+ * Class PaymentList.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -15,7 +15,7 @@ use Exception;
 class PaymentList extends BaseRequestList
 {
     /**
-     * Payment request token
+     * Payment request token.
      *
      * @var string
      */
@@ -37,23 +37,22 @@ class PaymentList extends BaseRequestList
     }
 
     /**
-     * Get the payment request token
+     * Get the payment request token.
      *
      * @return string
      */
-    public function getPaymentRequestToken(): string
+    public function getPaymentRequestToken() : string
     {
         return $this->paymentRequestToken;
     }
 
     /**
-     * Set the payment request token
+     * Set the payment request token.
      *
      * @param  string  $paymentRequestToken
      */
-    public function setPaymentRequestToken(string $paymentRequestToken): void
+    public function setPaymentRequestToken(string $paymentRequestToken) : void
     {
         $this->paymentRequestToken = $paymentRequestToken;
     }
-
 }

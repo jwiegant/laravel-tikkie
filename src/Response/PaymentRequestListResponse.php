@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Response;
 use Illuminate\Support\Collection;
 
 /**
- * Class PaymentRequestListResponse
+ * Class PaymentRequestListResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -35,25 +35,25 @@ class PaymentRequestListResponse extends BaseResponse
      */
     protected $casts = [
         'totalElementCount' => ['type' => 'int'],
-        'paymentRequests'   => ['type' => 'collection', 'class' => PaymentRequestResponse::class],
+        'paymentRequests' => ['type' => 'collection', 'class' => PaymentRequestResponse::class],
     ];
 
     /**
-     * Returns the collection of Payment Requests
+     * Returns the collection of Payment Requests.
      *
      * @return Collection
      */
-    public function getPaymentRequests(): Collection
+    public function getPaymentRequests() : Collection
     {
         return $this->paymentRequests;
     }
 
     /**
-     * Returns the total element count
+     * Returns the total element count.
      *
      * @return int
      */
-    public function getTotalElementCount(): int
+    public function getTotalElementCount() : int
     {
         return $this->totalElementCount;
     }

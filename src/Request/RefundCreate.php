@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Request;
 
 /**
- * Class RefundCreate
+ * Class RefundCreate.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -59,41 +59,41 @@ class RefundCreate extends BaseRequest
     ];
 
     /**
-     * Get the payment request token
+     * Get the payment request token.
      *
      * @return string
      */
-    public function getPaymentRequestToken(): string
+    public function getPaymentRequestToken() : string
     {
         return $this->paymentRequestToken;
     }
 
     /**
-     * Set the payment request token
+     * Set the payment request token.
      *
      * @param string $paymentRequestToken
      */
-    public function setPaymentRequestToken(string $paymentRequestToken): void
+    public function setPaymentRequestToken(string $paymentRequestToken) : void
     {
         $this->paymentRequestToken = $paymentRequestToken;
     }
 
     /**
-     * Get the payment token
+     * Get the payment token.
      *
      * @return string
      */
-    public function getPaymentToken(): string
+    public function getPaymentToken() : string
     {
         return $this->paymentToken;
     }
 
     /**
-     * Set the payment token
+     * Set the payment token.
      *
      * @param string $paymentToken
      */
-    public function setPaymentToken(string $paymentToken): void
+    public function setPaymentToken(string $paymentToken) : void
     {
         $this->paymentToken = $paymentToken;
     }
@@ -103,7 +103,7 @@ class RefundCreate extends BaseRequest
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return $this->description;
     }
@@ -113,7 +113,7 @@ class RefundCreate extends BaseRequest
      *
      * @param  string  $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description) : void
     {
         $this->description = $description;
     }
@@ -123,7 +123,7 @@ class RefundCreate extends BaseRequest
      *
      * @return int
      */
-    public function getAmountInCents(): int
+    public function getAmountInCents() : int
     {
         return $this->amountInCents;
     }
@@ -133,7 +133,7 @@ class RefundCreate extends BaseRequest
      *
      * @param  int  $amountInCents
      */
-    public function setAmountInCents(int $amountInCents): void
+    public function setAmountInCents(int $amountInCents) : void
     {
         $this->amountInCents = $amountInCents;
     }
@@ -143,7 +143,7 @@ class RefundCreate extends BaseRequest
      *
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId() : string
     {
         return $this->referenceId;
     }
@@ -153,7 +153,7 @@ class RefundCreate extends BaseRequest
      *
      * @param  string  $referenceId
      */
-    public function setReferenceId(string $referenceId): void
+    public function setReferenceId(string $referenceId) : void
     {
         $this->referenceId = $referenceId;
     }

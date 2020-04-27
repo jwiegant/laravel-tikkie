@@ -9,7 +9,7 @@ use Cloudmazing\Tikkie\Response\SubscriptionResponse;
 use Exception;
 
 /**
- * Class Subscription
+ * Class Subscription.
  *
  * @category Calls
  * @package  Cloudmazing\Tikkie
@@ -19,7 +19,7 @@ use Exception;
 class Subscription extends BaseRequest
 {
     /**
-     * Create a subscription
+     * Create a subscription.
      *
      * @param  SubscriptionCreate  $subscriptionCreate
      *
@@ -38,7 +38,7 @@ class Subscription extends BaseRequest
     }
 
     /**
-     * Delete a subscription
+     * Delete a subscription.
      *
      * @param  SubscriptionDelete  $subscriptionDelete
      *

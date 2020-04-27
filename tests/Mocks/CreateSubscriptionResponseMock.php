@@ -1,13 +1,11 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class CreateSubscriptionResponseMock
+ * Class CreateSubscriptionResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -18,14 +16,16 @@ class CreateSubscriptionResponseMock
 {
     public function __construct(
         string $subscriptionId
-
     ) {
-        Http::fake([
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/paymentrequestssubscription' => Http::response(
                     [
-                        "subscriptionId" => $subscriptionId
-                    ]
-                    , 201, ['Headers']),
+                        'subscriptionId' => $subscriptionId
+                    ],
+                    201,
+                    ['Headers']
+                ),
             ]
         );
     }

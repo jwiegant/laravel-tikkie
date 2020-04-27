@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Request;
 
 /**
- * Class PaymentItem
+ * Class PaymentItem.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -27,41 +27,41 @@ class PaymentItem extends BaseRequest
     protected $paymentToken;
 
     /**
-     * Get the payment token
+     * Get the payment token.
      *
      * @return string
      */
-    public function getPaymentToken(): string
+    public function getPaymentToken() : string
     {
         return $this->paymentToken;
     }
 
     /**
-     * Set the payment token
+     * Set the payment token.
      *
      * @param  string  $paymentToken
      */
-    public function setPaymentToken(string $paymentToken): void
+    public function setPaymentToken(string $paymentToken) : void
     {
         $this->paymentToken = $paymentToken;
     }
 
     /**
-     * Get the payment request token
+     * Get the payment request token.
      *
      * @return string
      */
-    public function getPaymentRequestToken(): string
+    public function getPaymentRequestToken() : string
     {
         return $this->paymentRequestToken;
     }
 
     /**
-     * Set the payment request token
+     * Set the payment request token.
      *
      * @param  string  $paymentRequestToken
      */
-    public function setPaymentRequestToken(string $paymentRequestToken): void
+    public function setPaymentRequestToken(string $paymentRequestToken) : void
     {
         $this->paymentRequestToken = $paymentRequestToken;
     }

@@ -2,6 +2,7 @@
 
 namespace Cloudmazing\Tikkie;
 
+use Carbon\Carbon;
 use Cloudmazing\Tikkie\Request\PaymentItem;
 use Cloudmazing\Tikkie\Request\PaymentList;
 use Cloudmazing\Tikkie\Request\PaymentRequestCreate;
@@ -13,10 +14,9 @@ use Cloudmazing\Tikkie\Request\SubscriptionCreate;
 use Cloudmazing\Tikkie\Request\SubscriptionDelete;
 use Cloudmazing\Tikkie\Response\PaymentRequestResponse;
 use Exception;
-use Carbon\Carbon;
 
 /**
- * Class Tikkie
+ * Class Tikkie.
  *
  * @category Calls
  * @package  Cloudmazing\Tikkie
@@ -26,19 +26,19 @@ use Carbon\Carbon;
 class Tikkie
 {
     /**
-     * Api key
+     * Api key.
      *
      * @var string
      */
     private $_apiKey;
     /**
-     * App token
+     * App token.
      *
      * @var string
      */
     private $_appToken;
     /**
-     * Sandbox
+     * Sandbox.
      *
      * @var bool
      */
@@ -56,7 +56,7 @@ class Tikkie
     }
 
     /**
-     * Set the configuration
+     * Set the configuration.
      *
      * @param string $apiKey
      * @param string $appToken
@@ -70,7 +70,7 @@ class Tikkie
     }
 
     /**
-     * Create a Payment Request
+     * Create a Payment Request.
      *
      * @param string $description
      * @param int $amountInCents
@@ -86,7 +86,7 @@ class Tikkie
             $expiryDate = new Carbon($expiryDate);
         } else {
             if (get_class($expiryDate) !== Carbon::class) {
-                throw new Exception("Invalid expiryDate provided");
+                throw new Exception('Invalid expiryDate provided');
             }
         }
 
@@ -104,7 +104,7 @@ class Tikkie
         $paymentRequest = new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          *
          * @var PaymentRequestResponse $paymentRequestResponse
          */
@@ -112,7 +112,7 @@ class Tikkie
     }
 
     /**
-     * Get a list of payment requests
+     * Get a list of payment requests.
      *
      * @param int $pageNumber
      * @param int $pageSize
@@ -144,7 +144,7 @@ class Tikkie
         $paymentRequest = new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          *
          * @var PaymentRequestResponse $paymentRequestResponse
          */
@@ -152,7 +152,7 @@ class Tikkie
     }
 
     /**
-     * Get a payment request
+     * Get a payment request.
      *
      * @param string $paymentRequestToken
      * @return Response\ErrorListResponse|Response\PaymentRequestResponse
@@ -171,13 +171,13 @@ class Tikkie
         $paymentRequest = new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $paymentRequest->get($paymentRequestItem);
     }
 
     /**
-     * Get a list of payments for a payment request token
+     * Get a list of payments for a payment request token.
      *
      * @param string $paymentRequestToken
      * @param int $pageNumber
@@ -196,7 +196,8 @@ class Tikkie
         $toDateTime = null,
         bool $includeRefunds = false
     ) {
-        $paymentList = new PaymentList([
+        $paymentList = new PaymentList(
+            [
                 'paymentRequestToken' => $paymentRequestToken,
                 'pageNumber' => $pageNumber,
                 'pageSize' => $pageSize,
@@ -210,13 +211,13 @@ class Tikkie
         $payment = new Payment($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $payment->list($paymentList);
     }
 
     /**
-     * Get a payment
+     * Get a payment.
      *
      * @param string $paymentRequestToken
      * @param string $paymentToken
@@ -237,13 +238,13 @@ class Tikkie
         $payment = new Payment($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $payment->get($paymentItem);
     }
 
     /**
-     * Create a refund
+     * Create a refund.
      *
      * @param string $paymentRequestToken
      * @param string $paymentToken
@@ -274,13 +275,13 @@ class Tikkie
         $refund = new Refund($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $refund->create($refundCreate);
     }
 
     /**
-     * Get a refund
+     * Get a refund.
      *
      * @param string $paymentRequestToken
      * @param string $paymentToken
@@ -303,13 +304,13 @@ class Tikkie
         $refund = new Refund($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $refund->get($refundItem);
     }
 
     /**
-     * Create a subscription
+     * Create a subscription.
      *
      * @param string $url
      * @return Response\ErrorListResponse|Response\SubscriptionResponse
@@ -327,13 +328,13 @@ class Tikkie
         $subscription = new Subscription($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $subscription->create($subscriptionCreate);
     }
 
     /**
-     * Delete a subscription
+     * Delete a subscription.
      *
      * @return Response\ErrorListResponse|Response\SubscriptionDeleteResponse
      * @throws Exception
@@ -346,7 +347,7 @@ class Tikkie
         $subscription = new Subscription($this->_apiKey, $this->_appToken, $this->_sandbox);
 
         /**
-         * Make the call
+         * Make the call.
          */
         return $subscription->delete($subscriptionDelete);
     }

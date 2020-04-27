@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Request;
 
 /**
- * Class PaymentRequestList
+ * Class PaymentRequestList.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request

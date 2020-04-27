@@ -69,7 +69,7 @@ abstract class BaseRequest
         bool $sandbox = false
     ) {
         // If an Api key is supplied then use the supplied parameters
-        if (!is_null($apiKey)) {
+        if (! is_null($apiKey)) {
             $this->_apiKey = $apiKey;
             $this->_appToken = $appToken;
             $this->_sandbox = $sandbox;
@@ -82,7 +82,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Get the action based on the request class
+     * Get the action based on the request class.
      *
      * @param  Request\BaseRequest  $baseRequest
      *
@@ -107,7 +107,7 @@ abstract class BaseRequest
             // Payment Request Item
             case PaymentRequestItem::class:
                 /**
-                 * $baseRequest is of the type PaymentRequestItem
+                 * $baseRequest is of the type PaymentRequestItem.
                  *
                  * @var PaymentRequestItem $baseRequest
                  */
@@ -118,7 +118,7 @@ abstract class BaseRequest
             // Payment Item
             case PaymentItem::class:
                 /**
-                 * $baseRequest is of the type PaymentItem
+                 * $baseRequest is of the type PaymentItem.
                  *
                  * @var PaymentItem $baseRequest
                  */
@@ -130,7 +130,7 @@ abstract class BaseRequest
             // Payment List
             case PaymentList::class:
                 /**
-                 * $baseRequest is of the type PaymentList
+                 * $baseRequest is of the type PaymentList.
                  *
                  * @var PaymentList $baseRequest
                  */
@@ -141,20 +141,20 @@ abstract class BaseRequest
             // Refund Create
             case RefundCreate::class:
                 /**
-                 * $baseRequest is of the type RefundCreate
+                 * $baseRequest is of the type RefundCreate.
                  *
                  * @var RefundCreate $baseRequest
                  */
                 $action = self::PAYMENT_REQUESTS;
                 $action .= "/{$baseRequest->getPaymentRequestToken()}";
                 $action .= "/payments/{$baseRequest->getPaymentToken()}";
-                $action .= "/refunds";
+                $action .= '/refunds';
                 break;
 
             // Refund Item
             case RefundItem::class:
                 /**
-                 * $baseRequest is of the type RefundItem
+                 * $baseRequest is of the type RefundItem.
                  *
                  * @var RefundItem $baseRequest
                  */
@@ -172,7 +172,7 @@ abstract class BaseRequest
 
             // Default if the class isn't found, then throw an exception
             default:
-                throw new Exception("Unknown class");
+                throw new Exception('Unknown class');
         }
 
         // Return the action
@@ -180,7 +180,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Get the API endpoint
+     * Get the API endpoint.
      *
      * @param  Request\BaseRequest  $baseRequest
      *
@@ -199,7 +199,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Get the header
+     * Get the header.
      *
      * @return array
      */
@@ -211,7 +211,7 @@ abstract class BaseRequest
         ];
 
         // If we have an app token then add it
-        if (!empty($this->_appToken)) {
+        if (! empty($this->_appToken)) {
             $headers['X-App-Token'] = $this->_appToken;
         }
 
@@ -220,7 +220,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Do a post request
+     * Do a post request.
      *
      * @param  Request\BaseRequest  $baseRequest
      *
@@ -240,7 +240,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Perform a delete request
+     * Perform a delete request.
      *
      * @param  Request\BaseRequest  $baseRequest
      *
@@ -260,7 +260,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Perform a get request
+     * Perform a get request.
      *
      * @param  Request\BaseRequest  $baseRequest
      *
@@ -279,7 +279,7 @@ abstract class BaseRequest
     }
 
     /**
-     * Check the response of a request
+     * Check the response of a request.
      *
      * @param  \Illuminate\Http\Client\Response  $response
      * @param  string  $responseClass
@@ -293,17 +293,16 @@ abstract class BaseRequest
         string $responseClass,
         int $status = 200
     ) {
-
         // If the errors key exists in the response array the create an Error List
         $json = $response->json();
 
-        if (array_key_exists("errors", $json)) {
+        if (array_key_exists('errors', $json)) {
             // Return the Error List response
             return new ErrorListResponse($json);
         }
 
         // Status should be in the same 100 range
-        if (floor($status/100) !== floor($response->status()/100)) {
+        if (floor($status / 100) !== floor($response->status() / 100)) {
             // Return the Error List response
             throw new Exception("Incorrect status received. Expected {$status} Received {$response->status()}");
         }

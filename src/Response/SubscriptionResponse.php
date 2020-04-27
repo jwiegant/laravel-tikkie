@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Response;
 
 /**
- * Class SubscriptionResponse
+ * Class SubscriptionResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -21,11 +21,11 @@ class SubscriptionResponse extends BaseResponse
     protected $subscriptionId;
 
     /**
-     * Get the subscription id
+     * Get the subscription id.
      *
      * @return string
      */
-    public function getSubscriptionId(): string
+    public function getSubscriptionId() : string
     {
         return $this->subscriptionId;
     }

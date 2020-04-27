@@ -1,13 +1,11 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class ErrorResponseMock
+ * Class ErrorResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -32,20 +30,23 @@ class ErrorResponseMock
         string $traceId,
         int $status
     ) {
-        Http::fake([
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/*' => Http::response(
                     [
-                        "errors" => [
+                        'errors' => [
                             [
-                                "code" => $code,
-                                "message" => $message,
-                                "reference" => $reference,
-                                "traceId" => $traceId,
-                                "status" => $status
+                                'code' => $code,
+                                'message' => $message,
+                                'reference' => $reference,
+                                'traceId' => $traceId,
+                                'status' => $status
                             ]
                         ]
-                    ]
-                    , $status, ['Headers']),
+                    ],
+                    $status,
+                    ['Headers']
+                ),
             ]
         );
     }

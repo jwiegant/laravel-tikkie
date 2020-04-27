@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class ListPaymentRequestsResponseMock
+ * Class ListPaymentRequestsResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -64,40 +62,42 @@ class ListPaymentRequestsResponseMock
         string $status2,
         int $numberOfPayments2,
         int $totalAmountPaidInCents2
-    )
-    {
-        Http::fake([
+    ) {
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/paymentrequests?*' => Http::response(
                     [
-                        "paymentRequests" => [
+                        'paymentRequests' => [
                             [
-                                "paymentRequestToken" => $paymentRequestToken1,
-                                "amountInCents" => $amountInCents1,
-                                "referenceId" => $referenceId1,
-                                "description" => $description1,
-                                "url" => $url1,
-                                "expiryDate" => $expiryDate1->format('Y-m-d'),
-                                "createdDateTime" => $createdDateTime1->format('Y-m-d\TH:i:s.000\Z'),
-                                "status" => $status1,
-                                "numberOfPayments" => $numberOfPayments1,
-                                "totalAmountPaidInCents" => $totalAmountPaidInCents1
+                                'paymentRequestToken' => $paymentRequestToken1,
+                                'amountInCents' => $amountInCents1,
+                                'referenceId' => $referenceId1,
+                                'description' => $description1,
+                                'url' => $url1,
+                                'expiryDate' => $expiryDate1->format('Y-m-d'),
+                                'createdDateTime' => $createdDateTime1->format('Y-m-d\TH:i:s.000\Z'),
+                                'status' => $status1,
+                                'numberOfPayments' => $numberOfPayments1,
+                                'totalAmountPaidInCents' => $totalAmountPaidInCents1
                             ],
                             [
-                                "paymentRequestToken" => $paymentRequestToken2,
-                                "amountInCents" => $amountInCents2,
-                                "referenceId" => $referenceId2,
-                                "description" => $description2,
-                                "url" => $url2,
-                                "expiryDate" => $expiryDate2->format('Y-m-d'),
-                                "createdDateTime" => $createdDateTime2->format('Y-m-d\TH:i:s.000\Z'),
-                                "status" => $status2,
-                                "numberOfPayments" => $numberOfPayments2,
-                                "totalAmountPaidInCents" => $totalAmountPaidInCents2
+                                'paymentRequestToken' => $paymentRequestToken2,
+                                'amountInCents' => $amountInCents2,
+                                'referenceId' => $referenceId2,
+                                'description' => $description2,
+                                'url' => $url2,
+                                'expiryDate' => $expiryDate2->format('Y-m-d'),
+                                'createdDateTime' => $createdDateTime2->format('Y-m-d\TH:i:s.000\Z'),
+                                'status' => $status2,
+                                'numberOfPayments' => $numberOfPayments2,
+                                'totalAmountPaidInCents' => $totalAmountPaidInCents2
                             ],
                         ],
-                        "totalElementCount" => $totalElementCount
-                    ]
-                    , 200, ['Headers']),
+                        'totalElementCount' => $totalElementCount
+                    ],
+                    200,
+                    ['Headers']
+                ),
             ]
         );
     }

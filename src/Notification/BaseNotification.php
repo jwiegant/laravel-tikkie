@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Notification;
 use Cloudmazing\Tikkie\Response\BaseResponse;
 
 /**
- * Class BaseNotification
+ * Class BaseNotification.
  *
  *
  * @category Notification
@@ -16,7 +16,7 @@ use Cloudmazing\Tikkie\Response\BaseResponse;
 abstract class BaseNotification extends BaseResponse
 {
     /**
-     * Constants
+     * Constants.
      */
     const NOTIFICATION_TYPE_PAYMENT = 'PAYMENT';
     const NOTIFICATION_TYPE_REFUND = 'REFUND';

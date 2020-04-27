@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Exception;
 
 /**
- * Class BaseResponse
+ * Class BaseResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response

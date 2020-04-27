@@ -1,12 +1,11 @@
 <?php
 
 return [
-
     /**
      * API Key
      * Your API Key can be found in the ABNAMRO developer, My Apps, Create or Open your App.
      */
-    'api-key'   => env('TIKKIE_API_KEY', ''),
+    'api-key' => env('TIKKIE_API_KEY', ''),
 
     /**
      * App Token

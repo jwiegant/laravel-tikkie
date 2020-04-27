@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Request;
 
 /**
- * Class SubscriptionDelete
+ * Class SubscriptionDelete.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request

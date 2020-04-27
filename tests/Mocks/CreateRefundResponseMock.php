@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class CreateRefundResponseMock
+ * Class CreateRefundResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -25,17 +23,20 @@ class CreateRefundResponseMock
         Carbon $createdDateTime,
         string $status
     ) {
-        Http::fake([
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/paymentrequests/*' => Http::response(
                     [
-                        "refundToken" => $refundToken,
-                        "amountInCents" => $amountInCents,
-                        "description" => $description,
-                        "referenceId" => $referenceId,
-                        "createdDateTime" => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
-                        "status" => $status
-                    ]
-                    , 200, ['Headers']),
+                        'refundToken' => $refundToken,
+                        'amountInCents' => $amountInCents,
+                        'description' => $description,
+                        'referenceId' => $referenceId,
+                        'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
+                        'status' => $status
+                    ],
+                    200,
+                    ['Headers']
+                ),
             ]
         );
     }

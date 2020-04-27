@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Notification;
 
 /**
- * Class PaymentNotification
+ * Class PaymentNotification.
  *
  * @category Notification
  * @package Cloudmazing\Tikkie\Notification

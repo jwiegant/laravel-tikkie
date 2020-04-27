@@ -3,7 +3,7 @@
 namespace Cloudmazing\Tikkie\Request;
 
 /**
- * Class Application
+ * Class Application.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request

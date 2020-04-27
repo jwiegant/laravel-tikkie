@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Request;
 use Carbon\Carbon;
 
 /**
- * Class PaymentRequestCreate
+ * Class PaymentRequestCreate.
  *
  * @category Request
  * @package  Cloudmazing\Tikkie\Request
@@ -52,8 +52,8 @@ class PaymentRequestCreate extends BaseRequest
      */
     protected $casts = [
         'expiryDate' => [
-            'type'     => 'carbon',
-            'format'   => 'Y-m-d',
+            'type' => 'carbon',
+            'format' => 'Y-m-d',
             'nullable' => false,
         ],
     ];
@@ -75,7 +75,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return $this->description;
     }
@@ -85,7 +85,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @param  string  $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description) : void
     {
         $this->description = $description;
     }
@@ -95,7 +95,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @return int
      */
-    public function getAmountInCents(): int
+    public function getAmountInCents() : int
     {
         return $this->amountInCents;
     }
@@ -105,7 +105,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @param  int  $amountInCents
      */
-    public function setAmountInCents(int $amountInCents): void
+    public function setAmountInCents(int $amountInCents) : void
     {
         $this->amountInCents = $amountInCents;
     }
@@ -115,7 +115,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @return Carbon
      */
-    public function getExpiryDate(): Carbon
+    public function getExpiryDate() : Carbon
     {
         return $this->expiryDate;
     }
@@ -125,7 +125,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @param  Carbon  $expiryDate
      */
-    public function setExpiryDate(Carbon $expiryDate): void
+    public function setExpiryDate(Carbon $expiryDate) : void
     {
         $this->expiryDate = $expiryDate;
     }
@@ -135,7 +135,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId() : string
     {
         return $this->referenceId;
     }
@@ -145,7 +145,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @param  string  $referenceId
      */
-    public function setReferenceId(string $referenceId): void
+    public function setReferenceId(string $referenceId) : void
     {
         $this->referenceId = $referenceId;
     }

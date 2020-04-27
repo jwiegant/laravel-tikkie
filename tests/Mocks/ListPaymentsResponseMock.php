@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class ListPaymentsResponseMock
+ * Class ListPaymentsResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -50,35 +48,37 @@ class ListPaymentsResponseMock
         string $refundReferenceId,
         Carbon $refundCreatedDateTime,
         string $refundStatus
-    )
-    {
-        Http::fake([
+    ) {
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/paymentrequests/*' => Http::response(
                     [
-                        "totalElementCount" => $totalElementCount,
-                        "payments" => [
+                        'totalElementCount' => $totalElementCount,
+                        'payments' => [
                             [
-                                "paymentToken" => $paymentToken,
-                                "tikkieId" => $tikkieId,
-                                "counterPartyName" => $counterPartyName,
-                                "counterPartyAccountNumber" => $counterPartyAccountNumber,
-                                "amountInCents" => $amountInCents,
-                                "description" => $description,
-                                "createdDateTime" => $createdDateTime,
-                                "refunds" => [
+                                'paymentToken' => $paymentToken,
+                                'tikkieId' => $tikkieId,
+                                'counterPartyName' => $counterPartyName,
+                                'counterPartyAccountNumber' => $counterPartyAccountNumber,
+                                'amountInCents' => $amountInCents,
+                                'description' => $description,
+                                'createdDateTime' => $createdDateTime,
+                                'refunds' => [
                                     [
-                                        "refundToken" => $refundToken,
-                                        "amountInCents" => $refundAmount,
-                                        "description" => $refundDescription,
-                                        "referenceId" => $refundReferenceId,
-                                        "createdDateTime" => $refundCreatedDateTime,
-                                        "status" => $refundStatus
+                                        'refundToken' => $refundToken,
+                                        'amountInCents' => $refundAmount,
+                                        'description' => $refundDescription,
+                                        'referenceId' => $refundReferenceId,
+                                        'createdDateTime' => $refundCreatedDateTime,
+                                        'status' => $refundStatus
                                     ]
                                 ]
                             ]
                         ]
-                    ]
-                    , 200, ['Headers']),
+                    ],
+                    200,
+                    ['Headers']
+                ),
             ]
         );
     }

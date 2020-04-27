@@ -1,13 +1,11 @@
 <?php
 
-
 namespace Cloudmazing\Tikkie\Tests\Mocks;
-
 
 use Illuminate\Support\Facades\Http;
 
 /**
- * Class ApplicationResponseMock
+ * Class ApplicationResponseMock.
  *
  * @category Tests\Mocks
  * @package Cloudmazing\Tikkie\Tests\Mocks
@@ -23,11 +21,15 @@ class ApplicationResponseMock
      */
     public function __construct(string $appToken)
     {
-        Http::fake([
+        Http::fake(
+            [
                 '*.abnamro.com/v2/tikkie/sandboxapps' => Http::response(
                     [
-                    "appToken" => $appToken
-                ], 200, ['Headers']),
+                        'appToken' => $appToken
+                    ],
+                    200,
+                    ['Headers']
+                ),
             ]
         );
     }

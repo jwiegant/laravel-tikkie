@@ -5,7 +5,7 @@ namespace Cloudmazing\Tikkie\Response;
 use Carbon\Carbon;
 
 /**
- * Class RefundResponse
+ * Class RefundResponse.
  *
  * @category Response
  * @package  Cloudmazing\Tikkie\Response
@@ -15,7 +15,7 @@ use Carbon\Carbon;
 class RefundResponse extends BaseResponse
 {
     /**
-     * Constants
+     * Constants.
      */
     /**
      * The refund is pending.
@@ -78,71 +78,71 @@ class RefundResponse extends BaseResponse
     ];
 
     /**
-     * Get the refund token
+     * Get the refund token.
      *
      * @return string
      */
-    public function getRefundToken(): string
+    public function getRefundToken() : string
     {
         return $this->refundToken;
     }
 
     /**
-     * Get the amount in cents
+     * Get the amount in cents.
      *
      * @return int
      */
-    public function getAmountInCents(): int
+    public function getAmountInCents() : int
     {
         return $this->amountInCents;
     }
 
     /**
-     * Get the description
+     * Get the description.
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return $this->description;
     }
 
     /**
-     * Get the reference id
+     * Get the reference id.
      *
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId() : string
     {
         return $this->referenceId;
     }
 
     /**
-     * Get the created datetime
+     * Get the created datetime.
      *
      * @return Carbon
      */
-    public function getCreatedDateTime(): Carbon
+    public function getCreatedDateTime() : Carbon
     {
         return $this->createdDateTime;
     }
 
     /**
-     * Get the status
+     * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus() : string
     {
         return $this->status;
     }
 
     /**
-     * Has this refund been paid
+     * Has this refund been paid.
      *
      * @return bool
      */
-    public function isPaid(): bool
+    public function isPaid() : bool
     {
         return $this->status === self::STATUS_PAID;
     }
