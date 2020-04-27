@@ -30,8 +30,8 @@ class RefundCreate extends BaseRequest
      *
      * @var string
      */
-
     protected $description;
+
     /**
      * Amount to refund in cents (euros).
      *

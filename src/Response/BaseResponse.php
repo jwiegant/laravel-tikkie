@@ -48,13 +48,13 @@ abstract class BaseResponse
         // Traverse the given parameters
         foreach ($parameters as $key => $parameter) {
             // Check if the parameter key exist in the class properties
-            if (key_exists(
+            if (array_key_exists(
                 $key,
                 $classProperties
             )
             ) {
                 // Check if the parameter key exist in the cast variable
-                if (key_exists(
+                if (array_key_exists(
                     $key,
                     $this->casts
                 )
