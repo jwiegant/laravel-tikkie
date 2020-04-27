@@ -113,29 +113,29 @@ class Tikkie
     /**
      * Get a list of payment requests.
      *
+     * @param bool $includeRefunds
      * @param int $pageNumber
      * @param int $pageSize
      * @param null $fromDateTime
      * @param null $toDateTime
-     * @param bool $includeRefunds
      * @return Response\ErrorListResponse|Response\PaymentRequestResponse
      * @throws Exception
      */
     public function listPaymentRequests(
+        bool $includeRefunds = false,
         int $pageNumber = 0,
         int $pageSize = 10,
         $fromDateTime = null,
-        $toDateTime = null,
-        bool $includeRefunds = false
+        $toDateTime = null
     ) {
         // Create the request input object
         $paymentRequestList = new PaymentRequestList(
             [
+                'includeRefunds' => $includeRefunds,
                 'pageNumber' => $pageNumber,
                 'pageSize' => $pageSize,
                 'fromDateTime' => $fromDateTime,
                 'toDateTime' => $toDateTime,
-                'includeRefunds' => $includeRefunds,
             ]
         );
 
@@ -179,30 +179,30 @@ class Tikkie
      * Get a list of payments for a payment request token.
      *
      * @param string $paymentRequestToken
+     * @param bool $includeRefunds
      * @param int $pageNumber
      * @param int $pageSize
      * @param null $fromDateTime
      * @param null $toDateTime
-     * @param bool $includeRefunds
      * @return Response\PaymentListResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function listPayments(
         string $paymentRequestToken,
+        bool $includeRefunds = false,
         int $pageNumber = 0,
         int $pageSize = 10,
         $fromDateTime = null,
-        $toDateTime = null,
-        bool $includeRefunds = false
+        $toDateTime = null
     ) {
         $paymentList = new PaymentList(
             [
                 'paymentRequestToken' => $paymentRequestToken,
+                'includeRefunds' => $includeRefunds,
                 'pageNumber' => $pageNumber,
                 'pageSize' => $pageSize,
                 'fromDateTime' => $fromDateTime,
                 'toDateTime' => $toDateTime,
-                'includeRefunds' => $includeRefunds,
             ]
         );
 
