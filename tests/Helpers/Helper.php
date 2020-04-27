@@ -13,7 +13,7 @@ class Helper
      * @param int $size
      * @return string
      */
-    public static function getRandomString(int $size = 20) : string
+    public static function getRandomString(int $size = 20): string
     {
         return (Factory::create())->lexify(str_pad('', $size, '?'));
     }
@@ -24,7 +24,7 @@ class Helper
      * @param int $size
      * @return int
      */
-    public static function getRandomNumber(int $size = 4) : int
+    public static function getRandomNumber(int $size = 4): int
     {
         return intval((Factory::create())->numerify(str_pad('', $size, '#')), 10);
     }
@@ -34,7 +34,7 @@ class Helper
      *
      * @return Carbon
      */
-    public static function getRandomFutureCarbonDate() : Carbon
+    public static function getRandomFutureCarbonDate(): Carbon
     {
         return (new Carbon())->addDays(self::getRandomNumber(1))->setMicros(0);
     }
@@ -44,7 +44,7 @@ class Helper
      *
      * @return Carbon
      */
-    public static function getCarbonDate() : Carbon
+    public static function getCarbonDate(): Carbon
     {
         return (new Carbon())->setMicros(0);
     }
@@ -54,7 +54,7 @@ class Helper
      *
      * @return string
      */
-    public static function getRandomUrl() : string
+    public static function getRandomUrl(): string
     {
         return 'https://'.self::getRandomString(3).'.'.self::getRandomString(10).'.com';
     }

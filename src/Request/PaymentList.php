@@ -8,7 +8,6 @@ use Exception;
  * Class PaymentList.
  *
  * @category Request
- * @package  Cloudmazing\Tikkie\Request
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -41,7 +40,7 @@ class PaymentList extends BaseRequestList
      *
      * @return string
      */
-    public function getPaymentRequestToken() : string
+    public function getPaymentRequestToken(): string
     {
         return $this->paymentRequestToken;
     }
@@ -51,7 +50,7 @@ class PaymentList extends BaseRequestList
      *
      * @param  string  $paymentRequestToken
      */
-    public function setPaymentRequestToken(string $paymentRequestToken) : void
+    public function setPaymentRequestToken(string $paymentRequestToken): void
     {
         $this->paymentRequestToken = $paymentRequestToken;
     }

@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
  * Class ErrorListResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -35,7 +34,7 @@ class ErrorListResponse extends BaseResponse
      *
      * @return Collection
      */
-    public function getErrors() : Collection
+    public function getErrors(): Collection
     {
         return $this->errors;
     }

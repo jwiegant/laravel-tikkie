@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
  * Class PaymentRequestListResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -43,7 +42,7 @@ class PaymentRequestListResponse extends BaseResponse
      *
      * @return Collection
      */
-    public function getPaymentRequests() : Collection
+    public function getPaymentRequests(): Collection
     {
         return $this->paymentRequests;
     }
@@ -53,7 +52,7 @@ class PaymentRequestListResponse extends BaseResponse
      *
      * @return int
      */
-    public function getTotalElementCount() : int
+    public function getTotalElementCount(): int
     {
         return $this->totalElementCount;
     }

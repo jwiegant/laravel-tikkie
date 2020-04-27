@@ -6,7 +6,6 @@ namespace Cloudmazing\Tikkie\Response;
  * Class ErrorResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -175,7 +174,7 @@ class ErrorResponse extends BaseResponse
      *
      * @return string
      */
-    public function getCode() : string
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -185,7 +184,7 @@ class ErrorResponse extends BaseResponse
      *
      * @return string
      */
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -195,7 +194,7 @@ class ErrorResponse extends BaseResponse
      *
      * @return string
      */
-    public function getReference() : string
+    public function getReference(): string
     {
         return $this->reference;
     }
@@ -205,7 +204,7 @@ class ErrorResponse extends BaseResponse
      *
      * @return string
      */
-    public function getTraceId() : string
+    public function getTraceId(): string
     {
         return $this->traceId;
     }
@@ -215,7 +214,7 @@ class ErrorResponse extends BaseResponse
      *
      * @return int
      */
-    public function getStatus() : int
+    public function getStatus(): int
     {
         return $this->status;
     }

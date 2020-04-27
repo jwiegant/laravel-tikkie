@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Http;
  * Class ListPaymentsResponseMock.
  *
  * @category Tests\Mocks
- * @package Cloudmazing\Tikkie\Tests\Mocks
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -70,11 +69,11 @@ class ListPaymentsResponseMock
                                         'description' => $refundDescription,
                                         'referenceId' => $refundReferenceId,
                                         'createdDateTime' => $refundCreatedDateTime,
-                                        'status' => $refundStatus
-                                    ]
-                                ]
-                            ]
-                        ]
+                                        'status' => $refundStatus,
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     200,
                     ['Headers']

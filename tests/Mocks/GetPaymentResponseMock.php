@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Http;
  * Class GetPaymentResponseMock.
  *
  * @category Tests\Mocks
- * @package Cloudmazing\Tikkie\Tests\Mocks
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -65,9 +64,9 @@ class GetPaymentResponseMock
                                 'description' => $refundDescription,
                                 'referenceId' => $refundReferenceId,
                                 'createdDateTime' => $refundCreatedDateTime->format('Y-m-d\TH:i:s.000\Z'),
-                                'status' => $refundStatus
-                            ]
-                        ]
+                                'status' => $refundStatus,
+                            ],
+                        ],
                     ],
                     200,
                     ['Headers']

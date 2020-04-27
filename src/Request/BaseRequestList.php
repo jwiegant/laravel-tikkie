@@ -8,7 +8,6 @@ use Carbon\Carbon;
  * Class BaseRequestList.
  *
  * @category Request
- * @package  Cloudmazing\Tikkie\Request
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -68,8 +67,8 @@ class BaseRequestList extends BaseRequest
             'nullable' => true,
         ],
         'includeRefunds' => [
-            'type' => 'bool'
-        ]
+            'type' => 'bool',
+        ],
     ];
 
     /**
@@ -90,7 +89,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return int
      */
-    public function getPageNumber() : int
+    public function getPageNumber(): int
     {
         return $this->pageNumber;
     }
@@ -100,7 +99,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  int  $pageNumber
      */
-    public function setPageNumber(int $pageNumber) : void
+    public function setPageNumber(int $pageNumber): void
     {
         $this->pageNumber = $pageNumber;
     }
@@ -110,7 +109,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return int
      */
-    public function getPageSize() : int
+    public function getPageSize(): int
     {
         return $this->pageSize;
     }
@@ -120,7 +119,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  int  $pageSize
      */
-    public function setPageSize(int $pageSize) : void
+    public function setPageSize(int $pageSize): void
     {
         $this->pageSize = $pageSize;
     }
@@ -130,7 +129,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return Carbon
      */
-    public function getFromDateTime() : Carbon
+    public function getFromDateTime(): Carbon
     {
         return $this->fromDateTime;
     }
@@ -140,7 +139,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  Carbon  $fromDateTime
      */
-    public function setFromDateTime(Carbon $fromDateTime) : void
+    public function setFromDateTime(Carbon $fromDateTime): void
     {
         $this->fromDateTime = $fromDateTime;
     }
@@ -150,7 +149,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return Carbon
      */
-    public function getToDateTime() : Carbon
+    public function getToDateTime(): Carbon
     {
         return $this->toDateTime;
     }
@@ -160,7 +159,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  Carbon  $toDateTime
      */
-    public function setToDateTime(Carbon $toDateTime) : void
+    public function setToDateTime(Carbon $toDateTime): void
     {
         $this->toDateTime = $toDateTime;
     }
@@ -170,7 +169,7 @@ class BaseRequestList extends BaseRequest
      *
      * @param  bool  $includeRefunds
      */
-    public function setIncludeRefunds(bool $includeRefunds) : void
+    public function setIncludeRefunds(bool $includeRefunds): void
     {
         $this->includeRefunds = $includeRefunds;
     }
@@ -180,7 +179,7 @@ class BaseRequestList extends BaseRequest
      *
      * @return bool
      */
-    public function isIncludeRefunds() : bool
+    public function isIncludeRefunds(): bool
     {
         return $this->includeRefunds;
     }

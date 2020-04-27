@@ -8,7 +8,6 @@ use Carbon\Carbon;
  * Class PaymentRequestResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -132,7 +131,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return string
      */
-    public function getPaymentRequestToken() : string
+    public function getPaymentRequestToken(): string
     {
         return $this->paymentRequestToken;
     }
@@ -142,7 +141,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return int
      */
-    public function getAmountInCents() : int
+    public function getAmountInCents(): int
     {
         return $this->amountInCents;
     }
@@ -152,7 +151,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return string
      */
-    public function getReferenceId() : string
+    public function getReferenceId(): string
     {
         return $this->referenceId;
     }
@@ -162,7 +161,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -172,7 +171,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return string
      */
-    public function getUrl() : string
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -182,7 +181,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return Carbon
      */
-    public function getExpiryDate() : Carbon
+    public function getExpiryDate(): Carbon
     {
         return $this->expiryDate;
     }
@@ -192,7 +191,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return Carbon
      */
-    public function getCreatedDateTime() : Carbon
+    public function getCreatedDateTime(): Carbon
     {
         return $this->createdDateTime;
     }
@@ -202,7 +201,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return string
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -212,7 +211,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return int
      */
-    public function getNumberOfPayments() : int
+    public function getNumberOfPayments(): int
     {
         return $this->numberOfPayments;
     }
@@ -222,7 +221,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return int
      */
-    public function getTotalAmountPaidInCents() : int
+    public function getTotalAmountPaidInCents(): int
     {
         return $this->totalAmountPaidInCents;
     }
@@ -232,7 +231,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @return bool
      */
-    public function isOpen() : bool
+    public function isOpen(): bool
     {
         return $this->getStatus() === self::OPEN;
     }

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Http;
  * Class ListPaymentRequestsResponseMock.
  *
  * @category Tests\Mocks
- * @package Cloudmazing\Tikkie\Tests\Mocks
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -78,7 +77,7 @@ class ListPaymentRequestsResponseMock
                                 'createdDateTime' => $createdDateTime1->format('Y-m-d\TH:i:s.000\Z'),
                                 'status' => $status1,
                                 'numberOfPayments' => $numberOfPayments1,
-                                'totalAmountPaidInCents' => $totalAmountPaidInCents1
+                                'totalAmountPaidInCents' => $totalAmountPaidInCents1,
                             ],
                             [
                                 'paymentRequestToken' => $paymentRequestToken2,
@@ -90,10 +89,10 @@ class ListPaymentRequestsResponseMock
                                 'createdDateTime' => $createdDateTime2->format('Y-m-d\TH:i:s.000\Z'),
                                 'status' => $status2,
                                 'numberOfPayments' => $numberOfPayments2,
-                                'totalAmountPaidInCents' => $totalAmountPaidInCents2
+                                'totalAmountPaidInCents' => $totalAmountPaidInCents2,
                             ],
                         ],
-                        'totalElementCount' => $totalElementCount
+                        'totalElementCount' => $totalElementCount,
                     ],
                     200,
                     ['Headers']

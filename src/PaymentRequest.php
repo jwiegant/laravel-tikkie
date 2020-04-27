@@ -13,7 +13,6 @@ use Exception;
  * Class PaymentRequest.
  *
  * @category Calls
- * @package Cloudmazing\Tikkie
  * @author  Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

@@ -6,7 +6,6 @@ namespace Cloudmazing\Tikkie\Response;
  * Class SubscriptionResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -25,7 +24,7 @@ class SubscriptionResponse extends BaseResponse
      *
      * @return string
      */
-    public function getSubscriptionId() : string
+    public function getSubscriptionId(): string
     {
         return $this->subscriptionId;
     }

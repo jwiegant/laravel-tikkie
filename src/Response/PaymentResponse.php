@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
  * Class PaymentResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -91,7 +90,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return string
      */
-    public function getPaymentToken() : string
+    public function getPaymentToken(): string
     {
         return $this->paymentToken;
     }
@@ -101,7 +100,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return string
      */
-    public function getTikkieId() : string
+    public function getTikkieId(): string
     {
         return $this->tikkieId;
     }
@@ -111,7 +110,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return string
      */
-    public function getCounterPartyName() : string
+    public function getCounterPartyName(): string
     {
         return $this->counterPartyName;
     }
@@ -121,7 +120,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return string
      */
-    public function getCounterPartyAccountNumber() : string
+    public function getCounterPartyAccountNumber(): string
     {
         return $this->counterPartyAccountNumber;
     }
@@ -131,7 +130,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return int
      */
-    public function getAmountInCents() : int
+    public function getAmountInCents(): int
     {
         return $this->amountInCents;
     }
@@ -141,7 +140,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -151,7 +150,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return Carbon
      */
-    public function getCreatedDateTime() : Carbon
+    public function getCreatedDateTime(): Carbon
     {
         return $this->createdDateTime;
     }
@@ -161,7 +160,7 @@ class PaymentResponse extends BaseResponse
      *
      * @return Collection
      */
-    public function getRefunds() : Collection
+    public function getRefunds(): Collection
     {
         return $this->refunds;
     }

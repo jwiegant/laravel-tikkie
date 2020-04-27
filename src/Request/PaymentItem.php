@@ -6,7 +6,6 @@ namespace Cloudmazing\Tikkie\Request;
  * Class PaymentItem.
  *
  * @category Request
- * @package  Cloudmazing\Tikkie\Request
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -31,7 +30,7 @@ class PaymentItem extends BaseRequest
      *
      * @return string
      */
-    public function getPaymentToken() : string
+    public function getPaymentToken(): string
     {
         return $this->paymentToken;
     }
@@ -41,7 +40,7 @@ class PaymentItem extends BaseRequest
      *
      * @param  string  $paymentToken
      */
-    public function setPaymentToken(string $paymentToken) : void
+    public function setPaymentToken(string $paymentToken): void
     {
         $this->paymentToken = $paymentToken;
     }
@@ -51,7 +50,7 @@ class PaymentItem extends BaseRequest
      *
      * @return string
      */
-    public function getPaymentRequestToken() : string
+    public function getPaymentRequestToken(): string
     {
         return $this->paymentRequestToken;
     }
@@ -61,7 +60,7 @@ class PaymentItem extends BaseRequest
      *
      * @param  string  $paymentRequestToken
      */
-    public function setPaymentRequestToken(string $paymentRequestToken) : void
+    public function setPaymentRequestToken(string $paymentRequestToken): void
     {
         $this->paymentRequestToken = $paymentRequestToken;
     }

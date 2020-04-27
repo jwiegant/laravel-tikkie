@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Http;
  * Class CreatePaymentRequestResponseMock.
  *
  * @category Tests\Mocks
- * @package Cloudmazing\Tikkie\Tests\Mocks
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -48,7 +47,7 @@ class CreatePaymentRequestResponseMock
                         'url' => $url,
                         'expiryDate' => $expiryDate->format('Y-m-d'),
                         'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
-                        'status' => $status
+                        'status' => $status,
                     ],
                     200,
                     ['Headers']

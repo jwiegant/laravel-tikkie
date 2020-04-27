@@ -6,7 +6,6 @@ namespace Cloudmazing\Tikkie\Notification;
  * Class PaymentNotification.
  *
  * @category Notification
- * @package Cloudmazing\Tikkie\Notification
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

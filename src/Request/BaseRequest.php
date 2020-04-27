@@ -10,7 +10,6 @@ use Exception;
  * Class BaseRequest.
  *
  * @category Request
- * @package  Cloudmazing\Tikkie\Request
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -67,7 +66,7 @@ abstract class BaseRequest
         // Traverse the parameters
         foreach ($parameters as $key => $parameter) {
             // Check if the parameter is found in the class
-            if (key_exists($key, $classProperties)) {
+            if (array_key_exists($key, $classProperties)) {
                 // Check if the parameter has ben set in the casts array
                 if (in_array($key, $this->casts)) {
                     switch ($this->casts) {
@@ -105,7 +104,7 @@ abstract class BaseRequest
             $value = $this->$item;
 
             // Check the casts
-            if (key_exists($item, $this->casts)) {
+            if (array_key_exists($item, $this->casts)) {
                 // Check the items
                 $castItem = $this->casts[$item];
 

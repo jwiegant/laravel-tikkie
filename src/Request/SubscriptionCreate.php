@@ -6,7 +6,6 @@ namespace Cloudmazing\Tikkie\Request;
  * Class SubscriptionCreate.
  *
  * @category Request
- * @package  Cloudmazing\Tikkie\Request
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -33,7 +32,7 @@ class SubscriptionCreate extends BaseRequest
      *
      * @return string
      */
-    public function getUrl() : string
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -43,7 +42,7 @@ class SubscriptionCreate extends BaseRequest
      *
      * @param  string  $url
      */
-    public function setUrl(string $url) : void
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }

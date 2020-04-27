@@ -34,7 +34,6 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
  * This is the abstract test case class.
  *
  * @category Tests
- * @package Cloudmazing\Tikkie\Tests
  * @author  Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

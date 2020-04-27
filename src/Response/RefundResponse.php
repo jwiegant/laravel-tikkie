@@ -8,7 +8,6 @@ use Carbon\Carbon;
  * Class RefundResponse.
  *
  * @category Response
- * @package  Cloudmazing\Tikkie\Response
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -82,7 +81,7 @@ class RefundResponse extends BaseResponse
      *
      * @return string
      */
-    public function getRefundToken() : string
+    public function getRefundToken(): string
     {
         return $this->refundToken;
     }
@@ -92,7 +91,7 @@ class RefundResponse extends BaseResponse
      *
      * @return int
      */
-    public function getAmountInCents() : int
+    public function getAmountInCents(): int
     {
         return $this->amountInCents;
     }
@@ -102,7 +101,7 @@ class RefundResponse extends BaseResponse
      *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -112,7 +111,7 @@ class RefundResponse extends BaseResponse
      *
      * @return string
      */
-    public function getReferenceId() : string
+    public function getReferenceId(): string
     {
         return $this->referenceId;
     }
@@ -122,7 +121,7 @@ class RefundResponse extends BaseResponse
      *
      * @return Carbon
      */
-    public function getCreatedDateTime() : Carbon
+    public function getCreatedDateTime(): Carbon
     {
         return $this->createdDateTime;
     }
@@ -132,7 +131,7 @@ class RefundResponse extends BaseResponse
      *
      * @return string
      */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -142,7 +141,7 @@ class RefundResponse extends BaseResponse
      *
      * @return bool
      */
-    public function isPaid() : bool
+    public function isPaid(): bool
     {
         return $this->status === self::STATUS_PAID;
     }

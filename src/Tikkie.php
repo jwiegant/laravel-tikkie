@@ -19,7 +19,6 @@ use Exception;
  * Class Tikkie.
  *
  * @category Calls
- * @package  Cloudmazing\Tikkie
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -230,7 +229,7 @@ class Tikkie
         $paymentItem = new PaymentItem(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken' => $paymentToken
+                'paymentToken' => $paymentToken,
             ]
         );
 
@@ -297,7 +296,7 @@ class Tikkie
         $refundItem = new RefundItem([
             'paymentRequestToken' => $paymentRequestToken,
             'paymentToken' => $paymentToken,
-            'refundToken' => $refundToken
+            'refundToken' => $refundToken,
         ]);
 
         // Create the request object
@@ -320,7 +319,7 @@ class Tikkie
     {
         $subscriptionCreate = new SubscriptionCreate(
             [
-                'url' => $url
+                'url' => $url,
             ]
         );
 
