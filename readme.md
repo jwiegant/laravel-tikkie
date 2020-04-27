@@ -1,5 +1,6 @@
 # Laravel Tikkie
 
+[![StyleCI][ico-styleci]][link-styleci]
 [![License][ico-travis]][link-travis]
 [![License][ico-license]][link-license]
 
@@ -43,3 +44,5 @@ Please see the [license file](license.md) for more information.
 [link-license]: https://github.com/jwiegant/laravel-tikkie/blob/HEAD/license.md
 [ico-travis]: https://travis-ci.org/jwiegant/laravel-tikkie.svg?branch=master
 [link-travis]: https://travis-ci.org/github/jwiegant/laravel-tikkie
+[ico-styleci]: https://github.styleci.io/repos/256785939/shield?branch=master
+[link-styleci]: https://github.styleci.io/repos/256785939
