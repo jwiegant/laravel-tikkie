@@ -36,6 +36,17 @@ class PaymentList extends BaseRequestList
     }
 
     /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS.
+            "/{$this->getPaymentRequestToken()}/payments";
+    }
+
+    /**
      * Get the payment request token.
      *
      * @return string

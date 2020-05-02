@@ -11,7 +11,7 @@ use Carbon\Carbon;
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class BaseRequestList extends BaseRequest
+abstract class BaseRequestList extends BaseRequest
 {
     /**
      * Number of the page to be returned. Starts at zero.
@@ -183,4 +183,7 @@ class BaseRequestList extends BaseRequest
     {
         return $this->includeRefunds;
     }
+
+    /** Abstract function to get the action */
+    abstract public function getAction();
 }

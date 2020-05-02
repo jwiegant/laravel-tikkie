@@ -23,6 +23,14 @@ abstract class BaseRequest
     const NULLABLE = 'nullable';
 
     /**
+     * Action Constants
+     */
+    const PAYMENT_REQUESTS = 'paymentrequests';
+    const SANDBOX_APPS = 'sandboxapps';
+    const PAYMENT_REQUESTS_SUBSCRIPTION = 'paymentrequestssubscription';
+
+
+    /**
      * Parameters to cast to a specific type.
      *
      * @var array
@@ -138,10 +146,14 @@ abstract class BaseRequest
             }
 
             // Set the value in the payload
+
             $payload[$item] = $value;
         }
 
         // Return the payload
         return $payload;
     }
+
+    /** Abstract function to get the action */
+    abstract public function getAction();
 }

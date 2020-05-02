@@ -14,6 +14,11 @@ use Carbon\Carbon;
 class PaymentRequestCreate extends BaseRequest
 {
     /**
+     * Constants
+     */
+    const PAYMENT_REQUESTS = 'paymentrequests';
+
+    /**
      * Description of the payment request which the payer or payers will see. Max
      * length: 35 characters.
      *
@@ -68,6 +73,16 @@ class PaymentRequestCreate extends BaseRequest
         'expiryDate',
         'referenceId',
     ];
+
+    /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS;
+    }
 
     /**
      * Get the description.

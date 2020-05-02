@@ -4,7 +4,7 @@
 [![Travis][ico-travis]][link-travis]
 [![License][ico-license]][link-license]
 [![FOSSA Status][ico-fossa]][link-fossa]
-[![Codacy Badge][ico-codacy]][link-codacy]
+[![Codeclimate Badge][ico-codeclimate]][link-codeclimate]
 
 The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. <https://github.com/cloudmazing/laravel-tikkie>
 
@@ -51,4 +51,6 @@ Please see the [license file](license.md) for more information.
 [ico-fossa]: https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie.svg?type=shield
 [link-fossa]: https://app.fossa.io/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie?ref=badge_shield
 [ico-codacy]: https://api.codacy.com/project/badge/Grade/63ad808eb0554709bf7751908a925de0
-[link-codacy]:https://www.codacy.com/manual/jwiegant/laravel-tikkie?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jwiegant/laravel-tikkie&amp;utm_campaign=Badge_Grade
+[link-codacy]: https://www.codacy.com/manual/jwiegant/laravel-tikkie?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jwiegant/laravel-tikkie&amp;utm_campaign=Badge_Grade
+[ico-codeclimate]: https://api.codeclimate.com/v1/badges/dcf531a11061fd7a13c4/maintainability
+[link-codeclimate]: https://codeclimate.com/github/jwiegant/laravel-tikkie/maintainability

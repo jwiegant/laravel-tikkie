@@ -11,4 +11,13 @@ namespace Cloudmazing\Tikkie\Request;
  */
 class Application extends BaseRequest
 {
+    /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::SANDBOX_APPS;
+    }
 }

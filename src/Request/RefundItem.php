@@ -33,6 +33,19 @@ class RefundItem extends BaseRequest
     protected $refundToken;
 
     /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS.
+            "/{$this->getPaymentRequestToken()}".
+            "/payments/{$this->getPaymentToken()}".
+            "/refunds/{$this->getRefundToken()}";
+    }
+
+    /**
      * Get the refund token.
      *
      * @return string

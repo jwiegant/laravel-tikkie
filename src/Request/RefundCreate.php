@@ -58,6 +58,19 @@ class RefundCreate extends BaseRequest
     ];
 
     /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS.
+            "/{$this->getPaymentRequestToken()}".
+            "/payments/{$this->getPaymentToken()}".
+            "/refunds";
+    }
+
+    /**
      * Get the payment request token.
      *
      * @return string

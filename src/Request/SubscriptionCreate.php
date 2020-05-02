@@ -28,6 +28,16 @@ class SubscriptionCreate extends BaseRequest
     ];
 
     /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS_SUBSCRIPTION;
+    }
+
+    /**
      * Get the url.
      *
      * @return string

@@ -11,4 +11,13 @@ namespace Cloudmazing\Tikkie\Request;
  */
 class PaymentRequestList extends BaseRequestList
 {
+    /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS;
+    }
 }

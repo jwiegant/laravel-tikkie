@@ -35,13 +35,6 @@ abstract class BaseRequest
     const TIKKIE_VERSION_POINT = '/v2/tikkie/';
 
     /**
-     * Action calls.
-     */
-    const PAYMENT_REQUESTS = 'paymentrequests';
-    const SANDBOX_APPS = 'sandboxapps';
-    const PAYMENT_REQUESTS_SUBSCRIPTION = 'paymentrequestssubscription';
-
-    /**
      * @var Repository|mixed Api Key
      */
     private $_apiKey;
@@ -85,107 +78,6 @@ abstract class BaseRequest
     }
 
     /**
-     * Get the action based on the request class.
-     *
-     * @param  Request\BaseRequest  $baseRequest
-     *
-     * @return mixed
-     * @throws Exception
-     */
-    protected function getAction(Request\BaseRequest $baseRequest)
-    {
-        // Set the action to false
-        $action = false;
-
-        // Get the class name of the request
-        switch (get_class($baseRequest)) {
-            // Application Request
-            case Application::class:
-                $action = self::SANDBOX_APPS;
-                break;
-
-            // Payment Request List or Create
-            case PaymentRequestList::class:
-            case PaymentRequestCreate::class:
-                $action = self::PAYMENT_REQUESTS;
-            break;
-
-            // Payment Request Item
-            case PaymentRequestItem::class:
-                /**
-                 * $baseRequest is of the type PaymentRequestItem.
-                 *
-                 * @var PaymentRequestItem $baseRequest
-                 */
-                $action = self::PAYMENT_REQUESTS.
-                    "/{$baseRequest->getPaymentRequestToken()}";
-                break;
-
-            // Payment Item
-            case PaymentItem::class:
-                /**
-                 * $baseRequest is of the type PaymentItem.
-                 *
-                 * @var PaymentItem $baseRequest
-                 */
-                $action = self::PAYMENT_REQUESTS.
-                    "/{$baseRequest->getPaymentRequestToken()}".
-                    "/payments/{$baseRequest->getPaymentToken()}";
-                break;
-
-            // Payment List
-            case PaymentList::class:
-                /**
-                 * $baseRequest is of the type PaymentList.
-                 *
-                 * @var PaymentList $baseRequest
-                 */
-                $action = self::PAYMENT_REQUESTS.
-                    "/{$baseRequest->getPaymentRequestToken()}/payments";
-                break;
-
-            // Refund Create
-            case RefundCreate::class:
-                /**
-                 * $baseRequest is of the type RefundCreate.
-                 *
-                 * @var RefundCreate $baseRequest
-                 */
-                $action = self::PAYMENT_REQUESTS.
-                    "/{$baseRequest->getPaymentRequestToken()}".
-                    "/payments/{$baseRequest->getPaymentToken()}".
-                    "/refunds";
-                break;
-
-            // Refund Item
-            case RefundItem::class:
-                /**
-                 * $baseRequest is of the type RefundItem.
-                 *
-                 * @var RefundItem $baseRequest
-                 */
-                $action = $action = self::PAYMENT_REQUESTS.
-                    "/{$baseRequest->getPaymentRequestToken()}".
-                    "/payments/{$baseRequest->getPaymentToken()}".
-                    "/refunds/{$baseRequest->getRefundToken()}";
-                break;
-
-            // Subscription Create of Delete
-            case SubscriptionCreate::class:
-            case SubscriptionDelete::class:
-                $action = self::PAYMENT_REQUESTS_SUBSCRIPTION;
-                break;
-                
-            default:
-                // If the class isn't found, then throw an exception
-                throw new Exception('Unknown class');
-        }
-
-        // Retrun the action
-        return $action;
-    }
-
-    /**
      * Get the API endpoint.
      *
      * @param  Request\BaseRequest  $baseRequest
@@ -201,7 +93,7 @@ abstract class BaseRequest
             self::HTTPS_API_ABNAMRO_COM);
 
         // Return the end point with the action
-        return $endPoint.self::TIKKIE_VERSION_POINT.$this->getAction($baseRequest);
+        return $endPoint.self::TIKKIE_VERSION_POINT.$baseRequest->getAction();
     }
 
     /**

@@ -26,6 +26,18 @@ class PaymentItem extends BaseRequest
     protected $paymentToken;
 
     /**
+     * Get the action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return self::PAYMENT_REQUESTS.
+            "/{$this->getPaymentRequestToken()}".
+            "/payments/{$this->getPaymentToken()}";
+    }
+
+    /**
      * Get the payment token.
      *
      * @return string
