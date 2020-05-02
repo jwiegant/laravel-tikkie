@@ -82,7 +82,7 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
-     * Get the helper class
+     * Get the helper class.
      *
      * @return Helper
      */
@@ -149,7 +149,8 @@ class TestCase extends OrchestraTestCase
 
         // appToken must be filled
         $this->assertEquals(
-            $appToken, $applicationResponse->getAppToken(),
+            $appToken,
+            $applicationResponse->getAppToken(),
             'AppToken should be equal.'
         );
 
@@ -167,7 +168,8 @@ class TestCase extends OrchestraTestCase
         /** @var \Cloudmazing\Tikkie\Tikkie $tikkie */
         $tikkie = app('tikkie');
         $tikkie->setConfiguration(
-            config('tikkie.api-key'), config('tikkie.app-token'),
+            config('tikkie.api-key'),
+            config('tikkie.app-token'),
             config('tikkie.sandbox')
         );
 
@@ -456,7 +458,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            !$payment->isOpen()
+            ! $payment->isOpen()
         );
     }
 
@@ -819,7 +821,8 @@ class TestCase extends OrchestraTestCase
          * @var PaymentResponse $paymentResponse
          */
         $paymentResponse = $tikkie->getPayment(
-            'PAYMENT-REQUEST-TOKEN', 'PAYMENT-TOKEN'
+            'PAYMENT-REQUEST-TOKEN',
+            'PAYMENT-TOKEN'
         );
 
         /**
@@ -982,7 +985,7 @@ class TestCase extends OrchestraTestCase
 
         $this->assertTrue(
             ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid(
-            ) : !$refundResponse->isPaid()
+            ) : ! $refundResponse->isPaid()
         );
     }
 
@@ -1023,7 +1026,9 @@ class TestCase extends OrchestraTestCase
          * @var RefundResponse $refundResponse
          */
         $refundResponse = $tikkie->getRefund(
-            $paymentRequestToken, $paymentToken, $refundToken
+            $paymentRequestToken,
+            $paymentToken,
+            $refundToken
         );
 
         /**
@@ -1066,7 +1071,7 @@ class TestCase extends OrchestraTestCase
 
         $this->assertTrue(
             ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid(
-            ) : !$refundResponse->isPaid())
+            ) : ! $refundResponse->isPaid())
         );
     }
 
