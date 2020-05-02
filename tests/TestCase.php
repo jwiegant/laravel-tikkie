@@ -189,7 +189,6 @@ class TestCase extends OrchestraTestCase
         $status = PaymentRequestResponse::OPEN;
         $description = $helper->getRandomString(20);
         $amount = $helper->getRandomNumber(5) / 100;
-        ;
         $referenceId = $helper->getRandomString(20);
         $expiryDate = $helper->getRandomFutureCarbonDate()
                              ->setTime(0, 0, 0, 0);
@@ -789,12 +788,10 @@ class TestCase extends OrchestraTestCase
         $counterPartyName = $helper->getRandomString(20);
         $counterPartyAccountNumber = $helper->getRandomString(20);
         $amount = $helper->getRandomNumber(5) / 100;
-        ;
         $description = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
         $refundToken = $helper->getRandomString(20);
         $refundAmount = $helper->getRandomNumber(5) / 100;
-        ;
         $refundDescription = $helper->getRandomString(20);
         $refundReferenceId = $helper->getRandomString(20);
         $refundCreatedDateTime = $helper->getRandomFutureCarbonDate();
@@ -920,7 +917,6 @@ class TestCase extends OrchestraTestCase
         // Input data
         $refundToken = $helper->getRandomString(20);
         $amount = $helper->getRandomNumber(5) / 100;
-        ;
         $description = $helper->getRandomString(20);
         $referenceId = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
