@@ -56,8 +56,8 @@ class PaymentRequestCreate extends BaseRequest
      */
     protected array $casts = [
         'expiryDate' => [
-            'type'     => 'carbon',
-            'format'   => 'Y-m-d',
+            'type' => 'carbon',
+            'format' => 'Y-m-d',
             'nullable' => false,
         ],
     ];

@@ -52,14 +52,14 @@ abstract class BaseRequestList extends BaseRequest
      * @var array Casts array
      */
     protected array $casts = [
-        'fromDateTime'   => [
-            'type'     => 'carbon',
-            'format'   => 'Y-m-d\TH:i:s.000\Z',
+        'fromDateTime' => [
+            'type' => 'carbon',
+            'format' => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
-        'toDateTime'     => [
-            'type'     => 'carbon',
-            'format'   => 'Y-m-d\TH:i:s.000\Z',
+        'toDateTime' => [
+            'type' => 'carbon',
+            'format' => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
         'includeRefunds' => [
