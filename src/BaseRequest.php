@@ -74,6 +74,7 @@ abstract class BaseRequest
             $this->_apiKey = config('tikkie.api-key');
             $this->_appToken = config('tikkie.app-token');
             $this->_sandbox = config('tikkie.sandbox');
+
             return;
         }
 
