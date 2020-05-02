@@ -94,16 +94,21 @@ abstract class BaseRequest
      */
     protected function getAction(Request\BaseRequest $baseRequest)
     {
+        // Set the action to false
+        $action = false;
+
         // Get the class name of the request
         switch (get_class($baseRequest)) {
             // Application Request
             case Application::class:
-                return self::SANDBOX_APPS;
+                $action = self::SANDBOX_APPS;
+                break;
 
             // Payment Request List or Create
             case PaymentRequestList::class:
             case PaymentRequestCreate::class:
-                return self::PAYMENT_REQUESTS;
+                $action = self::PAYMENT_REQUESTS;
+            break;
 
             // Payment Request Item
             case PaymentRequestItem::class:
@@ -112,8 +117,9 @@ abstract class BaseRequest
                  *
                  * @var PaymentRequestItem $baseRequest
                  */
-                return self::PAYMENT_REQUESTS.
+                $action = self::PAYMENT_REQUESTS.
                     "/{$baseRequest->getPaymentRequestToken()}";
+                break;
 
             // Payment Item
             case PaymentItem::class:
@@ -122,9 +128,10 @@ abstract class BaseRequest
                  *
                  * @var PaymentItem $baseRequest
                  */
-                return self::PAYMENT_REQUESTS.
+                $action = self::PAYMENT_REQUESTS.
                     "/{$baseRequest->getPaymentRequestToken()}".
                     "/payments/{$baseRequest->getPaymentToken()}";
+                break;
 
             // Payment List
             case PaymentList::class:
@@ -133,8 +140,9 @@ abstract class BaseRequest
                  *
                  * @var PaymentList $baseRequest
                  */
-                return self::PAYMENT_REQUESTS.
+                $action = self::PAYMENT_REQUESTS.
                     "/{$baseRequest->getPaymentRequestToken()}/payments";
+                break;
 
             // Refund Create
             case RefundCreate::class:
@@ -143,10 +151,11 @@ abstract class BaseRequest
                  *
                  * @var RefundCreate $baseRequest
                  */
-                return self::PAYMENT_REQUESTS.
+                $action = self::PAYMENT_REQUESTS.
                     "/{$baseRequest->getPaymentRequestToken()}".
                     "/payments/{$baseRequest->getPaymentToken()}".
                     "/refunds";
+                break;
 
             // Refund Item
             case RefundItem::class:
@@ -155,19 +164,25 @@ abstract class BaseRequest
                  *
                  * @var RefundItem $baseRequest
                  */
-                return $action = self::PAYMENT_REQUESTS.
+                $action = $action = self::PAYMENT_REQUESTS.
                     "/{$baseRequest->getPaymentRequestToken()}".
                     "/payments/{$baseRequest->getPaymentToken()}".
                     "/refunds/{$baseRequest->getRefundToken()}";
+                break;
 
             // Subscription Create of Delete
             case SubscriptionCreate::class:
             case SubscriptionDelete::class:
-                return self::PAYMENT_REQUESTS_SUBSCRIPTION;
+                $action = self::PAYMENT_REQUESTS_SUBSCRIPTION;
+                break;
+                
+            default:
+                // If the class isn't found, then throw an exception
+                throw new Exception('Unknown class');
         }
 
-        // If the class isn't found, then throw an exception
-        throw new Exception('Unknown class');
+        // Retrun the action
+        return $action;
     }
 
     /**
