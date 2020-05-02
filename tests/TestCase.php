@@ -40,14 +40,6 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 class TestCase extends OrchestraTestCase
 {
     /**
-     * Constants.
-     */
-    /**
-     * Invalid token.
-     */
-    const INVALID_TOKEN = 'INVALID TOKEN';
-
-    /**
      * @var Helper Helper variable
      */
     private $helper;
@@ -64,6 +56,7 @@ class TestCase extends OrchestraTestCase
         // Get the helper
         $helper = $this->getHelper();
 
+        // Fill the config
         config(['tikkie.api-key' => $helper->getRandomString(10)]);
         config(['tikkie.sandbox' => 'true']);
         config(['tikkie.app-token' => $this->createTikkieApplication()]);
@@ -167,6 +160,8 @@ class TestCase extends OrchestraTestCase
     {
         /** @var \Cloudmazing\Tikkie\Tikkie $tikkie */
         $tikkie = app('tikkie');
+
+        // Set the configuration
         $tikkie->setConfiguration(
             config('tikkie.api-key'),
             config('tikkie.app-token'),
@@ -216,12 +211,13 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentRequestResponse $payment
          */
-        $payment = $tikkie->createPaymentRequest(
-            $description,
-            $amountInCents,
-            $referenceId,
-            $expiryDate
-        );
+        $payment = $tikkie->paymentRequest()
+                          ->create(
+                              $description,
+                              $amountInCents,
+                              $referenceId,
+                              $expiryDate
+                          );
 
         // Asserts
         $this->assertInstanceOf(
@@ -335,7 +331,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentRequestListResponse $paymentRequestListResponse
          */
-        $paymentRequestListResponse = $tikkie->listPaymentRequests();
+        $paymentRequestListResponse = $tikkie->paymentRequest()->list();
 
         $this->assertInstanceOf(
             PaymentRequestListResponse::class,
@@ -505,7 +501,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentRequestResponse $payment
          */
-        $payment = $tikkie->getPaymentRequest('PAYMENT_REQUEST_TOKEN');
+        $payment = $tikkie->paymentRequest()->get('PAYMENT_REQUEST_TOKEN');
 
         // Asserts
         $this->assertInstanceOf(
@@ -592,7 +588,7 @@ class TestCase extends OrchestraTestCase
         $tikkie = $this->getTikke();
 
         // Get the error
-        $errorListResponse = $tikkie->getPaymentRequest('PAYMENT_REQUEST_TOKEN');
+        $errorListResponse = $tikkie->paymentRequest()->get('PAYMENT_REQUEST_TOKEN');
 
         // Asserts
         $this->assertInstanceOf(
@@ -686,7 +682,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentListResponse $payment
          */
-        $payments = $tikkie->listPayments('PAYMENT-REQUEST-TOKEN');
+        $payments = $tikkie->payment()->list('PAYMENT-REQUEST-TOKEN');
 
         $this->assertInstanceOf(
             PaymentListResponse::class,
@@ -820,7 +816,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentResponse $paymentResponse
          */
-        $paymentResponse = $tikkie->getPayment(
+        $paymentResponse = $tikkie->payment()->get(
             'PAYMENT-REQUEST-TOKEN',
             'PAYMENT-TOKEN'
         );
@@ -939,7 +935,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var RefundResponse $refundResponse
          */
-        $refundResponse = $tikkie->createRefund(
+        $refundResponse = $tikkie->refund()->create(
             $paymentRequestToken,
             $paymentToken,
             $description,
@@ -1025,7 +1021,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var RefundResponse $refundResponse
          */
-        $refundResponse = $tikkie->getRefund(
+        $refundResponse = $tikkie->refund()->get(
             $paymentRequestToken,
             $paymentToken,
             $refundToken
@@ -1099,7 +1095,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var SubscriptionResponse $subscriptionResponse
          */
-        $subscriptionResponse = $tikkie->createSubscription(
+        $subscriptionResponse = $tikkie->subscription()->create(
             $subscriptionId
         );
 
@@ -1139,7 +1135,7 @@ class TestCase extends OrchestraTestCase
         /**
          * @var SubscriptionDeleteResponse $subscriptionResponse
          */
-        $subscriptionResponse = $tikkie->deleteSubscription();
+        $subscriptionResponse = $tikkie->subscription()->delete();
 
         // Asserts
         $this->assertInstanceOf(

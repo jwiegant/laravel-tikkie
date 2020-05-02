@@ -20,13 +20,19 @@ class Subscription extends BaseRequest
     /**
      * Create a subscription.
      *
-     * @param  SubscriptionCreate  $subscriptionCreate
+     * @param  string  $url
      *
      * @return Response\SubscriptionResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(SubscriptionCreate $subscriptionCreate)
+    public function create(string $url)
     {
+        $subscriptionCreate = new SubscriptionCreate(
+            [
+                'url' => $url,
+            ]
+        );
+
         // Make the call and check the response
         return $this->checkResponse(
             $this->postRequest(
@@ -39,13 +45,14 @@ class Subscription extends BaseRequest
     /**
      * Delete a subscription.
      *
-     * @param  SubscriptionDelete  $subscriptionDelete
-     *
      * @return Response\SubscriptionDeleteResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function delete(SubscriptionDelete $subscriptionDelete)
+    public function delete()
     {
+        // Create a subscription delete request
+        $subscriptionDelete = new SubscriptionDelete();
+
         // Make the call and check the response
         return $this->checkResponse(
             $this->deleteRequest(

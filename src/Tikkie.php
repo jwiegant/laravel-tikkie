@@ -2,19 +2,6 @@
 
 namespace Cloudmazing\Tikkie;
 
-use Carbon\Carbon;
-use Cloudmazing\Tikkie\Request\PaymentItem;
-use Cloudmazing\Tikkie\Request\PaymentList;
-use Cloudmazing\Tikkie\Request\PaymentRequestCreate;
-use Cloudmazing\Tikkie\Request\PaymentRequestItem;
-use Cloudmazing\Tikkie\Request\PaymentRequestList;
-use Cloudmazing\Tikkie\Request\RefundCreate;
-use Cloudmazing\Tikkie\Request\RefundItem;
-use Cloudmazing\Tikkie\Request\SubscriptionCreate;
-use Cloudmazing\Tikkie\Request\SubscriptionDelete;
-use Cloudmazing\Tikkie\Response\PaymentRequestResponse;
-use Exception;
-
 /**
  * Class Tikkie.
  *
@@ -69,285 +56,52 @@ class Tikkie
     }
 
     /**
-     * Create a Payment Request.
+     * Get the Application object.
      *
-     * @param string $description
-     * @param int $amountInCents
-     * @param string $referenceId
-     * @param $expiryDate
-     * @return Response\ErrorListResponse|PaymentRequestResponse
-     * @throws Exception
+     * @return Application
      */
-    public function createPaymentRequest(string $description, int $amountInCents, string $referenceId, $expiryDate)
+    public function application()
     {
-        // Set and check the expiryDate
-        if (is_string($expiryDate)) {
-            $expiryDate = new Carbon($expiryDate);
-        } else {
-            if (get_class($expiryDate) !== Carbon::class) {
-                throw new Exception('Invalid expiryDate provided');
-            }
-        }
-
-        // Create the request input object
-        $paymentRequestCreate = new PaymentRequestCreate(
-            [
-                'description' => $description,
-                'amountInCents' => $amountInCents,
-                'expiryDate' => $expiryDate,
-                'referenceId' => $referenceId,
-            ]
-        );
-
-        // Create the request object
-        $paymentRequest = new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         *
-         * @var PaymentRequestResponse $paymentRequestResponse
-         */
-        return $paymentRequest->create($paymentRequestCreate);
+        return new Application($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
 
     /**
-     * Get a list of payment requests.
+     * Get the PaymentRequest object.
      *
-     * @param bool $includeRefunds
-     * @param int $pageNumber
-     * @param int $pageSize
-     * @param null $fromDateTime
-     * @param null $toDateTime
-     * @return Response\ErrorListResponse|Response\PaymentRequestResponse
-     * @throws Exception
+     * @return PaymentRequest
      */
-    public function listPaymentRequests(
-        bool $includeRefunds = false,
-        int $pageNumber = 0,
-        int $pageSize = 10,
-        $fromDateTime = null,
-        $toDateTime = null
-    ) {
-        // Create the request input object
-        $paymentRequestList = new PaymentRequestList(
-            [
-                'includeRefunds' => $includeRefunds,
-                'pageNumber' => $pageNumber,
-                'pageSize' => $pageSize,
-                'fromDateTime' => $fromDateTime,
-                'toDateTime' => $toDateTime,
-            ]
-        );
-
-        // Create the request object
-        $paymentRequest = new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         *
-         * @var PaymentRequestResponse $paymentRequestResponse
-         */
-        return $paymentRequest->list($paymentRequestList);
-    }
-
-    /**
-     * Get a payment request.
-     *
-     * @param string $paymentRequestToken
-     * @return Response\ErrorListResponse|Response\PaymentRequestResponse
-     * @throws Exception
-     */
-    public function getPaymentRequest(string $paymentRequestToken)
+    public function paymentRequest()
     {
-        // Create the request input object
-        $paymentRequestItem = new PaymentRequestItem(
-            [
-                'paymentRequestToken' => $paymentRequestToken,
-            ]
-        );
-
-        // Create the request object
-        $paymentRequest = new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $paymentRequest->get($paymentRequestItem);
+        return new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
 
     /**
-     * Get a list of payments for a payment request token.
+     * Get the Payment object.
      *
-     * @param string $paymentRequestToken
-     * @param bool $includeRefunds
-     * @param int $pageNumber
-     * @param int $pageSize
-     * @param null $fromDateTime
-     * @param null $toDateTime
-     * @return Response\PaymentListResponse|Response\ErrorListResponse
-     * @throws Exception
+     * @return Payment
      */
-    public function listPayments(
-        string $paymentRequestToken,
-        bool $includeRefunds = false,
-        int $pageNumber = 0,
-        int $pageSize = 10,
-        $fromDateTime = null,
-        $toDateTime = null
-    ) {
-        $paymentList = new PaymentList(
-            [
-                'paymentRequestToken' => $paymentRequestToken,
-                'includeRefunds' => $includeRefunds,
-                'pageNumber' => $pageNumber,
-                'pageSize' => $pageSize,
-                'fromDateTime' => $fromDateTime,
-                'toDateTime' => $toDateTime,
-            ]
-        );
-
-        // Create the payment object
-        $payment = new Payment($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $payment->list($paymentList);
-    }
-
-    /**
-     * Get a payment.
-     *
-     * @param string $paymentRequestToken
-     * @param string $paymentToken
-     * @return Response\PaymentResponse|Response\ErrorListResponse
-     * @throws Exception
-     */
-    public function getPayment(string $paymentRequestToken, string $paymentToken)
+    public function payment()
     {
-        // Create the input object
-        $paymentItem = new PaymentItem(
-            [
-                'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken' => $paymentToken,
-            ]
-        );
-
-        // Create the request object
-        $payment = new Payment($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $payment->get($paymentItem);
+        return new Payment($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
 
     /**
-     * Create a refund.
+     * Get the Refund object.
      *
-     * @param string $paymentRequestToken
-     * @param string $paymentToken
-     * @param string $description
-     * @param int $amountInCents
-     * @param string $referenceId
-     * @return Response\ErrorListResponse|Response\RefundResponse
-     * @throws Exception
+     * @return Refund
      */
-    public function createRefund(
-        string $paymentRequestToken,
-        string $paymentToken,
-        string $description,
-        int $amountInCents,
-        string $referenceId
-    ) {
-        $refundCreate = new RefundCreate(
-            [
-                'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken' => $paymentToken,
-                'description' => $description,
-                'amountInCents' => $amountInCents,
-                'referenceId' => $referenceId,
-            ]
-        );
-
-        // Create the request object
-        $refund = new Refund($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $refund->create($refundCreate);
-    }
-
-    /**
-     * Get a refund.
-     *
-     * @param string $paymentRequestToken
-     * @param string $paymentToken
-     * @param string $refundToken
-     * @return Response\ErrorListResponse|Response\RefundResponse
-     * @throws Exception
-     */
-    public function getRefund(
-        string $paymentRequestToken,
-        string $paymentToken,
-        string $refundToken
-    ) {
-        $refundItem = new RefundItem([
-            'paymentRequestToken' => $paymentRequestToken,
-            'paymentToken' => $paymentToken,
-            'refundToken' => $refundToken,
-        ]);
-
-        // Create the request object
-        $refund = new Refund($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $refund->get($refundItem);
-    }
-
-    /**
-     * Create a subscription.
-     *
-     * @param string $url
-     * @return Response\ErrorListResponse|Response\SubscriptionResponse
-     * @throws Exception
-     */
-    public function createSubscription(string $url)
+    public function refund()
     {
-        $subscriptionCreate = new SubscriptionCreate(
-            [
-                'url' => $url,
-            ]
-        );
-
-        // Create the request object
-        $subscription = new Subscription($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $subscription->create($subscriptionCreate);
+        return new Refund($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
 
     /**
-     * Delete a subscription.
+     * Get the Subscription object.
      *
-     * @return Response\ErrorListResponse|Response\SubscriptionDeleteResponse
-     * @throws Exception
+     * @return Subscription
      */
-    public function deleteSubscription()
+    public function subscription()
     {
-        $subscriptionDelete = new SubscriptionDelete();
-
-        // Create the request object
-        $subscription = new Subscription($this->_apiKey, $this->_appToken, $this->_sandbox);
-
-        /**
-         * Make the call.
-         */
-        return $subscription->delete($subscriptionDelete);
+        return new Subscription($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
 }

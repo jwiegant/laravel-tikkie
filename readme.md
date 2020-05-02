@@ -6,7 +6,9 @@
 [![FOSSA Status][ico-fossa]][link-fossa]
 [![Codeclimate Badge][ico-codeclimate]][link-codeclimate]
 
-The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. <https://github.com/cloudmazing/laravel-tikkie>
+The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. 
+
+[Check this link for more information on ABN-AMRO Tikkie.](https://developer.abnamro.com/api/tikkie-v2/overview)
 
 ## Installation
 
@@ -30,6 +32,34 @@ Now you need to set your configuration using **environment variables**.
 TIKKIE_API_KEY=XXXXXXXXXXXXXXXXXXX
 TIKKIE_APP_TOKEN=XXXXXXXXXXXXXXXXXXX
 ```
+
+Want to start in the sandbox first, then also set the following **variable**
+```bash
+TIKKIE_SANDBOX=true
+```
+
+## Example usage
+```php
+class PaymentController 
+{ 
+    public function create(
+        Tikkie $tikkie
+    ) {
+        $expiryDate = Carbon::now()->addDays(2);
+    
+        // Create the payment request 
+        $paymentRequest = $tikkie->createPaymentRequest(
+            'Some description',
+            10 * 100, // Amount * 100
+            'Some reference',
+            $expiryDate
+        );
+        
+        // Do something with the request, like redirect the user to the Tikkie URL
+    }
+}
+```
+
 ## Contributing
 
 Please see [contributing.md](contributing.md) for details and a todolist.

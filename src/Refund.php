@@ -19,13 +19,32 @@ class Refund extends BaseRequest
     /**
      * Get the payment payment of a payment request.
      *
-     * @param  RefundCreate  $refundCreate
+     * @param  string  $paymentRequestToken
+     * @param  string  $paymentToken
+     * @param  string  $description
+     * @param  int  $amountInCents
+     * @param  string  $referenceId
      *
      * @return Response\RefundResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(RefundCreate $refundCreate)
-    {
+    public function create(
+        string $paymentRequestToken,
+        string $paymentToken,
+        string $description,
+        int $amountInCents,
+        string $referenceId
+    ) {
+        $refundCreate = new RefundCreate(
+            [
+                'paymentRequestToken' => $paymentRequestToken,
+                'paymentToken' => $paymentToken,
+                'description' => $description,
+                'amountInCents' => $amountInCents,
+                'referenceId' => $referenceId,
+            ]
+        );
+
         // Make the call and check the response
         return $this->checkResponse(
             $this->postRequest(
@@ -38,13 +57,26 @@ class Refund extends BaseRequest
     /**
      * Get a list of payments for a payment request.
      *
-     * @param  RefundItem  $refundItem
+     * @param  string  $paymentRequestToken
+     * @param  string  $paymentToken
+     * @param  string  $refundToken
      *
      * @return Response\RefundResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function get(RefundItem $refundItem)
-    {
+    public function get(
+        string $paymentRequestToken,
+        string $paymentToken,
+        string $refundToken
+    ) {
+        $refundItem = new RefundItem(
+            [
+                'paymentRequestToken' => $paymentRequestToken,
+                'paymentToken' => $paymentToken,
+                'refundToken' => $refundToken,
+            ]
+        );
+
         // Make the call and check the response
         return $this->checkResponse(
             $this->getRequest(

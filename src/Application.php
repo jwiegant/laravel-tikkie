@@ -21,11 +21,14 @@ class Application extends BaseRequest
      * @return Response\ApplicationResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(Request\Application $application)
+    public function create()
     {
+        // Create the application request
+        $applicationRequest = new \Cloudmazing\Tikkie\Request\Application();
+
         return $this->checkResponse(
             $this->postRequest(
-                $application
+                $applicationRequest
             ),
             ApplicationResponse::class
         );
