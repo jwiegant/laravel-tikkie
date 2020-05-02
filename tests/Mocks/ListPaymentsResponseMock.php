@@ -17,20 +17,20 @@ class ListPaymentsResponseMock
     /**
      * ListPaymentsResponseMock constructor.
      *
-     * @param int $totalElementCount
-     * @param string $paymentToken
-     * @param int $tikkieId
-     * @param string $counterPartyName
-     * @param string $counterPartyAccountNumber
-     * @param int $amountInCents
-     * @param string $description
-     * @param Carbon $createdDateTime
-     * @param string $refundToken
-     * @param int $refundAmount
-     * @param string $refundDescription
-     * @param string $refundReferenceId
-     * @param Carbon $refundCreatedDateTime
-     * @param string $refundStatus
+     * @param  int  $totalElementCount
+     * @param  string  $paymentToken
+     * @param  int  $tikkieId
+     * @param  string  $counterPartyName
+     * @param  string  $counterPartyAccountNumber
+     * @param  float  $amount
+     * @param  string  $description
+     * @param  Carbon  $createdDateTime
+     * @param  string  $refundToken
+     * @param  float  $refundAmount
+     * @param  string  $refundDescription
+     * @param  string  $refundReferenceId
+     * @param  Carbon  $refundCreatedDateTime
+     * @param  string  $refundStatus
      */
     public function __construct(
         int $totalElementCount,
@@ -38,11 +38,11 @@ class ListPaymentsResponseMock
         int $tikkieId,
         string $counterPartyName,
         string $counterPartyAccountNumber,
-        int $amountInCents,
+        float $amount,
         string $description,
         Carbon $createdDateTime,
         string $refundToken,
-        int $refundAmount,
+        float $refundAmount,
         string $refundDescription,
         string $refundReferenceId,
         Carbon $refundCreatedDateTime,
@@ -59,13 +59,13 @@ class ListPaymentsResponseMock
                                 'tikkieId' => $tikkieId,
                                 'counterPartyName' => $counterPartyName,
                                 'counterPartyAccountNumber' => $counterPartyAccountNumber,
-                                'amountInCents' => $amountInCents,
+                                'amountInCents' => $amount * 100,
                                 'description' => $description,
                                 'createdDateTime' => $createdDateTime,
                                 'refunds' => [
                                     [
                                         'refundToken' => $refundToken,
-                                        'amountInCents' => $refundAmount,
+                                        'amountInCents' => $refundAmount * 100,
                                         'description' => $refundDescription,
                                         'referenceId' => $refundReferenceId,
                                         'createdDateTime' => $refundCreatedDateTime,

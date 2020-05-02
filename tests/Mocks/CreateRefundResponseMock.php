@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Http;
  */
 class CreateRefundResponseMock
 {
+    /**
+     * CreateRefundResponseMock constructor.
+     *
+     * @param  string  $refundToken
+     * @param  float  $amount
+     * @param  string  $description
+     * @param  string  $referenceId
+     * @param  Carbon  $createdDateTime
+     * @param  string  $status
+     */
     public function __construct(
         string $refundToken,
         float $amount,

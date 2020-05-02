@@ -17,32 +17,32 @@ class ListPaymentRequestsResponseMock
     /**
      * ListPaymentRequestsResponseMock constructor.
      *
-     * @param int $totalElementCount
-     * @param string $paymentRequestToken1
-     * @param int $amountInCents1
-     * @param string $referenceId1
-     * @param string $description1
-     * @param string $url1
-     * @param Carbon $expiryDate1
-     * @param Carbon $createdDateTime1
-     * @param string $status1
-     * @param int $numberOfPayments1
-     * @param int $totalAmountPaidInCents1
-     * @param string $paymentRequestToken2
-     * @param int $amountInCents2
-     * @param string $referenceId2
-     * @param string $description2
-     * @param string $url2
-     * @param Carbon $expiryDate2
-     * @param Carbon $createdDateTime2
-     * @param string $status2
-     * @param int $numberOfPayments2
-     * @param int $totalAmountPaidInCents2
+     * @param  int  $totalElementCount
+     * @param  string  $paymentRequestToken1
+     * @param  float  $amount1
+     * @param  string  $referenceId1
+     * @param  string  $description1
+     * @param  string  $url1
+     * @param  Carbon  $expiryDate1
+     * @param  Carbon  $createdDateTime1
+     * @param  string  $status1
+     * @param  int  $numberOfPayments1
+     * @param  int  $totalAmountPaidInCents1
+     * @param  string  $paymentRequestToken2
+     * @param  float  $amount2
+     * @param  string  $referenceId2
+     * @param  string  $description2
+     * @param  string  $url2
+     * @param  Carbon  $expiryDate2
+     * @param  Carbon  $createdDateTime2
+     * @param  string  $status2
+     * @param  int  $numberOfPayments2
+     * @param  int  $totalAmountPaidInCents2
      */
     public function __construct(
         int $totalElementCount,
         string $paymentRequestToken1,
-        int $amountInCents1,
+        float $amount1,
         string $referenceId1,
         string $description1,
         string $url1,
@@ -52,7 +52,7 @@ class ListPaymentRequestsResponseMock
         int $numberOfPayments1,
         int $totalAmountPaidInCents1,
         string $paymentRequestToken2,
-        int $amountInCents2,
+        float $amount2,
         string $referenceId2,
         string $description2,
         string $url2,
@@ -69,7 +69,7 @@ class ListPaymentRequestsResponseMock
                         'paymentRequests' => [
                             [
                                 'paymentRequestToken' => $paymentRequestToken1,
-                                'amountInCents' => $amountInCents1,
+                                'amountInCents' => $amount1 * 100,
                                 'referenceId' => $referenceId1,
                                 'description' => $description1,
                                 'url' => $url1,
@@ -81,7 +81,7 @@ class ListPaymentRequestsResponseMock
                             ],
                             [
                                 'paymentRequestToken' => $paymentRequestToken2,
-                                'amountInCents' => $amountInCents2,
+                                'amountInCents' => $amount2 * 100,
                                 'referenceId' => $referenceId2,
                                 'description' => $description2,
                                 'url' => $url2,

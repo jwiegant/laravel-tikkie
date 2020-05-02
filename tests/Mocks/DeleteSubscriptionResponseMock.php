@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Http;
  */
 class DeleteSubscriptionResponseMock
 {
+    /**
+     * DeleteSubscriptionResponseMock constructor.
+     */
     public function __construct(
     ) {
         Http::fake(

@@ -38,10 +38,10 @@ class Refund extends BaseRequest
         $refundCreate = new RefundCreate(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken'        => $paymentToken,
-                'description'         => $description,
-                'amountInCents'       => $amount,
-                'referenceId'         => $referenceId,
+                'paymentToken' => $paymentToken,
+                'description' => $description,
+                'amountInCents' => $amount,
+                'referenceId' => $referenceId,
             ]
         );
 
@@ -72,8 +72,8 @@ class Refund extends BaseRequest
         $refundItem = new RefundItem(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken'        => $paymentToken,
-                'refundToken'         => $refundToken,
+                'paymentToken' => $paymentToken,
+                'refundToken' => $refundToken,
             ]
         );
 

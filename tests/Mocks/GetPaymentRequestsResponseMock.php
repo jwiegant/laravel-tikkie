@@ -17,16 +17,16 @@ class GetPaymentRequestsResponseMock
     /**
      * GetPaymentRequestsResponseMock constructor.
      *
-     * @param string $paymentRequestToken
-     * @param int $amount
-     * @param string $referenceId
-     * @param string $description
-     * @param string $url
-     * @param Carbon $expiryDate
-     * @param Carbon $createdDateTime
-     * @param string $status
-     * @param int $numberOfPayments
-     * @param int $totalAmountPaidInCents
+     * @param  string  $paymentRequestToken
+     * @param  float  $amount
+     * @param  string  $referenceId
+     * @param  string  $description
+     * @param  string  $url
+     * @param  Carbon  $expiryDate
+     * @param  Carbon  $createdDateTime
+     * @param  string  $status
+     * @param  int  $numberOfPayments
+     * @param  int  $totalAmountPaidInCents
      */
     public function __construct(
         string $paymentRequestToken,

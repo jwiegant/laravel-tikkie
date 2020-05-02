@@ -17,19 +17,19 @@ class GetPaymentResponseMock
     /**
      * GetPaymentResponseMock constructor.
      *
-     * @param string $paymentToken
-     * @param int $tikkieId
-     * @param string $counterPartyName
-     * @param string $counterPartyAccountNumber
-     * @param int $amount
-     * @param string $description
-     * @param Carbon $createdDateTime
-     * @param string $refundToken
-     * @param int $refundAmount
-     * @param string $refundDescription
-     * @param string $refundReferenceId
-     * @param Carbon $refundCreatedDateTime
-     * @param string $refundStatus
+     * @param  string  $paymentToken
+     * @param  int  $tikkieId
+     * @param  string  $counterPartyName
+     * @param  string  $counterPartyAccountNumber
+     * @param  float  $amount
+     * @param  string  $description
+     * @param  Carbon  $createdDateTime
+     * @param  string  $refundToken
+     * @param  float  $refundAmount
+     * @param  string  $refundDescription
+     * @param  string  $refundReferenceId
+     * @param  Carbon  $refundCreatedDateTime
+     * @param  string  $refundStatus
      */
     public function __construct(
         string $paymentToken,

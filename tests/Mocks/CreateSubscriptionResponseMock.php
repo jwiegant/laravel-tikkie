@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Http;
  */
 class CreateSubscriptionResponseMock
 {
+    /**
+     * CreateSubscriptionResponseMock constructor.
+     *
+     * @param  string  $subscriptionId
+     */
     public function __construct(
         string $subscriptionId
     ) {

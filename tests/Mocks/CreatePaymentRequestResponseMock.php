@@ -17,18 +17,18 @@ class CreatePaymentRequestResponseMock
     /**
      * CreatePaymentRequestResponseMock constructor.
      *
-     * @param string $paymentRequestToken
-     * @param int $amount + 100
-     * @param string $referenceId
-     * @param string $description
-     * @param string $url
-     * @param Carbon $expiryDate
-     * @param Carbon $createdDateTime
-     * @param string $status
+     * @param  string  $paymentRequestToken
+     * @param  float  $amount
+     * @param  string  $referenceId
+     * @param  string  $description
+     * @param  string  $url
+     * @param  Carbon  $expiryDate
+     * @param  Carbon  $createdDateTime
+     * @param  string  $status
      */
     public function __construct(
         string $paymentRequestToken,
-        int $amount,
+        float $amount,
         string $referenceId,
         string $description,
         string $url,
