@@ -48,14 +48,23 @@ class TestCase extends OrchestraTestCase
     const INVALID_TOKEN = 'INVALID TOKEN';
 
     /**
+     * @var Helper Helper variable
+     */
+    private $helper;
+
+    /**
      * Set up the environment.
      *
-     * @param Application $app
+     * @param  Application  $app
+     *
      * @throws Exception
      */
     protected function getEnvironmentSetUp($app)
     {
-        config(['tikkie.api-key' => Helper::getRandomString(10)]);
+        // Get the helper
+        $helper = $this->getHelper();
+
+        config(['tikkie.api-key' => $helper->getRandomString(10)]);
         config(['tikkie.sandbox' => 'true']);
         config(['tikkie.app-token' => $this->createTikkieApplication()]);
     }
@@ -63,7 +72,7 @@ class TestCase extends OrchestraTestCase
     /**
      * Get the service provider class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
      *
      * @return array
      */
@@ -73,9 +82,26 @@ class TestCase extends OrchestraTestCase
     }
 
     /**
+     * Get the helper class.
+     *
+     * @return Helper
+     */
+    private function getHelper()
+    {
+        // Check if we already created the helper
+        if ($this->helper === null) {
+            // Create the helper if it doesn't exist
+            $this->helper = new Helper();
+        }
+
+        // Return the helper
+        return $this->helper;
+    }
+
+    /**
      * Get the facade class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
      *
      * @return array
      */
@@ -94,8 +120,11 @@ class TestCase extends OrchestraTestCase
      */
     public function createTikkieApplication()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
-        $appToken = Helper::getRandomString(20);
+        $appToken = $helper->getRandomString(20);
 
         // Set the Application Response Mock
         new ApplicationResponseMock($appToken);
@@ -119,7 +148,11 @@ class TestCase extends OrchestraTestCase
         $this->assertInstanceOf(ApplicationResponse::class, $applicationResponse);
 
         // appToken must be filled
-        $this->assertEquals($appToken, $applicationResponse->getAppToken(), 'AppToken should be equal.');
+        $this->assertEquals(
+            $appToken,
+            $applicationResponse->getAppToken(),
+            'AppToken should be equal.'
+        );
 
         // Return the app token to be used in other test cases
         return $applicationResponse->getAppToken();
@@ -134,7 +167,11 @@ class TestCase extends OrchestraTestCase
     {
         /** @var \Cloudmazing\Tikkie\Tikkie $tikkie */
         $tikkie = app('tikkie');
-        $tikkie->setConfiguration(config('tikkie.api-key'), config('tikkie.app-token'), config('tikkie.sandbox'));
+        $tikkie->setConfiguration(
+            config('tikkie.api-key'),
+            config('tikkie.app-token'),
+            config('tikkie.sandbox')
+        );
 
         // Return the tikkie instance
         return $tikkie;
@@ -147,15 +184,19 @@ class TestCase extends OrchestraTestCase
      */
     public function testCreatePaymentRequest()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
-        $paymentRequestToken = Helper::getRandomString(20);
-        $url = Helper::getRandomUrl();
-        $createdDateTime = Helper::getCarbonDate();
+        $paymentRequestToken = $helper->getRandomString(20);
+        $url = $helper->getRandomUrl();
+        $createdDateTime = $helper->getCarbonDate();
         $status = PaymentRequestResponse::OPEN;
-        $description = Helper::getRandomString(20);
-        $amountInCents = Helper::getRandomNumber(4);
-        $referenceId = Helper::getRandomString(20);
-        $expiryDate = Helper::getRandomFutureCarbonDate()->setTime(0, 0, 0, 0);
+        $description = $helper->getRandomString(20);
+        $amountInCents = $helper->getRandomNumber(4);
+        $referenceId = $helper->getRandomString(20);
+        $expiryDate = $helper->getRandomFutureCarbonDate()
+                             ->setTime(0, 0, 0, 0);
 
         // Set the mock response
         new CreatePaymentRequestResponseMock(
@@ -235,28 +276,33 @@ class TestCase extends OrchestraTestCase
      */
     public function testListPaymentRequest()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
         $totalElementCount = 2;
-        $paymentRequestToken1 = Helper::getRandomString(20);
-        $amountInCents1 = Helper::getRandomNumber(4);
-        $referenceId1 = Helper::getRandomString(20);
-        $description1 = Helper::getRandomString(20);
-        $url1 = Helper::getRandomUrl();
-        $expiryDate1 = Helper::getRandomFutureCarbonDate()->setTime(0, 0, 0, 0);
-        $createdDateTime1 = Helper::getCarbonDate();
+        $paymentRequestToken1 = $helper->getRandomString(20);
+        $amountInCents1 = $helper->getRandomNumber(4);
+        $referenceId1 = $helper->getRandomString(20);
+        $description1 = $helper->getRandomString(20);
+        $url1 = $helper->getRandomUrl();
+        $expiryDate1 = $helper->getRandomFutureCarbonDate()
+                              ->setTime(0, 0, 0, 0);
+        $createdDateTime1 = $helper->getCarbonDate();
         $status1 = PaymentRequestResponse::OPEN;
-        $numberOfPayments1 = Helper::getRandomNumber(1);
-        $totalAmountPaidInCents1 = Helper::getRandomNumber(4);
-        $paymentRequestToken2 = Helper::getRandomString(20);
-        $amountInCents2 = Helper::getRandomNumber(4);
-        $referenceId2 = Helper::getRandomString(20);
-        $description2 = Helper::getRandomString(20);
-        $url2 = Helper::getRandomUrl();
-        $expiryDate2 = Helper::getRandomFutureCarbonDate()->setTime(0, 0, 0, 0);
-        $createdDateTime2 = Helper::getCarbonDate();
+        $numberOfPayments1 = $helper->getRandomNumber(1);
+        $totalAmountPaidInCents1 = $helper->getRandomNumber(4);
+        $paymentRequestToken2 = $helper->getRandomString(20);
+        $amountInCents2 = $helper->getRandomNumber(4);
+        $referenceId2 = $helper->getRandomString(20);
+        $description2 = $helper->getRandomString(20);
+        $url2 = $helper->getRandomUrl();
+        $expiryDate2 = $helper->getRandomFutureCarbonDate()
+                              ->setTime(0, 0, 0, 0);
+        $createdDateTime2 = $helper->getCarbonDate();
         $status2 = PaymentRequestResponse::CLOSED;
-        $numberOfPayments2 = Helper::getRandomNumber(2);
-        $totalAmountPaidInCents2 = Helper::getRandomNumber(4);
+        $numberOfPayments2 = $helper->getRandomNumber(2);
+        $totalAmountPaidInCents2 = $helper->getRandomNumber(4);
 
         // Set the mock response
         new ListPaymentRequestsResponseMock(
@@ -301,7 +347,8 @@ class TestCase extends OrchestraTestCase
             $paymentRequestListResponse->getTotalElementCount()
         );
 
-        $payment = $paymentRequestListResponse->getPaymentRequests()->first();
+        $payment = $paymentRequestListResponse->getPaymentRequests()
+                                              ->first();
 
         $this->assertEquals(
             $paymentRequestToken1,
@@ -357,7 +404,8 @@ class TestCase extends OrchestraTestCase
             $payment->isOpen()
         );
 
-        $payment = $paymentRequestListResponse->getPaymentRequests()->last();
+        $payment = $paymentRequestListResponse->getPaymentRequests()
+                                              ->last();
 
         $this->assertEquals(
             $paymentRequestToken2,
@@ -421,17 +469,21 @@ class TestCase extends OrchestraTestCase
      */
     public function testGetPaymentRequest()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
-        $paymentRequestToken = Helper::getRandomString(20);
-        $amountInCents = Helper::getRandomNumber(4);
-        $referenceId = Helper::getRandomString(20);
-        $description = Helper::getRandomString(20);
-        $url = Helper::getRandomUrl();
-        $expiryDate = Helper::getRandomFutureCarbonDate()->setTime(0, 0, 0, 0);
-        $createdDateTime = Helper::getCarbonDate();
+        $paymentRequestToken = $helper->getRandomString(20);
+        $amountInCents = $helper->getRandomNumber(4);
+        $referenceId = $helper->getRandomString(20);
+        $description = $helper->getRandomString(20);
+        $url = $helper->getRandomUrl();
+        $expiryDate = $helper->getRandomFutureCarbonDate()
+                             ->setTime(0, 0, 0, 0);
+        $createdDateTime = $helper->getCarbonDate();
         $status = PaymentRequestResponse::OPEN;
-        $numberOfPayments = Helper::getRandomNumber(1);
-        $totalAmountPaidInCents = Helper::getRandomNumber(4);
+        $numberOfPayments = $helper->getRandomNumber(1);
+        $totalAmountPaidInCents = $helper->getRandomNumber(4);
 
         // Set the mock response
         new GetPaymentRequestsResponseMock(
@@ -523,11 +575,14 @@ class TestCase extends OrchestraTestCase
      */
     public function testErrorResponse()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
         $code = ErrorResponse::DESCRIPTION_MISSING;
-        $message = Helper::getRandomString(20);
-        $reference = Helper::getRandomString(20);
-        $traceId = Helper::getRandomString(20);
+        $message = $helper->getRandomString(20);
+        $reference = $helper->getRandomString(20);
+        $traceId = $helper->getRandomString(20);
         $status = 400;
 
         // Set the mock response
@@ -548,7 +603,8 @@ class TestCase extends OrchestraTestCase
         /**
          * @var ErrorResponse $errorResponse
          */
-        $errorResponse = $errorListResponse->getErrors()->first();
+        $errorResponse = $errorListResponse->getErrors()
+                                           ->first();
         $this->assertInstanceOf(
             ErrorResponse::class,
             $errorResponse
@@ -587,20 +643,23 @@ class TestCase extends OrchestraTestCase
      */
     public function testListPayment()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
         $totalElementCount = 1;
-        $paymentToken = Helper::getRandomString(20);
-        $tikkieId = Helper::getRandomNumber(10);
-        $counterPartyName = Helper::getRandomString(20);
-        $counterPartyAccountNumber = Helper::getRandomString(20);
-        $amountInCents = Helper::getRandomNumber(4);
-        $description = Helper::getRandomString(20);
-        $createdDateTime = Helper::getCarbonDate();
-        $refundToken = Helper::getRandomString(20);
-        $refundAmount = Helper::getRandomNumber(2);
-        $refundDescription = Helper::getRandomString(20);
-        $refundReferenceId = Helper::getRandomString(20);
-        $refundCreatedDateTime = Helper::getRandomFutureCarbonDate();
+        $paymentToken = $helper->getRandomString(20);
+        $tikkieId = $helper->getRandomNumber(10);
+        $counterPartyName = $helper->getRandomString(20);
+        $counterPartyAccountNumber = $helper->getRandomString(20);
+        $amountInCents = $helper->getRandomNumber(4);
+        $description = $helper->getRandomString(20);
+        $createdDateTime = $helper->getCarbonDate();
+        $refundToken = $helper->getRandomString(20);
+        $refundAmount = $helper->getRandomNumber(2);
+        $refundDescription = $helper->getRandomString(20);
+        $refundReferenceId = $helper->getRandomString(20);
+        $refundCreatedDateTime = $helper->getRandomFutureCarbonDate();
         $refundStatus = RefundResponse::STATUS_PENDING;
 
         // Set the mock response
@@ -640,7 +699,8 @@ class TestCase extends OrchestraTestCase
         );
 
         /** @var PaymentResponse $payment */
-        $payment = $payments->getPayments()->first();
+        $payment = $payments->getPayments()
+                            ->first();
 
         $this->assertEquals(
             $paymentToken,
@@ -678,7 +738,8 @@ class TestCase extends OrchestraTestCase
         );
 
         /** @var RefundResponse $refund */
-        $refund = $payment->getRefunds()->first();
+        $refund = $payment->getRefunds()
+                          ->first();
 
         $this->assertEquals(
             $refundToken,
@@ -718,19 +779,22 @@ class TestCase extends OrchestraTestCase
      */
     public function testGetPayment()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
-        $paymentToken = Helper::getRandomString(20);
-        $tikkieId = Helper::getRandomNumber(10);
-        $counterPartyName = Helper::getRandomString(20);
-        $counterPartyAccountNumber = Helper::getRandomString(20);
-        $amountInCents = Helper::getRandomNumber(4);
-        $description = Helper::getRandomString(20);
-        $createdDateTime = Helper::getCarbonDate();
-        $refundToken = Helper::getRandomString(20);
-        $refundAmount = Helper::getRandomNumber(2);
-        $refundDescription = Helper::getRandomString(20);
-        $refundReferenceId = Helper::getRandomString(20);
-        $refundCreatedDateTime = Helper::getRandomFutureCarbonDate();
+        $paymentToken = $helper->getRandomString(20);
+        $tikkieId = $helper->getRandomNumber(10);
+        $counterPartyName = $helper->getRandomString(20);
+        $counterPartyAccountNumber = $helper->getRandomString(20);
+        $amountInCents = $helper->getRandomNumber(4);
+        $description = $helper->getRandomString(20);
+        $createdDateTime = $helper->getCarbonDate();
+        $refundToken = $helper->getRandomString(20);
+        $refundAmount = $helper->getRandomNumber(2);
+        $refundDescription = $helper->getRandomString(20);
+        $refundReferenceId = $helper->getRandomString(20);
+        $refundCreatedDateTime = $helper->getRandomFutureCarbonDate();
         $refundStatus = RefundResponse::STATUS_PENDING;
 
         // Set the mock response
@@ -756,7 +820,10 @@ class TestCase extends OrchestraTestCase
         /**
          * @var PaymentResponse $paymentResponse
          */
-        $paymentResponse = $tikkie->getPayment('PAYMENT-REQUEST-TOKEN', 'PAYMENT-TOKEN');
+        $paymentResponse = $tikkie->getPayment(
+            'PAYMENT-REQUEST-TOKEN',
+            'PAYMENT-TOKEN'
+        );
 
         /**
          * Asserts.
@@ -802,7 +869,8 @@ class TestCase extends OrchestraTestCase
         );
 
         /** @var RefundResponse $refund */
-        $refund = $paymentResponse->getRefunds()->first();
+        $refund = $paymentResponse->getRefunds()
+                                  ->first();
 
         $this->assertEquals(
             $refundToken,
@@ -842,15 +910,18 @@ class TestCase extends OrchestraTestCase
      */
     public function testCreateRefund()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Input data
-        $refundToken = Helper::getRandomString(20);
-        $amountInCents = Helper::getRandomNumber(4);
-        $description = Helper::getRandomString(20);
-        $referenceId = Helper::getRandomString(20);
-        $createdDateTime = Helper::getCarbonDate();
+        $refundToken = $helper->getRandomString(20);
+        $amountInCents = $helper->getRandomNumber(4);
+        $description = $helper->getRandomString(20);
+        $referenceId = $helper->getRandomString(20);
+        $createdDateTime = $helper->getCarbonDate();
         $status = RefundResponse::STATUS_PAID;
-        $paymentRequestToken = Helper::getRandomString(20);
-        $paymentToken = Helper::getRandomString(20);
+        $paymentRequestToken = $helper->getRandomString(20);
+        $paymentToken = $helper->getRandomString(20);
 
         // Set the mock response
         new CreateRefundResponseMock(
@@ -913,7 +984,8 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid() : ! $refundResponse->isPaid()
+            ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid(
+            ) : ! $refundResponse->isPaid()
         );
     }
 
@@ -924,14 +996,17 @@ class TestCase extends OrchestraTestCase
      */
     public function testGetRefund()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Variables
-        $paymentRequestToken = Helper::getRandomString(20);
-        $paymentToken = Helper::getRandomString(20);
-        $refundToken = Helper::getRandomString(20);
-        $amountInCents = Helper::getRandomNumber(4);
-        $description = Helper::getRandomString(20);
-        $referenceId = Helper::getRandomString(20);
-        $createdDateTime = Helper::getRandomFutureCarbonDate();
+        $paymentRequestToken = $helper->getRandomString(20);
+        $paymentToken = $helper->getRandomString(20);
+        $refundToken = $helper->getRandomString(20);
+        $amountInCents = $helper->getRandomNumber(4);
+        $description = $helper->getRandomString(20);
+        $referenceId = $helper->getRandomString(20);
+        $createdDateTime = $helper->getRandomFutureCarbonDate();
         $status = RefundResponse::STATUS_PAID;
 
         // Set the mock response
@@ -950,7 +1025,11 @@ class TestCase extends OrchestraTestCase
         /**
          * @var RefundResponse $refundResponse
          */
-        $refundResponse = $tikkie->getRefund($paymentRequestToken, $paymentToken, $refundToken);
+        $refundResponse = $tikkie->getRefund(
+            $paymentRequestToken,
+            $paymentToken,
+            $refundToken
+        );
 
         /**
          * Asserts.
@@ -991,7 +1070,8 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid() : ! $refundResponse->isPaid())
+            ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid(
+            ) : ! $refundResponse->isPaid())
         );
     }
 
@@ -1002,8 +1082,11 @@ class TestCase extends OrchestraTestCase
      */
     public function testCreateSubscription()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Input data
-        $subscriptionId = Helper::getRandomString(20);
+        $subscriptionId = $helper->getRandomString(20);
 
         // Set the mock response
         new CreateSubscriptionResponseMock(
@@ -1039,8 +1122,11 @@ class TestCase extends OrchestraTestCase
      */
     public function testDeleteSubscription()
     {
+        // Get the helper
+        $helper = $this->getHelper();
+
         // Input data
-        $traceId = Helper::getRandomString(20);
+        $traceId = $helper->getRandomString(20);
 
         // Set the mock response
         new DeleteSubscriptionResponseMock(

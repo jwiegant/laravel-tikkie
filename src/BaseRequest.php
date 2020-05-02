@@ -68,17 +68,19 @@ abstract class BaseRequest
         string $appToken = null,
         bool $sandbox = false
     ) {
-        // If an Api key is supplied then use the supplied parameters
-        if (! is_null($apiKey)) {
-            $this->_apiKey = $apiKey;
-            $this->_appToken = $appToken;
-            $this->_sandbox = $sandbox;
-        } else {
+        // If no Api key is supplied then use the parameters from the config
+        if ($apiKey === null) {
             // Use the parameters from the config
             $this->_apiKey = config('tikkie.api-key');
             $this->_appToken = config('tikkie.app-token');
             $this->_sandbox = config('tikkie.sandbox');
+            return;
         }
+
+        // Set the parameters
+        $this->_apiKey = $apiKey;
+        $this->_appToken = $appToken;
+        $this->_sandbox = $sandbox;
     }
 
     /**

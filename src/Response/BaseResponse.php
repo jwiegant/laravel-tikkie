@@ -72,11 +72,8 @@ abstract class BaseResponse
                             $parameter = new Carbon($parameter);
                             break;
                         case 'int':
-                            // Cast to a base 10 integer
-                            $parameter = intval(
-                                $parameter,
-                                10
-                            );
+                            // Cast to an integer
+                            $parameter = (int) $parameter;
                             break;
                         case 'collection':
                             // Cast to a collection
