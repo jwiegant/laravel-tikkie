@@ -48,48 +48,55 @@ abstract class BaseResponse
         // Traverse the given parameters
         foreach ($parameters as $key => $parameter) {
             // Check if the parameter key exist in the class properties
-            if (array_key_exists(
-                $key,
-                $classProperties
-            )
-            ) {
-                // Check if the parameter key exist in the cast variable
-                if (array_key_exists(
-                    $key,
-                    $this->casts
-                )
-                ) {
-                    // Get the cast item
-                    $castItem = $this->casts[$key];
-
-                    // Get the type
-                    $type = $castItem['type'];
-
-                    // Cast based on the type
-                    switch ($type) {
-                        case 'carbon':
-                            // Cast to a Carbon object
-                            $parameter = new Carbon($parameter);
-                            break;
-                        case 'int':
-                            // Cast to an integer
-                            $parameter = (int) $parameter;
-                            break;
-                        case 'collection':
-                            // Cast to a collection
-                            $class = $castItem['class'];
-                            $parameter = collect($parameter)->mapInto($class);
-                            break;
-                        case 'error':
-                            // Cast to an error response
-                            $parameter = new ErrorResponse($parameter);
-                            break;
-                    }
-                }
-
+            if (array_key_exists($key, $classProperties)) {
                 // Set the parameter in the class
-                $this->$key = $parameter;
+                $this->$key = $this->parseParameter($key, $parameter);
             }
         }
+    }
+
+    /**
+     * @param $key
+     * @param $parameter
+     *
+     * @return Carbon|ErrorResponse|\Illuminate\Support\Collection|int
+     * @throws Exception
+     */
+    protected function parseParameter(
+        $key,
+        $parameter
+    ) {
+        // Check if the parameter key exist in the cast variable
+        if (array_key_exists($key, $this->casts)) {
+            // Get the cast item
+            $castItem = $this->casts[$key];
+
+            // Get the type
+            $type = $castItem['type'];
+
+            // Cast based on the type
+            switch ($type) {
+                case 'carbon':
+                    // Cast to a Carbon object
+                    $parameter = new Carbon($parameter);
+                    break;
+                case 'int':
+                    // Cast to an integer
+                    $parameter = (int) $parameter;
+                    break;
+                case 'collection':
+                    // Cast to a collection
+                    $class = $castItem['class'];
+                    $parameter = collect($parameter)->mapInto($class);
+                    break;
+                case 'error':
+                    // Cast to an error response
+                    $parameter = new ErrorResponse($parameter);
+                    break;
+            }
+        }
+
+        // Return the parameter
+        return $parameter;
     }
 }
