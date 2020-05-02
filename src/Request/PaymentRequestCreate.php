@@ -14,7 +14,7 @@ use Carbon\Carbon;
 class PaymentRequestCreate extends BaseRequest
 {
     /**
-     * Constants
+     * Constants.
      */
     const PAYMENT_REQUESTS = 'paymentrequests';
 
@@ -75,7 +75,7 @@ class PaymentRequestCreate extends BaseRequest
     ];
 
     /**
-     * Get the action
+     * Get the action.
      *
      * @return string
      */

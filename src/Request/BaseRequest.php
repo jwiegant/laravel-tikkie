@@ -23,12 +23,11 @@ abstract class BaseRequest
     const NULLABLE = 'nullable';
 
     /**
-     * Action Constants
+     * Action Constants.
      */
     const PAYMENT_REQUESTS = 'paymentrequests';
     const SANDBOX_APPS = 'sandboxapps';
     const PAYMENT_REQUESTS_SUBSCRIPTION = 'paymentrequestssubscription';
-
 
     /**
      * Parameters to cast to a specific type.

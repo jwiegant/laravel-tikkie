@@ -28,7 +28,7 @@ class SubscriptionCreate extends BaseRequest
     ];
 
     /**
-     * Get the action
+     * Get the action.
      *
      * @return string
      */

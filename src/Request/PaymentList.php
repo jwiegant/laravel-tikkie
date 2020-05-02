@@ -36,7 +36,7 @@ class PaymentList extends BaseRequestList
     }
 
     /**
-     * Get the action
+     * Get the action.
      *
      * @return string
      */

@@ -12,7 +12,7 @@ namespace Cloudmazing\Tikkie\Request;
 class PaymentRequestList extends BaseRequestList
 {
     /**
-     * Get the action
+     * Get the action.
      *
      * @return string
      */

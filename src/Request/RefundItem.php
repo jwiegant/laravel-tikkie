@@ -33,7 +33,7 @@ class RefundItem extends BaseRequest
     protected $refundToken;
 
     /**
-     * Get the action
+     * Get the action.
      *
      * @return string
      */

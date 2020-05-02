@@ -12,7 +12,7 @@ namespace Cloudmazing\Tikkie\Request;
 class SubscriptionDelete extends BaseRequest
 {
     /**
-     * Get the action
+     * Get the action.
      *
      * @return string
      */

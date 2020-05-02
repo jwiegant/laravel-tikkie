@@ -2,16 +2,6 @@
 
 namespace Cloudmazing\Tikkie;
 
-use Cloudmazing\Tikkie\Request\Application;
-use Cloudmazing\Tikkie\Request\PaymentItem;
-use Cloudmazing\Tikkie\Request\PaymentList;
-use Cloudmazing\Tikkie\Request\PaymentRequestCreate;
-use Cloudmazing\Tikkie\Request\PaymentRequestItem;
-use Cloudmazing\Tikkie\Request\PaymentRequestList;
-use Cloudmazing\Tikkie\Request\RefundCreate;
-use Cloudmazing\Tikkie\Request\RefundItem;
-use Cloudmazing\Tikkie\Request\SubscriptionCreate;
-use Cloudmazing\Tikkie\Request\SubscriptionDelete;
 use Cloudmazing\Tikkie\Response\ErrorListResponse;
 use Exception;
 use http\Client\Response;
@@ -109,7 +99,7 @@ abstract class BaseRequest
         ];
 
         // If we have an app token then add it
-        if (!empty($this->_appToken)) {
+        if (! empty($this->_appToken)) {
             $headers['X-App-Token'] = $this->_appToken;
         }
 
