@@ -49,22 +49,12 @@ abstract class BaseRequest
     public function __construct(
         string $apiKey = null,
         string $appToken = null,
-        bool $sandbox = false
+        bool $sandbox = null
     ) {
-        // If no Api key is supplied then use the parameters from the config
-        if ($apiKey === null) {
-            // Use the parameters from the config
-            $this->_apiKey = config('tikkie.api-key');
-            $this->_appToken = config('tikkie.app-token');
-            $this->_sandbox = config('tikkie.sandbox');
-
-            return;
-        }
-
         // Set the parameters
-        $this->_apiKey = $apiKey;
-        $this->_appToken = $appToken;
-        $this->_sandbox = $sandbox;
+        $this->_apiKey = $apiKey ?: config('tikkie.api-key');
+        $this->_appToken = $appToken ?: config('tikkie.api-token');
+        $this->_sandbox = $sandbox ?: config('tikkie.sandbox');
     }
 
     /**
