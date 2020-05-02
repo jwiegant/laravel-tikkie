@@ -1,8 +1,9 @@
 # Laravel Tikkie
 
 [![StyleCI][ico-styleci]][link-styleci]
-[![License][ico-travis]][link-travis]
+[![Travis][ico-travis]][link-travis]
 [![License][ico-license]][link-license]
+[![FOSSA Status][ico-fossa]][link-fossa]
 
 The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. <https://github.com/cloudmazing/laravel-tikkie>
 
@@ -46,3 +47,5 @@ Please see the [license file](license.md) for more information.
 [link-travis]: https://travis-ci.org/github/jwiegant/laravel-tikkie
 [ico-styleci]: https://github.styleci.io/repos/256785939/shield?branch=master
 [link-styleci]: https://github.styleci.io/repos/256785939
+[ico-fossa]: https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie.svg?type=shield
+[link-fossa]: https://app.fossa.io/projects/git%2Bgithub.com%2Fjwiegant%2Flaravel-tikkie?ref=badge_shield
