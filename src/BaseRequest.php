@@ -98,14 +98,12 @@ abstract class BaseRequest
         switch (get_class($baseRequest)) {
             // Application Request
             case Application::class:
-                $action = self::SANDBOX_APPS;
-                break;
+                return self::SANDBOX_APPS;
 
             // Payment Request List or Create
             case PaymentRequestList::class:
             case PaymentRequestCreate::class:
-                $action = self::PAYMENT_REQUESTS;
-                break;
+                return self::PAYMENT_REQUESTS;
 
             // Payment Request Item
             case PaymentRequestItem::class:
@@ -114,9 +112,8 @@ abstract class BaseRequest
                  *
                  * @var PaymentRequestItem $baseRequest
                  */
-                $action = self::PAYMENT_REQUESTS;
-                $action .= "/{$baseRequest->getPaymentRequestToken()}";
-                break;
+                return self::PAYMENT_REQUESTS.
+                    "/{$baseRequest->getPaymentRequestToken()}";
 
             // Payment Item
             case PaymentItem::class:
@@ -125,10 +122,9 @@ abstract class BaseRequest
                  *
                  * @var PaymentItem $baseRequest
                  */
-                $action = self::PAYMENT_REQUESTS;
-                $action .= "/{$baseRequest->getPaymentRequestToken()}";
-                $action .= "/payments/{$baseRequest->getPaymentToken()}";
-                break;
+                return self::PAYMENT_REQUESTS.
+                    "/{$baseRequest->getPaymentRequestToken()}".
+                    "/payments/{$baseRequest->getPaymentToken()}";
 
             // Payment List
             case PaymentList::class:
@@ -137,9 +133,8 @@ abstract class BaseRequest
                  *
                  * @var PaymentList $baseRequest
                  */
-                $action = self::PAYMENT_REQUESTS;
-                $action .= "/{$baseRequest->getPaymentRequestToken()}/payments";
-                break;
+                return self::PAYMENT_REQUESTS.
+                    "/{$baseRequest->getPaymentRequestToken()}/payments";
 
             // Refund Create
             case RefundCreate::class:
@@ -148,11 +143,10 @@ abstract class BaseRequest
                  *
                  * @var RefundCreate $baseRequest
                  */
-                $action = self::PAYMENT_REQUESTS;
-                $action .= "/{$baseRequest->getPaymentRequestToken()}";
-                $action .= "/payments/{$baseRequest->getPaymentToken()}";
-                $action .= '/refunds';
-                break;
+                return self::PAYMENT_REQUESTS.
+                    "/{$baseRequest->getPaymentRequestToken()}".
+                    "/payments/{$baseRequest->getPaymentToken()}".
+                    "/refunds";
 
             // Refund Item
             case RefundItem::class:
@@ -161,25 +155,19 @@ abstract class BaseRequest
                  *
                  * @var RefundItem $baseRequest
                  */
-                $action = self::PAYMENT_REQUESTS;
-                $action .= "/{$baseRequest->getPaymentRequestToken()}";
-                $action .= "/payments/{$baseRequest->getPaymentToken()}";
-                $action .= "/refunds/{$baseRequest->getRefundToken()}";
-                break;
+                return $action = self::PAYMENT_REQUESTS.
+                    "/{$baseRequest->getPaymentRequestToken()}".
+                    "/payments/{$baseRequest->getPaymentToken()}".
+                    "/refunds/{$baseRequest->getRefundToken()}";
 
             // Subscription Create of Delete
             case SubscriptionCreate::class:
             case SubscriptionDelete::class:
-                $action = self::PAYMENT_REQUESTS_SUBSCRIPTION;
-                break;
-
-            // Default if the class isn't found, then throw an exception
-            default:
-                throw new Exception('Unknown class');
+                return self::PAYMENT_REQUESTS_SUBSCRIPTION;
         }
 
-        // Return the action
-        return $action;
+        // If the class isn't found, then throw an exception
+        throw new Exception('Unknown class');
     }
 
     /**
@@ -214,7 +202,7 @@ abstract class BaseRequest
         ];
 
         // If we have an app token then add it
-        if (! empty($this->_appToken)) {
+        if (!empty($this->_appToken)) {
             $headers['X-App-Token'] = $this->_appToken;
         }
 
@@ -307,7 +295,9 @@ abstract class BaseRequest
         // Status should be in the same 100 range
         if (floor($status / 100) !== floor($response->status() / 100)) {
             // Return the Error List response
-            throw new Exception("Incorrect status received. Expected {$status} Received {$response->status()}");
+            throw new Exception(
+                "Incorrect status received. Expected {$status} Received {$response->status()}"
+            );
         }
 
         // Return the response in the given response class
