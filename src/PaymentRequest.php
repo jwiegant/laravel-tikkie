@@ -23,14 +23,14 @@ class PaymentRequest extends BaseRequest
      * Create a payment request.
      *
      * @param  string  $description
-     * @param  int  $amountInCents
+     * @param  int  $amount
      * @param  string  $referenceId
      * @param $expiryDate
      *
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(string $description, int $amountInCents, string $referenceId, $expiryDate)
+    public function create(string $description, int $amount, string $referenceId, $expiryDate)
     {
         // Set and check the expiryDate
         if (is_string($expiryDate)) {
@@ -45,7 +45,7 @@ class PaymentRequest extends BaseRequest
         $paymentRequestCreate = new PaymentRequestCreate(
             [
                 'description' => $description,
-                'amountInCents' => $amountInCents,
+                'amountInCents' => $amount * 100,
                 'expiryDate' => $expiryDate,
                 'referenceId' => $referenceId,
             ]
@@ -75,7 +75,7 @@ class PaymentRequest extends BaseRequest
     public function list(
         bool $includeRefunds = false,
         int $pageNumber = 0,
-        int $pageSize = 10,
+        int $pageSize = 50,
         $fromDateTime = null,
         $toDateTime = null
     ) {

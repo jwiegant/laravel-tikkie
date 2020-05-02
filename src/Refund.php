@@ -22,7 +22,7 @@ class Refund extends BaseRequest
      * @param  string  $paymentRequestToken
      * @param  string  $paymentToken
      * @param  string  $description
-     * @param  int  $amountInCents
+     * @param  float  $amount
      * @param  string  $referenceId
      *
      * @return Response\RefundResponse|Response\ErrorListResponse
@@ -32,16 +32,16 @@ class Refund extends BaseRequest
         string $paymentRequestToken,
         string $paymentToken,
         string $description,
-        int $amountInCents,
+        float $amount,
         string $referenceId
     ) {
         $refundCreate = new RefundCreate(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken' => $paymentToken,
-                'description' => $description,
-                'amountInCents' => $amountInCents,
-                'referenceId' => $referenceId,
+                'paymentToken'        => $paymentToken,
+                'description'         => $description,
+                'amountInCents'       => $amount,
+                'referenceId'         => $referenceId,
             ]
         );
 
@@ -72,8 +72,8 @@ class Refund extends BaseRequest
         $refundItem = new RefundItem(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken' => $paymentToken,
-                'refundToken' => $refundToken,
+                'paymentToken'        => $paymentToken,
+                'refundToken'         => $refundToken,
             ]
         );
 

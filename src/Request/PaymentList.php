@@ -18,7 +18,7 @@ class PaymentList extends BaseRequestList
      *
      * @var string
      */
-    protected $paymentRequestToken;
+    protected string $paymentRequestToken;
 
     /**
      * PaymentList constructor.

@@ -16,42 +16,42 @@ class RefundCreate extends BaseRequest
      *
      * @var string
      */
-    protected $paymentRequestToken;
+    protected string $paymentRequestToken;
 
     /**
      * Token identifying the payment.
      *
      * @var string
      */
-    protected $paymentToken;
+    protected string $paymentToken;
 
     /**
      * Description of the refund. Max length: 35 characters.
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * Amount to refund in cents (euros).
      *
      * @var int
      */
-    protected $amountInCents;
+    protected int $amountInCents;
 
     /**
      * Unique ID reference for the API consumer. Max length: 35 characters.
      *
      * @var string
      */
-    protected $referenceId = 'no reference given';
+    protected string $referenceId = 'no reference given';
 
     /**
      * Parameters to include in the payload.
      *
      * @var array Payload array
      */
-    protected $payload = [
+    protected array $payload = [
         'description',
         'amountInCents',
         'referenceId',

@@ -15,55 +15,51 @@ abstract class BaseRequestList extends BaseRequest
 {
     /**
      * Number of the page to be returned. Starts at zero.
-     *
-     * @var int
      */
-    protected $pageNumber = 0;
+    protected int $pageNumber = 0;
 
     /**
      * Number of items on a page. Range: 1-50.
-     *
-     * @var int
      */
-    protected $pageSize = 10;
+    protected int $pageSize = 50;
 
     /**
      * Point in time where to start searching for items. Format:
      * YYYY-MM-DDTHH:mm:ss.SSSZ.
      *
-     * @var Carbon
+     * @var Carbon|null
      */
-    protected $fromDateTime;
+    protected ?Carbon $fromDateTime;
 
     /**
      * Point in time where to stop searching for items. Format:
      * YYYY-MM-DDTHH:mm:ss.SSSZ.
      *
-     * @var Carbon
+     * @var Carbon|null
      */
-    protected $toDateTime;
+    protected ?Carbon $toDateTime;
 
     /**
      * Include refunds in the response.
      *
      * @var bool
      */
-    protected $includeRefunds;
+    protected bool $includeRefunds;
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array Casts array
      */
-    protected $casts = [
-        'fromDateTime' => [
-            'type' => 'carbon',
-            'format' => 'Y-m-d\TH:i:s.000\Z',
+    protected array $casts = [
+        'fromDateTime'   => [
+            'type'     => 'carbon',
+            'format'   => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
-        'toDateTime' => [
-            'type' => 'carbon',
-            'format' => 'Y-m-d\TH:i:s.000\Z',
+        'toDateTime'     => [
+            'type'     => 'carbon',
+            'format'   => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
         ],
         'includeRefunds' => [
@@ -76,7 +72,7 @@ abstract class BaseRequestList extends BaseRequest
      *
      * @var array Payload array
      */
-    protected $payload = [
+    protected array $payload = [
         'pageNumber',
         'pageSize',
         'fromDateTime',

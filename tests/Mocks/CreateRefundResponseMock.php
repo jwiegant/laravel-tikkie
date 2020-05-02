@@ -16,7 +16,7 @@ class CreateRefundResponseMock
 {
     public function __construct(
         string $refundToken,
-        int $amountInCents,
+        float $amount,
         string $description,
         string $referenceId,
         Carbon $createdDateTime,
@@ -27,7 +27,7 @@ class CreateRefundResponseMock
                 '*.abnamro.com/v2/tikkie/paymentrequests/*' => Http::response(
                     [
                         'refundToken' => $refundToken,
-                        'amountInCents' => $amountInCents,
+                        'amountInCents' => $amount * 100,
                         'description' => $description,
                         'referenceId' => $referenceId,
                         'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),

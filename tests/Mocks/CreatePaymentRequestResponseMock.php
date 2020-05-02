@@ -18,7 +18,7 @@ class CreatePaymentRequestResponseMock
      * CreatePaymentRequestResponseMock constructor.
      *
      * @param string $paymentRequestToken
-     * @param int $amountInCents
+     * @param int $amount + 100
      * @param string $referenceId
      * @param string $description
      * @param string $url
@@ -28,7 +28,7 @@ class CreatePaymentRequestResponseMock
      */
     public function __construct(
         string $paymentRequestToken,
-        int $amountInCents,
+        int $amount,
         string $referenceId,
         string $description,
         string $url,
@@ -41,7 +41,7 @@ class CreatePaymentRequestResponseMock
                 '*.abnamro.com/v2/tikkie/paymentrequests' => Http::response(
                     [
                         'paymentRequestToken' => $paymentRequestToken,
-                        'amountInCents' => $amountInCents,
+                        'amountInCents' => $amount * 100,
                         'referenceId' => $referenceId,
                         'description' => $description,
                         'url' => $url,

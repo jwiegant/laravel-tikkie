@@ -24,7 +24,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * Amount in cents of the payment request (euros). If this value is not
@@ -32,7 +32,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @var int
      */
-    protected $amountInCents;
+    protected int $amountInCents;
 
     /**
      * Date after which the payment request will expire and cannot be paid. Format
@@ -40,24 +40,24 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @var Carbon
      */
-    protected $expiryDate;
+    protected Carbon $expiryDate;
 
     /**
      * ID for the reference of the API consumer. Max length: 35 characters.
      *
      * @var string
      */
-    protected $referenceId = 'no reference given';
+    protected string $referenceId = 'no reference given';
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array
      */
-    protected $casts = [
+    protected array $casts = [
         'expiryDate' => [
-            'type' => 'carbon',
-            'format' => 'Y-m-d',
+            'type'     => 'carbon',
+            'format'   => 'Y-m-d',
             'nullable' => false,
         ],
     ];
@@ -67,7 +67,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @var array
      */
-    protected $payload = [
+    protected array $payload = [
         'description',
         'amountInCents',
         'expiryDate',

@@ -34,14 +34,14 @@ abstract class BaseRequest
      *
      * @var array
      */
-    protected $casts = [];
+    protected array $casts = [];
 
     /**
      * Parameters to include in the payload.
      *
      * @var array
      */
-    protected $payload = [];
+    protected array $payload = [];
 
     /**
      * BaseRequest constructor.

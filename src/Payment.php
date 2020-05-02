@@ -64,7 +64,7 @@ class Payment extends BaseRequest
         string $paymentRequestToken,
         bool $includeRefunds = false,
         int $pageNumber = 0,
-        int $pageSize = 10,
+        int $pageSize = 50,
         $fromDateTime = null,
         $toDateTime = null
     ) {

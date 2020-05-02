@@ -188,7 +188,7 @@ class TestCase extends OrchestraTestCase
         $createdDateTime = $helper->getCarbonDate();
         $status = PaymentRequestResponse::OPEN;
         $description = $helper->getRandomString(20);
-        $amountInCents = $helper->getRandomNumber(4);
+        $amount = $helper->getRandomNumber(3) + ($helper->getRandomNumber(2) / 100);
         $referenceId = $helper->getRandomString(20);
         $expiryDate = $helper->getRandomFutureCarbonDate()
                              ->setTime(0, 0, 0, 0);
@@ -196,7 +196,7 @@ class TestCase extends OrchestraTestCase
         // Set the mock response
         new CreatePaymentRequestResponseMock(
             $paymentRequestToken,
-            $amountInCents,
+            $amount,
             $referenceId,
             $description,
             $url,
@@ -214,7 +214,7 @@ class TestCase extends OrchestraTestCase
         $payment = $tikkie->paymentRequest()
                           ->create(
                               $description,
-                              $amountInCents,
+                              $amount,
                               $referenceId,
                               $expiryDate
                           );
@@ -250,7 +250,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amountInCents,
+            (int) $amount * 100,
             $payment->getAmountInCents()
         );
 
@@ -470,7 +470,7 @@ class TestCase extends OrchestraTestCase
 
         // Variables
         $paymentRequestToken = $helper->getRandomString(20);
-        $amountInCents = $helper->getRandomNumber(4);
+        $amount = $helper->getRandomNumber(3) + ($helper->getRandomNumber(2) / 100);
         $referenceId = $helper->getRandomString(20);
         $description = $helper->getRandomString(20);
         $url = $helper->getRandomUrl();
@@ -484,7 +484,7 @@ class TestCase extends OrchestraTestCase
         // Set the mock response
         new GetPaymentRequestsResponseMock(
             $paymentRequestToken,
-            $amountInCents,
+            $amount,
             $referenceId,
             $description,
             $url,
@@ -515,7 +515,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amountInCents,
+            $amount * 100,
             $payment->getAmountInCents()
         );
 
@@ -783,11 +783,11 @@ class TestCase extends OrchestraTestCase
         $tikkieId = $helper->getRandomNumber(10);
         $counterPartyName = $helper->getRandomString(20);
         $counterPartyAccountNumber = $helper->getRandomString(20);
-        $amountInCents = $helper->getRandomNumber(4);
+        $amount = $helper->getRandomNumber(3) + ($helper->getRandomNumber(2) / 100);
         $description = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
         $refundToken = $helper->getRandomString(20);
-        $refundAmount = $helper->getRandomNumber(2);
+        $refundAmount = $helper->getRandomNumber(3) + ($helper->getRandomNumber(2) / 100);
         $refundDescription = $helper->getRandomString(20);
         $refundReferenceId = $helper->getRandomString(20);
         $refundCreatedDateTime = $helper->getRandomFutureCarbonDate();
@@ -799,7 +799,7 @@ class TestCase extends OrchestraTestCase
             $tikkieId,
             $counterPartyName,
             $counterPartyAccountNumber,
-            $amountInCents,
+            $amount,
             $description,
             $createdDateTime,
             $refundToken,
@@ -850,7 +850,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amountInCents,
+            $amount * 100,
             $paymentResponse->getAmountInCents()
         );
 
@@ -874,7 +874,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $refundAmount,
+            $refundAmount * 100,
             $refund->getAmountInCents()
         );
 
@@ -911,7 +911,7 @@ class TestCase extends OrchestraTestCase
 
         // Input data
         $refundToken = $helper->getRandomString(20);
-        $amountInCents = $helper->getRandomNumber(4);
+        $amount = $helper->getRandomNumber(3) + ($helper->getRandomNumber(2) / 100);
         $description = $helper->getRandomString(20);
         $referenceId = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
@@ -922,7 +922,7 @@ class TestCase extends OrchestraTestCase
         // Set the mock response
         new CreateRefundResponseMock(
             $refundToken,
-            $amountInCents,
+            $amount,
             $description,
             $referenceId,
             $createdDateTime,
@@ -939,7 +939,7 @@ class TestCase extends OrchestraTestCase
             $paymentRequestToken,
             $paymentToken,
             $description,
-            $amountInCents,
+            $amount,
             $referenceId
         );
 
@@ -955,7 +955,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amountInCents,
+            $amount * 100,
             $refundResponse->getAmountInCents()
         );
 

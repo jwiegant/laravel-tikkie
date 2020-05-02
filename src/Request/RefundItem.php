@@ -16,21 +16,21 @@ class RefundItem extends BaseRequest
      *
      * @var string
      */
-    protected $paymentRequestToken;
+    protected string $paymentRequestToken;
 
     /**
      * Token identifying the payment.
      *
      * @var string
      */
-    protected $paymentToken;
+    protected string $paymentToken;
 
     /**
      * Token identifying the refund.
      *
      * @var string
      */
-    protected $refundToken;
+    protected string $refundToken;
 
     /**
      * Get the action.

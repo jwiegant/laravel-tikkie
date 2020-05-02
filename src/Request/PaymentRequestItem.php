@@ -16,7 +16,7 @@ class PaymentRequestItem extends BaseRequest
      *
      * @var string
      */
-    protected $paymentRequestToken;
+    protected string $paymentRequestToken;
 
     /**
      * Get the action.

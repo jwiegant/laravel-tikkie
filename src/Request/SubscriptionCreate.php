@@ -16,14 +16,14 @@ class SubscriptionCreate extends BaseRequest
      *
      * @var string
      */
-    protected $url;
+    protected string $url;
 
     /**
      * Parameters to include in the payload.
      *
      * @var array
      */
-    protected $payload = [
+    protected array $payload = [
         'url',
     ];
 

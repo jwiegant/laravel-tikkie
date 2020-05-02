@@ -21,7 +21,7 @@ class GetPaymentResponseMock
      * @param int $tikkieId
      * @param string $counterPartyName
      * @param string $counterPartyAccountNumber
-     * @param int $amountInCents
+     * @param int $amount
      * @param string $description
      * @param Carbon $createdDateTime
      * @param string $refundToken
@@ -36,11 +36,11 @@ class GetPaymentResponseMock
         int $tikkieId,
         string $counterPartyName,
         string $counterPartyAccountNumber,
-        int $amountInCents,
+        float $amount,
         string $description,
         Carbon $createdDateTime,
         string $refundToken,
-        int $refundAmount,
+        float $refundAmount,
         string $refundDescription,
         string $refundReferenceId,
         Carbon $refundCreatedDateTime,
@@ -54,13 +54,13 @@ class GetPaymentResponseMock
                         'tikkieId' => $tikkieId,
                         'counterPartyName' => $counterPartyName,
                         'counterPartyAccountNumber' => $counterPartyAccountNumber,
-                        'amountInCents' => $amountInCents,
+                        'amountInCents' => $amount * 100,
                         'description' => $description,
                         'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
                         'refunds' => [
                             [
                                 'refundToken' => $refundToken,
-                                'amountInCents' => $refundAmount,
+                                'amountInCents' => $refundAmount * 100,
                                 'description' => $refundDescription,
                                 'referenceId' => $refundReferenceId,
                                 'createdDateTime' => $refundCreatedDateTime->format('Y-m-d\TH:i:s.000\Z'),
