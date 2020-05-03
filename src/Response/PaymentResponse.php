@@ -142,7 +142,7 @@ class PaymentResponse extends BaseResponse
      */
     public function getAmount(): float
     {
-        return $this->getAmountInCents() / 100;
+        return round($this->getAmountInCents() / 100, 2);
     }
 
     /**

@@ -675,7 +675,7 @@ class TestCase extends OrchestraTestCase
         $description = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
         $refundToken = $helper->getRandomString(20);
-        $refundAmount = $helper->getRandomNumber(4) / 100;
+        $refundAmount = round($helper->getRandomNumber(4) / 100, 2);
         $refundDescription = $helper->getRandomString(20);
         $refundReferenceId = $helper->getRandomString(20);
         $refundCreatedDateTime = $helper->getRandomFutureCarbonDate();
