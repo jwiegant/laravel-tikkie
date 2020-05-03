@@ -59,13 +59,13 @@ class ListPaymentsResponseMock
                                 'tikkieId' => $tikkieId,
                                 'counterPartyName' => $counterPartyName,
                                 'counterPartyAccountNumber' => $counterPartyAccountNumber,
-                                'amountInCents' => $amount * 100,
+                                'amountInCents' => (int) ($amount * 100),
                                 'description' => $description,
                                 'createdDateTime' => $createdDateTime,
                                 'refunds' => [
                                     [
                                         'refundToken' => $refundToken,
-                                        'amountInCents' => $refundAmount * 100,
+                                        'amountInCents' => (int) ($refundAmount * 100),
                                         'description' => $refundDescription,
                                         'referenceId' => $refundReferenceId,
                                         'createdDateTime' => $refundCreatedDateTime,

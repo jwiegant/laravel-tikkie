@@ -69,7 +69,7 @@ class ListPaymentRequestsResponseMock
                         'paymentRequests' => [
                             [
                                 'paymentRequestToken' => $paymentRequestToken1,
-                                'amountInCents' => $amount1 * 100,
+                                'amountInCents' => (int) ($amount1 * 100),
                                 'referenceId' => $referenceId1,
                                 'description' => $description1,
                                 'url' => $url1,
@@ -81,7 +81,7 @@ class ListPaymentRequestsResponseMock
                             ],
                             [
                                 'paymentRequestToken' => $paymentRequestToken2,
-                                'amountInCents' => $amount2 * 100,
+                                'amountInCents' => (int) ($amount2 * 100),
                                 'referenceId' => $referenceId2,
                                 'description' => $description2,
                                 'url' => $url2,

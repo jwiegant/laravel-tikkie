@@ -37,7 +37,7 @@ class CreateRefundResponseMock
                 '*.abnamro.com/v2/tikkie/paymentrequests/*' => Http::response(
                     [
                         'refundToken' => $refundToken,
-                        'amountInCents' => $amount * 100,
+                        'amountInCents' => (int) ($amount * 100),
                         'description' => $description,
                         'referenceId' => $referenceId,
                         'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),

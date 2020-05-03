@@ -54,13 +54,13 @@ class GetPaymentResponseMock
                         'tikkieId' => $tikkieId,
                         'counterPartyName' => $counterPartyName,
                         'counterPartyAccountNumber' => $counterPartyAccountNumber,
-                        'amountInCents' => $amount * 100,
+                        'amountInCents' => (int) ($amount * 100),
                         'description' => $description,
                         'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),
                         'refunds' => [
                             [
                                 'refundToken' => $refundToken,
-                                'amountInCents' => $refundAmount * 100,
+                                'amountInCents' => (int) ($refundAmount * 100),
                                 'description' => $refundDescription,
                                 'referenceId' => $refundReferenceId,
                                 'createdDateTime' => $refundCreatedDateTime->format('Y-m-d\TH:i:s.000\Z'),

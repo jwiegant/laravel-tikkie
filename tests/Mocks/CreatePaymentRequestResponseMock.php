@@ -41,7 +41,7 @@ class CreatePaymentRequestResponseMock
                 '*.abnamro.com/v2/tikkie/paymentrequests' => Http::response(
                     [
                         'paymentRequestToken' => $paymentRequestToken,
-                        'amountInCents' => $amount * 100,
+                        'amountInCents' => (int) ($amount * 100),
                         'referenceId' => $referenceId,
                         'description' => $description,
                         'url' => $url,
