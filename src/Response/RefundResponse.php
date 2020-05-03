@@ -97,6 +97,16 @@ class RefundResponse extends BaseResponse
     }
 
     /**
+     * Get the amount.
+     *
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->getAmountInCents() / 100;
+    }
+
+    /**
      * Get the description.
      *
      * @return string

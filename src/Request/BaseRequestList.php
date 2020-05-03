@@ -40,13 +40,6 @@ abstract class BaseRequestList extends BaseRequest
     protected ?Carbon $toDateTime;
 
     /**
-     * Include refunds in the response.
-     *
-     * @var bool
-     */
-    protected bool $includeRefunds;
-
-    /**
      * Parameters to cast to a specific type.
      *
      * @var array Casts array
@@ -61,10 +54,7 @@ abstract class BaseRequestList extends BaseRequest
             'type' => 'carbon',
             'format' => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
-        ],
-        'includeRefunds' => [
-            'type' => 'bool',
-        ],
+        ]
     ];
 
     /**
@@ -77,7 +67,6 @@ abstract class BaseRequestList extends BaseRequest
         'pageSize',
         'fromDateTime',
         'toDateTime',
-        'includeRefunds',
     ];
 
     /**
@@ -158,26 +147,6 @@ abstract class BaseRequestList extends BaseRequest
     public function setToDateTime(Carbon $toDateTime): void
     {
         $this->toDateTime = $toDateTime;
-    }
-
-    /**
-     * Set if we want to include refunds.
-     *
-     * @param  bool  $includeRefunds
-     */
-    public function setIncludeRefunds(bool $includeRefunds): void
-    {
-        $this->includeRefunds = $includeRefunds;
-    }
-
-    /**
-     * Do we want to include refunds?
-     *
-     * @return bool
-     */
-    public function isIncludeRefunds(): bool
-    {
-        return $this->includeRefunds;
     }
 
     /** Abstract function to get the action */

@@ -147,6 +147,16 @@ class PaymentRequestResponse extends BaseResponse
     }
 
     /**
+     * Get the amount
+     *
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->getAmountInCents() / 100;
+    }
+
+    /**
      * Get the reference id.
      *
      * @return string
@@ -224,6 +234,16 @@ class PaymentRequestResponse extends BaseResponse
     public function getTotalAmountPaidInCents(): int
     {
         return $this->totalAmountPaidInCents;
+    }
+
+    /**
+     * Get the amount paid
+     *
+     * @return int
+     */
+    public function getTotalAmountPaid(): float
+    {
+        return $this->totalAmountPaidInCents / 100;
     }
 
     /**

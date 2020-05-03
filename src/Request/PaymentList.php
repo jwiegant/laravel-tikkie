@@ -21,6 +21,13 @@ class PaymentList extends BaseRequestList
     protected string $paymentRequestToken;
 
     /**
+     * Include refunds in the response.
+     *
+     * @var bool
+     */
+    protected bool $includeRefunds;
+
+    /**
      * PaymentList constructor.
      *
      * @param  array|null  $parameters
@@ -31,8 +38,14 @@ class PaymentList extends BaseRequestList
     {
         parent::__construct($parameters);
 
-        // Add the payment request token to the payload
+        // Add payment request token and include refunds to the payload.
         $this->payload[] = 'paymentRequestToken';
+        $this->payload[] = 'includeRefunds';
+
+        // Add include refunds to the casts array.
+        $this->casts['includeRefunds'] = [
+            'type' => 'bool',
+        ];
     }
 
     /**
@@ -64,5 +77,25 @@ class PaymentList extends BaseRequestList
     public function setPaymentRequestToken(string $paymentRequestToken): void
     {
         $this->paymentRequestToken = $paymentRequestToken;
+    }
+
+    /**
+     * Set if we want to include refunds.
+     *
+     * @param  bool  $includeRefunds
+     */
+    public function setIncludeRefunds(bool $includeRefunds): void
+    {
+        $this->includeRefunds = $includeRefunds;
+    }
+
+    /**
+     * Do we want to include refunds?
+     *
+     * @return bool
+     */
+    public function isIncludeRefunds(): bool
+    {
+        return $this->includeRefunds;
     }
 }

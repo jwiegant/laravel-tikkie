@@ -23,17 +23,21 @@ class PaymentRequest extends BaseRequest
      * Create a payment request.
      *
      * @param  string  $description
-     * @param  int  $amount
      * @param  string  $referenceId
      * @param $expiryDate
+     * @param  int  $amount
      *
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(string $description, int $amount, string $referenceId, $expiryDate)
+    public function create(string $description, string
+    $referenceId, $expiryDate = null, int $amount = null)
     {
         // Set and check the expiryDate
-        if (is_string($expiryDate)) {
+        if ($expiryDate === null) {
+            // Default expiry date of 14 days
+            $expiryDate = Carbon::now()->addDays(14);
+        } else if (is_string($expiryDate)) {
             $expiryDate = new Carbon($expiryDate);
         } else {
             if (get_class($expiryDate) !== Carbon::class) {
@@ -45,11 +49,15 @@ class PaymentRequest extends BaseRequest
         $paymentRequestCreate = new PaymentRequestCreate(
             [
                 'description' => $description,
-                'amountInCents' => $amount * 100,
                 'expiryDate' => $expiryDate,
                 'referenceId' => $referenceId,
             ]
         );
+
+        // Set the amount if it's specified
+        if ($amount !== null) {
+            $paymentRequestCreate->setAmountInCents($amount * 100);
+        }
 
         // Make the call and check the response
         return $this->checkResponse(
@@ -73,7 +81,6 @@ class PaymentRequest extends BaseRequest
      * @throws Exception
      */
     public function list(
-        bool $includeRefunds = false,
         int $pageNumber = 0,
         int $pageSize = 50,
         $fromDateTime = null,
@@ -82,7 +89,6 @@ class PaymentRequest extends BaseRequest
         // Create the request input object
         $paymentRequestList = new PaymentRequestList(
             [
-                'includeRefunds' => $includeRefunds,
                 'pageNumber' => $pageNumber,
                 'pageSize' => $pageSize,
                 'fromDateTime' => $fromDateTime,

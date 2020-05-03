@@ -214,9 +214,9 @@ class TestCase extends OrchestraTestCase
         $payment = $tikkie->paymentRequest()
                           ->create(
                               $description,
-                              $amount,
                               $referenceId,
-                              $expiryDate
+                              $expiryDate,
+                              $amount
                           );
 
         // Asserts
@@ -252,6 +252,11 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($amount * 100),
             $payment->getAmountInCents()
+        );
+
+        $this->assertEquals(
+            $amount,
+            $payment->getAmount()
         );
 
         $this->assertEquals(
@@ -358,6 +363,11 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
+            $amount1,
+            $payment->getAmount()
+        );
+
+        $this->assertEquals(
             $referenceId1,
             $payment->getReferenceId()
         );
@@ -415,6 +425,11 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
+            $amount2,
+            $payment->getAmount()
+        );
+
+        $this->assertEquals(
             $referenceId2,
             $payment->getReferenceId()
         );
@@ -455,7 +470,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            ! $payment->isOpen()
+            !$payment->isOpen()
         );
     }
 
@@ -519,6 +534,11 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($amount * 100),
             $payment->getAmountInCents()
+        );
+
+        $this->assertEquals(
+            $amount,
+            $payment->getAmount()
         );
 
         $this->assertEquals(
@@ -728,6 +748,11 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
+            $amount,
+            $payment->getAmount()
+        );
+
+        $this->assertEquals(
             $description,
             $payment->getDescription()
         );
@@ -749,6 +774,11 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($refundAmount * 100),
             $refund->getAmountInCents()
+        );
+
+        $this->assertEquals(
+            $refundAmount,
+            $refund->getAmount()
         );
 
         $this->assertEquals(
@@ -860,6 +890,11 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
+            $amount,
+            $paymentResponse->getAmount()
+        );
+
+        $this->assertEquals(
             $description,
             $paymentResponse->getDescription()
         );
@@ -881,6 +916,11 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($refundAmount * 100),
             $refund->getAmountInCents()
+        );
+
+        $this->assertEquals(
+            $refundAmount,
+            $refund->getAmount()
         );
 
         $this->assertEquals(
@@ -966,6 +1006,11 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
+            $amount,
+            $refundResponse->getAmount()
+        );
+
+        $this->assertEquals(
             $description,
             $refundResponse->getDescription()
         );
@@ -987,7 +1032,7 @@ class TestCase extends OrchestraTestCase
 
         $this->assertTrue(
             ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid(
-            ) : ! $refundResponse->isPaid()
+            ) : !$refundResponse->isPaid()
         );
     }
 
@@ -1053,6 +1098,11 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
+            $amount,
+            $refundResponse->getAmount()
+        );
+
+        $this->assertEquals(
             $description,
             $refundResponse->getDescription()
         );
@@ -1074,7 +1124,7 @@ class TestCase extends OrchestraTestCase
 
         $this->assertTrue(
             ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid(
-            ) : ! $refundResponse->isPaid())
+            ) : !$refundResponse->isPaid())
         );
     }
 

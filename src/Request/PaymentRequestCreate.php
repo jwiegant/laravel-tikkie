@@ -32,7 +32,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @var int
      */
-    protected int $amountInCents;
+    protected int $amountInCents = 0;
 
     /**
      * Date after which the payment request will expire and cannot be paid. Format
@@ -56,9 +56,8 @@ class PaymentRequestCreate extends BaseRequest
      */
     protected array $casts = [
         'expiryDate' => [
-            'type' => 'carbon',
+            'type'   => 'carbon',
             'format' => 'Y-m-d',
-            'nullable' => false,
         ],
     ];
 

@@ -108,7 +108,14 @@ abstract class BaseRequest
         // Traverse the payload items
         foreach ($this->payload as $item) {
             // Get the value
-            $value = $this->$item;
+            if (isset($this->$item)) {
+                $value = $this->$item ?: null;
+            }
+
+            // IF the value is null, then continue to the next parameter
+            if ($value === null) {
+                continue;
+            }
 
             // Check the casts
             if (array_key_exists($item, $this->casts)) {
@@ -125,17 +132,13 @@ abstract class BaseRequest
                         /** @var Carbon $carbonItem */
                         $carbonItem = ($this->$item);
 
-                        // Check if the item can be null
-                        if (empty($carbonItem) && $castItem[self::NULLABLE]) {
-                            continue 2;
-                        } elseif (empty($carbonItem)) {
-                            // We need a value, throw an exception
-                            throw new Exception("Date for {$item} is required");
+                        $value = $carbonItem;
+                        if ($value !== null) {
+                            // Format the date
+                            $value = $carbonItem->format($format);
                         }
-
-                        // Format the date
-                        $value = $carbonItem->format($format);
                         break;
+
                     // Item is a boolean
                     case 'bool':
                         // Make a string value true of false based on the value
@@ -144,9 +147,10 @@ abstract class BaseRequest
                 }
             }
 
-            // Set the value in the payload
-
-            $payload[$item] = $value;
+            // Set the value
+            if ($value !== null) {
+                $payload[$item] = $value;
+            }
         }
 
         // Return the payload
