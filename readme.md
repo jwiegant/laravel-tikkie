@@ -1,10 +1,12 @@
-# Laravel Tikkie
+![Tikkie Logo][tikkie-logo]
 
+# Laravel Tikkie
 [![StyleCI][ico-styleci]][link-styleci]
 [![Travis][ico-travis]][link-travis]
 [![License][ico-license]][link-license]
 [![FOSSA Status][ico-fossa]][link-fossa]
 [![Codeclimate Badge][ico-codeclimate]][link-codeclimate]
+
 
 The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. 
 
@@ -55,6 +57,8 @@ If you discover any security related issues, please email author email instead o
 ## License
 
 Please see the [license file](license.md) for more information.
+
+[tikkie-logo]: img/TikkieAPI.png
 
 [ico-license]: https://poser.pugx.org/jwiegant/laravel-tikkie/license
 [link-license]: https://github.com/jwiegant/laravel-tikkie/blob/HEAD/license.md
