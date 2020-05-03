@@ -54,7 +54,7 @@ abstract class BaseRequestList extends BaseRequest
             'type' => 'carbon',
             'format' => 'Y-m-d\TH:i:s.000\Z',
             'nullable' => true,
-        ]
+        ],
     ];
 
     /**

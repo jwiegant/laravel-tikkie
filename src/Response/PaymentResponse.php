@@ -136,7 +136,7 @@ class PaymentResponse extends BaseResponse
     }
 
     /**
-     * Get the amount
+     * Get the amount.
      *
      * @return float
      */
@@ -144,7 +144,6 @@ class PaymentResponse extends BaseResponse
     {
         return $this->getAmountInCents() / 100;
     }
-
 
     /**
      * Get the description.

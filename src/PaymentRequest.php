@@ -30,14 +30,13 @@ class PaymentRequest extends BaseRequest
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(string $description, string
-    $referenceId, $expiryDate = null, int $amount = null)
+    public function create(string $description, string $referenceId, $expiryDate = null, int $amount = null)
     {
         // Set and check the expiryDate
         if ($expiryDate === null) {
             // Default expiry date of 14 days
             $expiryDate = Carbon::now()->addDays(14);
-        } else if (is_string($expiryDate)) {
+        } elseif (is_string($expiryDate)) {
             $expiryDate = new Carbon($expiryDate);
         } else {
             if (get_class($expiryDate) !== Carbon::class) {

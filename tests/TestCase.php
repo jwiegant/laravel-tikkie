@@ -470,7 +470,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertTrue(
-            !$payment->isOpen()
+            ! $payment->isOpen()
         );
     }
 
@@ -1032,7 +1032,7 @@ class TestCase extends OrchestraTestCase
 
         $this->assertTrue(
             ($status === RefundResponse::STATUS_PAID) ? $refundResponse->isPaid(
-            ) : !$refundResponse->isPaid()
+            ) : ! $refundResponse->isPaid()
         );
     }
 
@@ -1124,7 +1124,7 @@ class TestCase extends OrchestraTestCase
 
         $this->assertTrue(
             ($status === RefundResponse::STATUS_PAID ? $refundResponse->isPaid(
-            ) : !$refundResponse->isPaid())
+            ) : ! $refundResponse->isPaid())
         );
     }
 

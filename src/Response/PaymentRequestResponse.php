@@ -147,7 +147,7 @@ class PaymentRequestResponse extends BaseResponse
     }
 
     /**
-     * Get the amount
+     * Get the amount.
      *
      * @return float
      */
@@ -237,7 +237,7 @@ class PaymentRequestResponse extends BaseResponse
     }
 
     /**
-     * Get the amount paid
+     * Get the amount paid.
      *
      * @return int
      */

@@ -10,7 +10,7 @@ use Cloudmazing\Tikkie\Subscription;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Tikkie
+ * Class Tikkie.
  *
  * @package Cloudmazing\Tikkie\Facades
  *
