@@ -44,11 +44,11 @@ TIKKIE_SANDBOX=true
 [Read the documentation](docs/Tikkie.md)
  
 ### Example
-[Create an example application](docs/Example.md) 
+Want to [create an example application](docs/Example.md)?  
 
 ## Contributing
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+Please see [contributing.md](contributing.md) for details.
 
 ## Security
 
