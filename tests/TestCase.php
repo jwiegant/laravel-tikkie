@@ -255,11 +255,6 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amount,
-            $payment->getAmount()
-        );
-
-        $this->assertEquals(
             $referenceId,
             $payment->getReferenceId()
         );
@@ -363,11 +358,6 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amount1,
-            $payment->getAmount()
-        );
-
-        $this->assertEquals(
             $referenceId1,
             $payment->getReferenceId()
         );
@@ -422,11 +412,6 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($amount2 * 100),
             $payment->getAmountInCents()
-        );
-
-        $this->assertEquals(
-            $amount2,
-            $payment->getAmount()
         );
 
         $this->assertEquals(
@@ -534,11 +519,6 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($amount * 100),
             $payment->getAmountInCents()
-        );
-
-        $this->assertEquals(
-            $amount,
-            $payment->getAmount()
         );
 
         $this->assertEquals(
@@ -748,11 +728,6 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amount,
-            $payment->getAmount()
-        );
-
-        $this->assertEquals(
             $description,
             $payment->getDescription()
         );
@@ -774,11 +749,6 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($refundAmount * 100),
             $refund->getAmountInCents()
-        );
-
-        $this->assertEquals(
-            $refundAmount,
-            $refund->getAmount()
         );
 
         $this->assertEquals(
@@ -890,11 +860,6 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            $amount,
-            $paymentResponse->getAmount()
-        );
-
-        $this->assertEquals(
             $description,
             $paymentResponse->getDescription()
         );
@@ -916,11 +881,6 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($refundAmount * 100),
             $refund->getAmountInCents()
-        );
-
-        $this->assertEquals(
-            $refundAmount,
-            $refund->getAmount()
         );
 
         $this->assertEquals(
@@ -1003,11 +963,6 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($amount * 100),
             $refundResponse->getAmountInCents()
-        );
-
-        $this->assertEquals(
-            $amount,
-            $refundResponse->getAmount()
         );
 
         $this->assertEquals(
@@ -1095,11 +1050,6 @@ class TestCase extends OrchestraTestCase
         $this->assertEquals(
             (int) ($amount * 100),
             $refundResponse->getAmountInCents()
-        );
-
-        $this->assertEquals(
-            $amount,
-            $refundResponse->getAmount()
         );
 
         $this->assertEquals(
