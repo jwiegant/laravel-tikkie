@@ -38,27 +38,11 @@ Want to start in the sandbox first, then also set the following **variable**
 TIKKIE_SANDBOX=true
 ```
 
-## Example usage
-```php
-class PaymentController 
-{ 
-    public function create(
-        Tikkie $tikkie
-    ) {
-        $expiryDate = Carbon::now()->addDays(2);
-    
-        // Create the payment request 
-        $paymentRequest = $tikkie->createPaymentRequest(
-            'Some description',
-            10 * 100, // Amount * 100
-            'Some reference',
-            $expiryDate
-        );
-        
-        // Do something with the request, like redirect the user to the Tikkie URL
-    }
-}
-```
+## Documentation
+[Read the documentation](docs/Tikkie.md)
+ 
+### Example
+[Create an example application](docs/Example.md) 
 
 ## Contributing
 
