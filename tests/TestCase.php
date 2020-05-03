@@ -188,7 +188,7 @@ class TestCase extends OrchestraTestCase
         $createdDateTime = $helper->getCarbonDate();
         $status = PaymentRequestResponse::OPEN;
         $description = $helper->getRandomString(20);
-        $amount = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount = round($helper->getRandomNumber(5) / 100, 2);
         $referenceId = $helper->getRandomString(20);
         $expiryDate = $helper->getRandomFutureCarbonDate()
                              ->setTime(0, 0, 0, 0);
@@ -294,7 +294,7 @@ class TestCase extends OrchestraTestCase
         $numberOfPayments1 = $helper->getRandomNumber(1);
         $totalAmountPaidInCents1 = $helper->getRandomNumber(4);
         $paymentRequestToken2 = $helper->getRandomString(20);
-        $amount2 = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount2 = round($helper->getRandomNumber(5) / 100, 2);
         $referenceId2 = $helper->getRandomString(20);
         $description2 = $helper->getRandomString(20);
         $url2 = $helper->getRandomUrl();
@@ -486,7 +486,7 @@ class TestCase extends OrchestraTestCase
 
         // Variables
         $paymentRequestToken = $helper->getRandomString(20);
-        $amount = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount = round($helper->getRandomNumber(5) / 100, 2);
         $referenceId = $helper->getRandomString(20);
         $description = $helper->getRandomString(20);
         $url = $helper->getRandomUrl();
@@ -671,7 +671,7 @@ class TestCase extends OrchestraTestCase
         $tikkieId = $helper->getRandomNumber(10);
         $counterPartyName = $helper->getRandomString(20);
         $counterPartyAccountNumber = $helper->getRandomString(20);
-        $amount = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount = round($helper->getRandomNumber(5) / 100, 2);
         $description = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
         $refundToken = $helper->getRandomString(20);
@@ -817,11 +817,11 @@ class TestCase extends OrchestraTestCase
         $tikkieId = $helper->getRandomNumber(10);
         $counterPartyName = $helper->getRandomString(20);
         $counterPartyAccountNumber = $helper->getRandomString(20);
-        $amount = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount = round($helper->getRandomNumber(5) / 100, 2);
         $description = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
         $refundToken = $helper->getRandomString(20);
-        $refundAmount = round ($helper->getRandomNumber(5) / 100, 2);
+        $refundAmount = round($helper->getRandomNumber(5) / 100, 2);
         $refundDescription = $helper->getRandomString(20);
         $refundReferenceId = $helper->getRandomString(20);
         $refundCreatedDateTime = $helper->getRandomFutureCarbonDate();
@@ -956,7 +956,7 @@ class TestCase extends OrchestraTestCase
 
         // Input data
         $refundToken = $helper->getRandomString(20);
-        $amount = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount = round($helper->getRandomNumber(5) / 100, 2);
         $description = $helper->getRandomString(20);
         $referenceId = $helper->getRandomString(20);
         $createdDateTime = $helper->getCarbonDate();
@@ -1050,7 +1050,7 @@ class TestCase extends OrchestraTestCase
         $paymentRequestToken = $helper->getRandomString(20);
         $paymentToken = $helper->getRandomString(20);
         $refundToken = $helper->getRandomString(20);
-        $amount = round ($helper->getRandomNumber(5) / 100, 2);
+        $amount = round($helper->getRandomNumber(5) / 100, 2);
         $description = $helper->getRandomString(20);
         $referenceId = $helper->getRandomString(20);
         $createdDateTime = $helper->getRandomFutureCarbonDate();
