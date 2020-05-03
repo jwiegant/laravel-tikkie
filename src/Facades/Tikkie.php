@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class Tikkie.
  *
- * @package Cloudmazing\Tikkie\Facades
- *
  * @method static Application application()
  * @method static Payment payment()
  * @method static PaymentRequest paymentRequest()
