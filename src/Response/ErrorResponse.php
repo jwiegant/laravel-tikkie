@@ -16,6 +16,13 @@ class ErrorResponse extends BaseResponse
      */
 
     /**
+     * This is an error class.
+     *
+     * @var bool
+     */
+    protected $error = true;
+
+    /**
      * amountInCents was not supplied in the request.
      */
     const AMOUNT_IN_CENTS_MISSING = 'AMOUNT_IN_CENTS_MISSING';

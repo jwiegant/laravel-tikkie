@@ -21,6 +21,13 @@ class ErrorListResponse extends BaseResponse
     protected $errors;
 
     /**
+     * This is an error class.
+     *
+     * @var bool
+     */
+    protected $error = true;
+
+    /**
      * Parameters to cast to a specific type.
      *
      * @var array

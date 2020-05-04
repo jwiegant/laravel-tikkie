@@ -22,6 +22,13 @@ abstract class BaseResponse
     protected $casts = [];
 
     /**
+     * Is this an error class.
+     *
+     * @var bool
+     */
+    protected $error = false;
+
+    /**
      * Base constructor.
      *
      * @param  array  $parameters
@@ -98,5 +105,13 @@ abstract class BaseResponse
 
         // Return the parameter
         return $parameter;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isError(): bool
+    {
+        return $this->error;
     }
 }

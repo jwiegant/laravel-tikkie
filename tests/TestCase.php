@@ -599,6 +599,10 @@ class TestCase extends OrchestraTestCase
             $errorListResponse
         );
 
+        $this->assertTrue(
+            $errorListResponse->isError()
+        );
+
         /**
          * @var ErrorResponse $errorResponse
          */
@@ -607,6 +611,10 @@ class TestCase extends OrchestraTestCase
         $this->assertInstanceOf(
             ErrorResponse::class,
             $errorResponse
+        );
+
+        $this->assertTrue(
+            $errorListResponse->isError()
         );
 
         $this->assertEquals(
