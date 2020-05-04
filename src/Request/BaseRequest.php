@@ -108,9 +108,7 @@ abstract class BaseRequest
         // Traverse the payload items
         foreach ($this->payload as $item) {
             // Get the value
-            if (isset($this->$item)) {
-                $value = $this->$item ?: null;
-            }
+            $value = (isset($this->$item) ? $this->$item : null);
 
             // IF the value is null, then continue to the next parameter
             if ($value === null) {
