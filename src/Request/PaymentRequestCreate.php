@@ -30,9 +30,9 @@ class PaymentRequestCreate extends BaseRequest
      * Amount in cents of the payment request (euros). If this value is not
      * specified an open payment request will be created.
      *
-     * @var int
+     * @var int|null
      */
-    protected int $amountInCents = 0;
+    protected ?int $amountInCents = null;
 
     /**
      * Date after which the payment request will expire and cannot be paid. Format
