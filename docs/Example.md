@@ -101,6 +101,6 @@ Route::get('/tikkie-create', function(Tikkie $tikkie) {
 ```
 
 * Point your browser to `http://127.0.0.1:8000/tikkie-create`. A Tikkie payment will 
-be created and you'll be redirected to the Tikkie payment page. 
+be created, and you'll be redirected to the Tikkie payment page. 
 
 **This concludes our little example.** 

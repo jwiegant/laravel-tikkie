@@ -40,6 +40,21 @@ Want to start in the sandbox first, then also set the following **variable**
 TIKKIE_SANDBOX=true
 ```
 
+## Notification / Subscription
+ABNAMRO can provide a post request upon payment and refund. They provide the details 
+which you can use to find the payment / refund in your own system and check the status 
+at Tikkie.
+
+We've implemented a post route to ```[your_website]/api/tikkie/notification``` which will
+generate a Payment or Refund Event based on what's posted. 
+
+To use this route also add to your .env file 
+```bash
+TIKKIE_ADD_ROUTE=true
+```     
+
+Check out the [documentation](docs/Subscription.md) for more information.
+
 ## Documentation
 [Read the documentation](docs/Tikkie.md)
  
