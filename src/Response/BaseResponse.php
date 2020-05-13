@@ -108,6 +108,8 @@ abstract class BaseResponse
     }
 
     /**
+     * Is this an error.
+     *
      * @return bool
      */
     public function isError(): bool
@@ -115,6 +117,11 @@ abstract class BaseResponse
         return $this->error;
     }
 
+    /**
+     * Return the response as an Array.
+     *
+     * @return array
+     */
     public function asArray(): array
     {
         // Get the variables of the current class
@@ -124,7 +131,7 @@ abstract class BaseResponse
         $result = [];
 
         // Traverse the class properties
-        foreach ($classProperties as $classProperty) {
+        foreach ($classProperties as  $classProperty => $value) {
             if ($classProperty !== 'casts') {
                 // Add them to the result
                 $result[$classProperty] = $this->$classProperty;
