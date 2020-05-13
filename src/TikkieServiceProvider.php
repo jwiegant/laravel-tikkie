@@ -22,6 +22,11 @@ class TikkieServiceProvider extends ServiceProvider
     {
         // Merge the package configuration file with the application's published copy.
         $this->mergeConfigFrom(__DIR__.'/../config/tikkie.php', 'tikkie');
+
+        // If we want to add the tikkie notification route, then add it
+        if (config('tikkie.add_tikkie_notification_route')) {
+            $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+        }
     }
 
     /**
