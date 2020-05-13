@@ -114,4 +114,22 @@ abstract class BaseResponse
     {
         return $this->error;
     }
+
+    public function asArray(): array
+    {
+        // Get the variables of the current class
+        $classProperties = get_class_vars(get_called_class());
+
+        // Initialize the result
+        $result = [];
+
+        // Traverse the class properties
+        foreach ($classProperties as $classProperty) {
+            // Add them to the result
+            $result[$classProperty] = $this->$classProperty;
+        }
+
+        // Return the result
+        return $result;
+    }
 }
