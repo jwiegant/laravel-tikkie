@@ -125,8 +125,10 @@ abstract class BaseResponse
 
         // Traverse the class properties
         foreach ($classProperties as $classProperty) {
-            // Add them to the result
-            $result[$classProperty] = $this->$classProperty;
+            if ($classProperty !== 'casts') {
+                // Add them to the result
+                $result[$classProperty] = $this->$classProperty;
+            }
         }
 
         // Return the result
