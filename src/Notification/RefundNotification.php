@@ -16,26 +16,66 @@ class RefundNotification extends BaseNotification
      *
      * @var string
      */
-    protected $subscriptionId;
+    protected string $subscriptionId;
 
     /**
      * Type of notification. Value should be 'REFUND'.
      *
      * @var string
      */
-    protected $notificationType;
+    protected string $notificationType;
 
     /**
      * Unique token identifying the payment request.
      *
      * @var string
      */
-    protected $paymentRequestToken;
+    protected string $paymentRequestToken;
 
     /**
      * Unique token identifying the payment.
      *
      * @var string Payment Token
      */
-    protected $paymentToken;
+    protected string $paymentToken;
+
+    /**
+     * Get the subscriptionn id.
+     *
+     * @return string
+     */
+    public function getSubscriptionId(): string
+    {
+        return $this->subscriptionId;
+    }
+
+    /**
+     * Get the notification type.
+     *
+     * @return string
+     */
+    public function getNotificationType(): string
+    {
+        return $this->notificationType;
+    }
+
+    /**
+     * Get the payment request token.
+     *
+     * @return string
+     */
+    public function getPaymentRequestToken(): string
+    {
+        return $this->paymentRequestToken;
+    }
+
+    /**
+     * Get the payment token.
+     *
+     * @return string
+     */
+    public function getPaymentToken(): string
+    {
+        return $this->paymentToken;
+    }
 }
