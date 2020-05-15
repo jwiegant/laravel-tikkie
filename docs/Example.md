@@ -34,7 +34,7 @@ php artisan vendor:publish --tag=tikkie-config
 * Edit your `.env` file and add the Tikkie information.
 
 For this example we'll use the sandbox, insert your own api key. 
-Which can be found under [**My Apps** in your account](https://developer.abnamro.com/api/tikkie-v2/tutorial).    
+Which can be found under [**Apps** in your account](https://developer.abnamro.com/).    
 ```env
 TIKKIE_SANDBOX=true
 TIKKIE_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

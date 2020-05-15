@@ -10,7 +10,7 @@
 
 The package simply provides a Laravel service provider, facade and config file for the ABN-AMRO Tikkie's API v2. 
 
-[Check this link for more information on ABN-AMRO Tikkie.](https://developer.abnamro.com/api/tikkie-v2/overview)
+[Check this link for more information on ABN-AMRO Tikkie.](https://developer.abnamro.com/api-products/tikkie)
 
 ## Installation
 
