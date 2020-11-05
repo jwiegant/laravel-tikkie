@@ -91,7 +91,7 @@ abstract class BaseRequest
         ];
 
         // If we have an app token then add it
-        if (!empty($this->_appToken)) {
+        if (! empty($this->_appToken)) {
             $headers['X-App-Token'] = $this->_appToken;
         }
 

@@ -34,7 +34,7 @@ class ErrorListResponse extends BaseResponse
      */
     protected array $casts = [
         'errors' => ['type'  => 'collection',
-                     'class' => ErrorResponse::class],
+            'class' => ErrorResponse::class, ],
     ];
 
     /**

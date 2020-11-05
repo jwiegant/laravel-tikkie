@@ -11,5 +11,5 @@ $namespace = '\\Cloudmazing\\Tikkie\\Controllers';
 Route::group(compact('middleware', 'as', 'namespace'), function () {
     Route::post('api/tikkie/notification', [
         'uses' => 'TikkieNotificationController@notification',
-        'as'   => 'notification',]);
+        'as'   => 'notification', ]);
 });

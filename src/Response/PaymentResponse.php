@@ -81,7 +81,7 @@ class PaymentResponse extends BaseResponse
     protected array $casts = [
         'createdDateTime' => ['type' => 'carbon'],
         'refunds'         => ['type'  => 'collection',
-                              'class' => RefundResponse::class,
+            'class' => RefundResponse::class,
         ],
     ];
 

@@ -35,7 +35,7 @@ class PaymentRequestListResponse extends BaseResponse
     protected array $casts = [
         'totalElementCount' => ['type' => 'int'],
         'paymentRequests'   => ['type'  => 'collection',
-                                'class' => PaymentRequestResponse::class],
+            'class' => PaymentRequestResponse::class, ],
     ];
 
     /**
