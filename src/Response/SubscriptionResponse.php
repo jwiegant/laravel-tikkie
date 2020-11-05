@@ -17,7 +17,7 @@ class SubscriptionResponse extends BaseResponse
      *
      * @var string
      */
-    protected $subscriptionId;
+    protected string $subscriptionId;
 
     /**
      * Get the subscription id.

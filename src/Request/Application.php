@@ -16,7 +16,7 @@ class Application extends BaseRequest
      *
      * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return self::SANDBOX_APPS;
     }

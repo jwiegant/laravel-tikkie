@@ -20,7 +20,7 @@ class PaymentResponse extends BaseResponse
      *
      * @var string
      */
-    protected $paymentToken;
+    protected string $paymentToken;
 
     /**
      * Unique ID identifying this payment. This will be displayed on the payers
@@ -28,35 +28,35 @@ class PaymentResponse extends BaseResponse
      *
      * @var string
      */
-    protected $tikkieId;
+    protected string $tikkieId;
 
     /**
      * Name of the payer.
      *
      * @var string
      */
-    protected $counterPartyName;
+    protected string $counterPartyName;
 
     /**
      * IBAN of the payer.
      *
      * @var string
      */
-    protected $counterPartyAccountNumber;
+    protected string $counterPartyAccountNumber;
 
     /**
      * Amount in cents which was paid (euros).
      *
      * @var int
      */
-    protected $amountInCents;
+    protected int $amountInCents;
 
     /**
      * Description of the payment request which the payer or payers will see.
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * Timestamp at which the payment request was created. Format:
@@ -64,24 +64,24 @@ class PaymentResponse extends BaseResponse
      *
      * @var Carbon
      */
-    protected $createdDateTime;
+    protected Carbon $createdDateTime;
 
     /**
      * Containing all refunds on this payment.
      *
      * @var Collection<RefundItem>
      */
-    protected $refunds;
+    protected Collection $refunds;
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array
      */
-    protected $casts = [
+    protected array $casts = [
         'createdDateTime' => ['type' => 'carbon'],
-        'refunds' => ['type' => 'collection',
-            'class' => RefundResponse::class,
+        'refunds'         => ['type'  => 'collection',
+                              'class' => RefundResponse::class,
         ],
     ];
 
@@ -126,16 +126,6 @@ class PaymentResponse extends BaseResponse
     }
 
     /**
-     * Get the amount in cents.
-     *
-     * @return int
-     */
-    public function getAmountInCents(): int
-    {
-        return $this->amountInCents;
-    }
-
-    /**
      * Get the amount.
      *
      * @return float
@@ -143,6 +133,16 @@ class PaymentResponse extends BaseResponse
     public function getAmount(): float
     {
         return round($this->getAmountInCents() / 100, 2);
+    }
+
+    /**
+     * Get the amount in cents.
+     *
+     * @return int
+     */
+    public function getAmountInCents(): int
+    {
+        return $this->amountInCents;
     }
 
     /**

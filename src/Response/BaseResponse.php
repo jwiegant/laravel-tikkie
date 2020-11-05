@@ -4,6 +4,7 @@ namespace Cloudmazing\Tikkie\Response;
 
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Collection;
 
 /**
  * Class BaseResponse.
@@ -19,14 +20,14 @@ abstract class BaseResponse
      *
      * @var array
      */
-    protected $casts = [];
+    protected array $casts = [];
 
     /**
      * Is this an error class.
      *
      * @var bool
      */
-    protected $error = false;
+    protected bool $error = false;
 
     /**
      * Base constructor.
@@ -47,10 +48,10 @@ abstract class BaseResponse
      *
      * @throws Exception
      */
-    protected function parseParameters(array $parameters)
+    protected function parseParameters(array $parameters): void
     {
         // Get the variables of the current class
-        $classProperties = get_class_vars(get_called_class());
+        $classProperties = get_class_vars(static::class);
 
         // Traverse the given parameters
         foreach ($parameters as $key => $parameter) {
@@ -66,7 +67,7 @@ abstract class BaseResponse
      * @param $key
      * @param $parameter
      *
-     * @return Carbon|ErrorResponse|\Illuminate\Support\Collection|int
+     * @return Carbon|ErrorResponse|Collection|int
      * @throws Exception
      */
     protected function parseParameter(
@@ -125,13 +126,13 @@ abstract class BaseResponse
     public function asArray(): array
     {
         // Get the variables of the current class
-        $classProperties = get_class_vars(get_called_class());
+        $classProperties = get_class_vars(static::class);
 
         // Initialize the result
         $result = [];
 
         // Traverse the class properties
-        foreach ($classProperties as  $classProperty => $value) {
+        foreach ($classProperties as $classProperty => $value) {
             if ($classProperty !== 'casts') {
                 // Add them to the result
                 $result[$classProperty] = $this->$classProperty;

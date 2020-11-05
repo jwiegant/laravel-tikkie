@@ -18,22 +18,23 @@ class ErrorListResponse extends BaseResponse
      *
      * @var Collection<ErrorResponse>
      */
-    protected $errors;
+    protected Collection $errors;
 
     /**
      * This is an error class.
      *
      * @var bool
      */
-    protected $error = true;
+    protected bool $error = true;
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array
      */
-    protected $casts = [
-        'errors' => ['type' => 'collection', 'class' => ErrorResponse::class],
+    protected array $casts = [
+        'errors' => ['type'  => 'collection',
+                     'class' => ErrorResponse::class],
     ];
 
     /**

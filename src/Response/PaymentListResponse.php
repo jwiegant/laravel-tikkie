@@ -18,23 +18,24 @@ class PaymentListResponse extends BaseResponse
      *
      * @var Collection<PaymentResponse>
      */
-    protected $payments;
+    protected Collection $payments;
 
     /**
      *Total amount of payments which match the search parameters provided.
      *
      * @var int
      */
-    protected $totalElementCount;
+    protected int $totalElementCount;
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array
      */
-    protected $casts = [
+    protected array $casts = [
         'totalElementCount' => ['type' => 'int'],
-        'payments' => ['type' => 'collection', 'class' => PaymentResponse::class],
+        'payments'          => ['type'  => 'collection',
+                                'class' => PaymentResponse::class],
     ];
 
     /**

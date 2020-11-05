@@ -9,6 +9,7 @@ use Cloudmazing\Tikkie\Request\PaymentRequestList;
 use Cloudmazing\Tikkie\Response\PaymentRequestListResponse;
 use Cloudmazing\Tikkie\Response\PaymentRequestResponse;
 use Exception;
+use RuntimeException;
 
 /**
  * Class PaymentRequest.
@@ -24,31 +25,33 @@ class PaymentRequest extends BaseRequest
      *
      * @param  string  $description
      * @param  string  $referenceId
-     * @param $expiryDate
-     * @param  int  $amount
+     * @param  null  $expiryDate
+     * @param  int|null  $amount
      *
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
      */
-    public function create(string $description, string $referenceId, $expiryDate = null, int $amount = null)
+    public function create(string $description,
+        string $referenceId,
+        $expiryDate = null,
+        int $amount = null)
     {
         // Set and check the expiryDate
         if ($expiryDate === null) {
             // Default expiry date of 14 days
-            $expiryDate = Carbon::now()->addDays(14);
+            $expiryDate = Carbon::now()
+                                ->addDays(14);
         } elseif (is_string($expiryDate)) {
             $expiryDate = new Carbon($expiryDate);
-        } else {
-            if (get_class($expiryDate) !== Carbon::class) {
-                throw new Exception('Invalid expiryDate provided');
-            }
+        } elseif (get_class($expiryDate) !== Carbon::class) {
+            throw new RuntimeException('Invalid expiryDate provided');
         }
 
         // Create the request input object
         $paymentRequestCreate = new PaymentRequestCreate(
             [
                 'description' => $description,
-                'expiryDate' => $expiryDate,
+                'expiryDate'  => $expiryDate,
                 'referenceId' => $referenceId,
             ]
         );
@@ -70,7 +73,6 @@ class PaymentRequest extends BaseRequest
     /**
      * Get a list of payment requests.
      *
-     * @param  bool  $includeRefunds
      * @param  int  $pageNumber
      * @param  int  $pageSize
      * @param  null  $fromDateTime
@@ -88,10 +90,10 @@ class PaymentRequest extends BaseRequest
         // Create the request input object
         $paymentRequestList = new PaymentRequestList(
             [
-                'pageNumber' => $pageNumber,
-                'pageSize' => $pageSize,
+                'pageNumber'   => $pageNumber,
+                'pageSize'     => $pageSize,
                 'fromDateTime' => $fromDateTime,
-                'toDateTime' => $toDateTime,
+                'toDateTime'   => $toDateTime,
             ]
         );
 

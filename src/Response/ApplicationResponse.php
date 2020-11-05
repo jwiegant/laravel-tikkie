@@ -16,7 +16,7 @@ class ApplicationResponse extends BaseResponse
      *
      * @var string
      */
-    protected $appToken;
+    protected string $appToken;
 
     /**
      * Get the appToken.

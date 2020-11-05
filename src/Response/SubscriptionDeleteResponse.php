@@ -16,14 +16,14 @@ class SubscriptionDeleteResponse extends BaseResponse
      *
      * @var string
      */
-    protected $traceId;
+    protected string $traceId;
 
     /**
      * Get the trace id.
      *
      * @return string
      */
-    public function getTaceId(): string
+    public function getTraceId(): string
     {
         return $this->traceId;
     }

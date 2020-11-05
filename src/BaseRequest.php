@@ -5,7 +5,9 @@ namespace Cloudmazing\Tikkie;
 use Cloudmazing\Tikkie\Response\ErrorListResponse;
 use Exception;
 use Illuminate\Config\Repository;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use RuntimeException;
 
 /**
  * Class BaseRequest.
@@ -19,9 +21,9 @@ abstract class BaseRequest
     /**
      * Constants.
      */
-    const HTTPS_API_ABNAMRO_COM = 'https://api.abnamro.com';
-    const HTTPS_API_SANDBOX_ABNAMRO_COM = 'https://api-sandbox.abnamro.com';
-    const TIKKIE_VERSION_POINT = '/v2/tikkie/';
+    public const HTTPS_API_ABNAMRO_COM = 'https://api.abnamro.com';
+    public const HTTPS_API_SANDBOX_ABNAMRO_COM = 'https://api-sandbox.abnamro.com';
+    public const TIKKIE_VERSION_POINT = '/v2/tikkie/';
 
     /**
      * @var Repository|mixed Api Key
@@ -57,6 +59,47 @@ abstract class BaseRequest
     }
 
     /**
+     * Do a post request.
+     *
+     * @param  Request\BaseRequest  $baseRequest
+     *
+     * @return Response
+     * @throws Exception
+     */
+    protected function postRequest(
+        Request\BaseRequest $baseRequest
+    ): Response {
+        // Make the request, with headers, post the payload and return as json
+        return Http::withHeaders($this->getHeaders())
+                   ->contentType('application/json')
+                   ->post(
+                       $this->getEndPoint($baseRequest),
+                       $baseRequest->getPayload()
+                   );
+    }
+
+    /**
+     * Get the header.
+     *
+     * @return array
+     */
+    protected function getHeaders(): array
+    {
+        // Add the api key to the header
+        $headers = [
+            'API-Key' => $this->_apiKey,
+        ];
+
+        // If we have an app token then add it
+        if (!empty($this->_appToken)) {
+            $headers['X-App-Token'] = $this->_appToken;
+        }
+
+        // Return the headers
+        return $headers;
+    }
+
+    /**
      * Get the API endpoint.
      *
      * @param  Request\BaseRequest  $baseRequest
@@ -64,7 +107,7 @@ abstract class BaseRequest
      * @return string
      * @throws Exception
      */
-    protected function getEndPoint(Request\BaseRequest $baseRequest)
+    protected function getEndPoint(Request\BaseRequest $baseRequest): string
     {
         // Set the end point based on the sandbox variable
         $endPoint = ($this->_sandbox ?
@@ -76,57 +119,16 @@ abstract class BaseRequest
     }
 
     /**
-     * Get the header.
-     *
-     * @return array
-     */
-    protected function getHeaders()
-    {
-        // Add the api key to the header
-        $headers = [
-            'API-Key' => $this->_apiKey,
-        ];
-
-        // If we have an app token then add it
-        if (! empty($this->_appToken)) {
-            $headers['X-App-Token'] = $this->_appToken;
-        }
-
-        // Return the headers
-        return $headers;
-    }
-
-    /**
-     * Do a post request.
-     *
-     * @param  Request\BaseRequest  $baseRequest
-     *
-     * @return \Illuminate\Http\Client\Response
-     * @throws Exception
-     */
-    protected function postRequest(
-        Request\BaseRequest $baseRequest
-    ) {
-        // Make the request, with headers, post the payload and return as json
-        return Http::withHeaders($this->getHeaders())
-                   ->contentType('application/json')
-                   ->post(
-                       $this->getEndPoint($baseRequest),
-                       $baseRequest->getPayload()
-                   );
-    }
-
-    /**
      * Perform a delete request.
      *
      * @param  Request\BaseRequest  $baseRequest
      *
-     * @return \Illuminate\Http\Client\Response
+     * @return Response
      * @throws Exception
      */
     protected function deleteRequest(
         Request\BaseRequest $baseRequest
-    ) {
+    ): Response {
         // Make the request, with headers, post the payload and return as json
         return Http::withHeaders($this->getHeaders())
                    ->contentType('application/json')
@@ -141,12 +143,12 @@ abstract class BaseRequest
      *
      * @param  Request\BaseRequest  $baseRequest
      *
-     * @return \Illuminate\Http\Client\Response
+     * @return Response
      * @throws Exception
      */
     protected function getRequest(
         Request\BaseRequest $baseRequest
-    ) {
+    ): Response {
         return Http::withHeaders($this->getHeaders())
                    ->contentType('application/json')
                    ->get(
@@ -158,7 +160,7 @@ abstract class BaseRequest
     /**
      * Check the response of a request.
      *
-     * @param  \Illuminate\Http\Client\Response  $response
+     * @param  Response  $response
      * @param  string  $responseClass
      * @param  int  $status
      *
@@ -166,7 +168,7 @@ abstract class BaseRequest
      * @throws Exception
      */
     protected function checkResponse(
-        \Illuminate\Http\Client\Response $response,
+        Response $response,
         string $responseClass,
         int $status = 200
     ) {
@@ -181,7 +183,7 @@ abstract class BaseRequest
         // Status should be in the same 100 range
         if (floor($status / 100) !== floor($response->status() / 100)) {
             // Return the Error List response
-            throw new Exception(
+            throw new RuntimeException(
                 "Incorrect status received. Expected {$status} Received {$response->status()}"
             );
         }

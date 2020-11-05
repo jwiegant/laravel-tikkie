@@ -17,14 +17,13 @@ class Application extends BaseRequest
     /**
      * Create a sandbox Application.
      *
-     * @param Request\Application $application
      * @return Response\ApplicationResponse|Response\ErrorListResponse
      * @throws Exception
      */
     public function create()
     {
         // Create the application request
-        $applicationRequest = new \Cloudmazing\Tikkie\Request\Application();
+        $applicationRequest = new Request\Application();
 
         return $this->checkResponse(
             $this->postRequest(

@@ -44,11 +44,13 @@ class Tikkie
     /**
      * Set the configuration.
      *
-     * @param string $apiKey
-     * @param string $appToken
-     * @param bool $sandbox
+     * @param  string  $apiKey
+     * @param  string  $appToken
+     * @param  bool  $sandbox
      */
-    public function setConfiguration(string $apiKey, string $appToken, bool $sandbox = false)
+    public function setConfiguration(string $apiKey,
+        string $appToken,
+        bool $sandbox = false): void
     {
         $this->_apiKey = $apiKey;
         $this->_appToken = $appToken;
@@ -60,7 +62,7 @@ class Tikkie
      *
      * @return Application
      */
-    public function application()
+    public function application(): Application
     {
         return new Application($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
@@ -70,7 +72,7 @@ class Tikkie
      *
      * @return PaymentRequest
      */
-    public function paymentRequest()
+    public function paymentRequest(): PaymentRequest
     {
         return new PaymentRequest($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
@@ -80,7 +82,7 @@ class Tikkie
      *
      * @return Payment
      */
-    public function payment()
+    public function payment(): Payment
     {
         return new Payment($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
@@ -90,7 +92,7 @@ class Tikkie
      *
      * @return Refund
      */
-    public function refund()
+    public function refund(): Refund
     {
         return new Refund($this->_apiKey, $this->_appToken, $this->_sandbox);
     }
@@ -100,7 +102,7 @@ class Tikkie
      *
      * @return Subscription
      */
-    public function subscription()
+    public function subscription(): Subscription
     {
         return new Subscription($this->_apiKey, $this->_appToken, $this->_sandbox);
     }

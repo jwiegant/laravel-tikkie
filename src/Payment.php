@@ -34,7 +34,7 @@ class Payment extends BaseRequest
         $paymentItem = new PaymentItem(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'paymentToken' => $paymentToken,
+                'paymentToken'        => $paymentToken,
             ]
         );
 
@@ -71,11 +71,11 @@ class Payment extends BaseRequest
         $paymentList = new PaymentList(
             [
                 'paymentRequestToken' => $paymentRequestToken,
-                'includeRefunds' => $includeRefunds,
-                'pageNumber' => $pageNumber,
-                'pageSize' => $pageSize,
-                'fromDateTime' => $fromDateTime,
-                'toDateTime' => $toDateTime,
+                'includeRefunds'      => $includeRefunds,
+                'pageNumber'          => $pageNumber,
+                'pageSize'            => $pageSize,
+                'fromDateTime'        => $fromDateTime,
+                'toDateTime'          => $toDateTime,
             ]
         );
 

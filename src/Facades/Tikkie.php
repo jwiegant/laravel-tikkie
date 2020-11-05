@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Tikkie.
- *
  * @method static Application application()
  * @method static Payment payment()
  * @method static PaymentRequest paymentRequest()
@@ -27,7 +26,7 @@ class Tikkie extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'tikkie';
     }

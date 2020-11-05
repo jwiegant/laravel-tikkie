@@ -26,7 +26,7 @@ class TikkieRefundEvent
     /**
      * Create a new RefundNotificationEven instance.
      *
-     * @param RefundNotification $refundNotification
+     * @param  RefundNotification  $refundNotification
      */
     public function __construct(RefundNotification $refundNotification)
     {

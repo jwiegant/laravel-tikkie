@@ -19,27 +19,26 @@ class PaymentRequestResponse extends BaseResponse
     /**
      * A payment request is open and ready to be paid.
      */
-    const OPEN = 'OPEN';
+    public const OPEN = 'OPEN';
     /**
      * A payment request is closed.
      */
-    const CLOSED = 'CLOSED';
+    public const CLOSED = 'CLOSED';
     /**
      * A payment request has expired.
      * The default expiry period is 14 days. You can customize this when you start
      * using the Payment Request API in production.
      */
-    const EXPIRED = 'EXPIRED';
+    public const EXPIRED = 'EXPIRED';
     /**
      * The payment request has reached its maximum amount in Euro. This limit is
      * dependent on the agreed maximum amount.
      */
-    const MAX_YIELD_REACHED = 'MAX_YIELD_REACHED';
     /**
      * The payment request has reached its maximum amount of payments. The maximum
      * amount of payments per request can be set to one or unlimited.
      */
-    const MAX_SUCCESSFUL_PAYMENTS_REACHED = 'MAX_SUCCESSFUL_PAYMENTS_REACHED';
+    public const MAX_SUCCESSFUL_PAYMENTS_REACHED = 'MAX_SUCCESSFUL_PAYMENTS_REACHED';
 
     /**
      * Unique token identifying this payment request which is later used when
@@ -47,7 +46,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @var string
      */
-    protected $paymentRequestToken;
+    protected string $paymentRequestToken;
 
     /**
      * Amount in cents to be paid (euros). Value will not be present for open
@@ -55,28 +54,28 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @var int
      */
-    protected $amountInCents;
+    protected int $amountInCents;
 
     /**
      * ID for the reference of the API consumer.
      *
      * @var string
      */
-    protected $referenceId;
+    protected string $referenceId;
 
     /**
      * Description of the payment request which the payer or payers will see.
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * URL where the payment request can be paid.
      *
      * @var string
      */
-    protected $url;
+    protected string $url;
 
     /**
      * Date after which the payment request will expire and cannot be paid. Format
@@ -84,7 +83,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @var Carbon
      */
-    protected $expiryDate;
+    protected Carbon $expiryDate;
 
     /**
      * Timestamp at which the payment request was created. Format:
@@ -92,7 +91,7 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @var Carbon
      */
-    protected $createdDateTime;
+    protected Carbon $createdDateTime;
 
     /**
      * Current status of the payment request. Possible values are: 'OPEN', 'CLOSED',
@@ -100,29 +99,29 @@ class PaymentRequestResponse extends BaseResponse
      *
      * @var string
      */
-    protected $status;
+    protected string $status;
 
     /**
      * Number of payments which have been collected on this payment request.
      *
      * @var int
      */
-    protected $numberOfPayments;
+    protected int $numberOfPayments;
 
     /**
      * Total amount in cents which has been collected on this payment request.
      *
      * @var int
      */
-    protected $totalAmountPaidInCents;
+    protected int $totalAmountPaidInCents;
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array
      */
-    protected $casts = [
-        'expiryDate' => ['type' => 'carbon'],
+    protected array $casts = [
+        'expiryDate'      => ['type' => 'carbon'],
         'createdDateTime' => ['type' => 'carbon'],
     ];
 
@@ -137,16 +136,6 @@ class PaymentRequestResponse extends BaseResponse
     }
 
     /**
-     * Get the amount in cents.
-     *
-     * @return int
-     */
-    public function getAmountInCents(): int
-    {
-        return $this->amountInCents;
-    }
-
-    /**
      * Get the amount.
      *
      * @return float
@@ -154,6 +143,16 @@ class PaymentRequestResponse extends BaseResponse
     public function getAmount(): float
     {
         return round($this->getAmountInCents() / 100, 2);
+    }
+
+    /**
+     * Get the amount in cents.
+     *
+     * @return int
+     */
+    public function getAmountInCents(): int
+    {
+        return $this->amountInCents;
     }
 
     /**
@@ -207,16 +206,6 @@ class PaymentRequestResponse extends BaseResponse
     }
 
     /**
-     * Get the status.
-     *
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    /**
      * Get the number of payments.
      *
      * @return int
@@ -239,7 +228,7 @@ class PaymentRequestResponse extends BaseResponse
     /**
      * Get the amount paid.
      *
-     * @return int
+     * @return float
      */
     public function getTotalAmountPaid(): float
     {
@@ -254,5 +243,15 @@ class PaymentRequestResponse extends BaseResponse
     public function isOpen(): bool
     {
         return $this->getStatus() === self::OPEN;
+    }
+
+    /**
+     * Get the status.
+     *
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
     }
 }

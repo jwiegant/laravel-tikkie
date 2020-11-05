@@ -18,16 +18,16 @@ abstract class BaseRequest
     /**
      * Constants.
      */
-    const TYPE = 'type';
-    const FORMAT = 'format';
-    const NULLABLE = 'nullable';
+    public const TYPE = 'type';
+    public const FORMAT = 'format';
+    public const NULLABLE = 'nullable';
 
     /**
      * Action Constants.
      */
-    const PAYMENT_REQUESTS = 'paymentrequests';
-    const SANDBOX_APPS = 'sandboxapps';
-    const PAYMENT_REQUESTS_SUBSCRIPTION = 'paymentrequestssubscription';
+    public const PAYMENT_REQUESTS = 'paymentrequests';
+    public const SANDBOX_APPS = 'sandboxapps';
+    public const PAYMENT_REQUESTS_SUBSCRIPTION = 'paymentrequestssubscription';
 
     /**
      * Parameters to cast to a specific type.
@@ -46,7 +46,7 @@ abstract class BaseRequest
     /**
      * BaseRequest constructor.
      *
-     * @param  array  $parameters
+     * @param  array|null  $parameters
      *
      * @throws Exception
      */
@@ -65,17 +65,17 @@ abstract class BaseRequest
      *
      * @throws Exception
      */
-    protected function parseParameters(array $parameters)
+    protected function parseParameters(array $parameters): void
     {
         // Get the properties of the current class
-        $classProperties = get_class_vars(get_called_class());
+        $classProperties = get_class_vars(static::class);
 
         // Traverse the parameters
         foreach ($parameters as $key => $parameter) {
             // Check if the parameter is found in the class
             if (array_key_exists($key, $classProperties)) {
                 // Check if the parameter has ben set in the casts array
-                if (in_array($key, $this->casts)) {
+                if (in_array($key, $this->casts, true)) {
                     switch ($this->casts) {
                         // Cast to a Carbon date
                         case 'carbon':
@@ -100,7 +100,7 @@ abstract class BaseRequest
      * @return array
      * @throws Exception
      */
-    public function getPayload()
+    public function getPayload(): array
     {
         // Initialize the payload
         $payload = [];
@@ -108,7 +108,7 @@ abstract class BaseRequest
         // Traverse the payload items
         foreach ($this->payload as $item) {
             // Get the value
-            $value = (isset($this->$item) ? $this->$item : null);
+            $value = ($this->$item ?? null);
 
             // IF the value is null, then continue to the next parameter
             if ($value === null) {

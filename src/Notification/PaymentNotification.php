@@ -40,7 +40,7 @@ class PaymentNotification extends BaseNotification
     protected string $paymentToken;
 
     /**
-     * Get the subscriptionn id.
+     * Get the subscription id.
      *
      * @return string
      */

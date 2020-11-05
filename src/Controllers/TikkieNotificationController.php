@@ -8,6 +8,7 @@ use Cloudmazing\Tikkie\Events\TikkieRefundEvent;
 use Cloudmazing\Tikkie\Notification\BaseNotification;
 use Cloudmazing\Tikkie\Notification\PaymentNotification;
 use Cloudmazing\Tikkie\Notification\RefundNotification;
+use Exception;
 
 /**
  * Class TikkieNotificationController.
@@ -21,10 +22,10 @@ class TikkieNotificationController extends Controller
     /**
      * Triggered upon receiving a notification.
      */
-    public function notification()
+    public function notification(): void
     {
         try {
-            // Get the requestParamets
+            // Get the requestParameters
             $requestParameters = request()->all();
 
             // Check if we have a notificationType
@@ -43,7 +44,7 @@ class TikkieNotificationController extends Controller
                         break;
                 }
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
     }
 }

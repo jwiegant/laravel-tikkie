@@ -18,7 +18,7 @@ class TikkieServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Merge the package configuration file with the application's published copy.
         $this->mergeConfigFrom(__DIR__.'/../config/tikkie.php', 'tikkie');
@@ -34,7 +34,7 @@ class TikkieServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {

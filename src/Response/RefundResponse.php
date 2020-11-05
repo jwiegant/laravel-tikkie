@@ -19,60 +19,60 @@ class RefundResponse extends BaseResponse
     /**
      * The refund is pending.
      */
-    const STATUS_PENDING = 'PENDING';
+    public const STATUS_PENDING = 'PENDING';
     /**
      * The refund has been paid.
      */
-    const STATUS_PAID = 'PAID';
+    public const STATUS_PAID = 'PAID';
 
     /**
      * Unique token identifying this refund.
      *
      * @var string
      */
-    protected $refundToken;
+    protected string $refundToken;
 
     /**
      * Amount of the refund in cents (euros).
      *
      * @var int
      */
-    protected $amountInCents;
+    protected int $amountInCents;
 
     /**
      * Description of the refund.
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * ID for the reference of the API consumer.
      *
      * @var string
      */
-    protected $referenceId;
+    protected string $referenceId;
 
     /**
      * Timestamp at which the refund was created. Format: YYYY-MM-DDTHH:mm:ss.SSSZ.
      *
      * @var Carbon
      */
-    protected $createdDateTime;
+    protected Carbon $createdDateTime;
 
     /**
      * Current status of the refund. Possible values are: 'PENDING', 'PAID'.
      *
      * @var string
      */
-    protected $status;
+    protected string $status;
 
     /**
      * Parameters to cast to a specific type.
      *
      * @var array
      */
-    protected $casts = [
+    protected array $casts = [
         'createdDateTime' => ['type' => 'carbon'],
     ];
 

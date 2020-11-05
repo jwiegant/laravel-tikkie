@@ -32,7 +32,7 @@ class SubscriptionCreate extends BaseRequest
      *
      * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return self::PAYMENT_REQUESTS_SUBSCRIPTION;
     }

@@ -16,7 +16,7 @@ class PaymentRequestCreate extends BaseRequest
     /**
      * Constants.
      */
-    const PAYMENT_REQUESTS = 'paymentrequests';
+    public const PAYMENT_REQUESTS = 'paymentrequests';
 
     /**
      * Description of the payment request which the payer or payers will see. Max
@@ -78,7 +78,7 @@ class PaymentRequestCreate extends BaseRequest
      *
      * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return self::PAYMENT_REQUESTS;
     }
@@ -114,7 +114,7 @@ class PaymentRequestCreate extends BaseRequest
     }
 
     /**
-     * Set the amound in cents.
+     * Set the amount in cents.
      *
      * @param  int  $amountInCents
      */
