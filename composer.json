@@ -1,51 +1,51 @@
 {
-    "name": "jwiegant/laravel-tikkie",
-    "description": "Laravel Package for ABN-AMRO Tikkie API v2",
-    "keywords": [
-        "laravel",
-        "abn-amro",
-        "tikkie"
-    ],
-    "type": "laravel",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Job Wiegant",
-            "email": "job@joblox.nl",
-            "homepage": "https://github.com/jwiegant",
-            "role": "Developer"
-        }
-    ],
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "Cloudmazing\\Tikkie\\": "src/",
-            "Cloudmazing\\Tikkie\\Tests\\": "tests"
-        }
-    },
-    "require": {
-        "illuminate/support": "~5|^6.0|^7.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "nesbot/carbon": "^2.17"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-master",
-        "orchestra/testbench": "^5.1",
-        "fzaninotto/faker": "^1.9",
-        "phpmd/phpmd": "^2.8"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Cloudmazing\\Tikkie\\TikkieServiceProvider"
-            ],
-            "aliases": {
-                "Tikkie": "Cloudmazing\\Tikkie\\Facades\\Tikkie"
-            }
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "fix": "php-cs-fixer fix --config .php_cs ."
+  "name": "jwiegant/laravel-tikkie",
+  "description": "Laravel Package for ABN-AMRO Tikkie API v2",
+  "keywords": [
+    "laravel",
+    "abn-amro",
+    "tikkie"
+  ],
+  "type": "laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Job Wiegant",
+      "email": "job@joblox.nl",
+      "homepage": "https://github.com/jwiegant",
+      "role": "Developer"
     }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Cloudmazing\\Tikkie\\": "src/",
+      "Cloudmazing\\Tikkie\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "illuminate/support": "^7.0|^8.0",
+    "guzzlehttp/guzzle": "^7.0.1",
+    "nesbot/carbon": "^2.17"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.4",
+    "roave/security-advisories": "dev-master",
+    "fzaninotto/faker": "^1.9",
+    "phpmd/phpmd": "^2.8"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Cloudmazing\\Tikkie\\TikkieServiceProvider"
+      ],
+      "aliases": {
+        "Tikkie": "Cloudmazing\\Tikkie\\Facades\\Tikkie"
+      }
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "fix": "php-cs-fixer fix --config .php_cs ."
+  }
 }
