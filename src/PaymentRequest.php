@@ -26,7 +26,7 @@ class PaymentRequest extends BaseRequest
      * @param  string  $description
      * @param  string  $referenceId
      * @param  null  $expiryDate
-     * @param  int|null  $amount
+     * @param  float|null  $amount
      *
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
      * @throws Exception
@@ -34,7 +34,7 @@ class PaymentRequest extends BaseRequest
     public function create(string $description,
         string $referenceId,
         $expiryDate = null,
-        int $amount = null)
+        float $amount = null)
     {
         // Set and check the expiryDate
         if ($expiryDate === null) {
