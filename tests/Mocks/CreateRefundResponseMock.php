@@ -3,6 +3,7 @@
 namespace Cloudmazing\Tikkie\Tests\Mocks;
 
 use Carbon\Carbon;
+use Cloudmazing\Tikkie\Tests\Helpers\Helper;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -37,7 +38,7 @@ class CreateRefundResponseMock
                 '*.abnamro.com/v2/tikkie/paymentrequests/*' => Http::response(
                     [
                         'refundToken' => $refundToken,
-                        'amountInCents' => (int) ($amount * 100),
+                        'amountInCents' => (new Helper())->getAmount($amount),
                         'description' => $description,
                         'referenceId' => $referenceId,
                         'createdDateTime' => $createdDateTime->format('Y-m-d\TH:i:s.000\Z'),

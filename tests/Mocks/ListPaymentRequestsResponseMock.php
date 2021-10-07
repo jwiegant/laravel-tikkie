@@ -3,6 +3,7 @@
 namespace Cloudmazing\Tikkie\Tests\Mocks;
 
 use Carbon\Carbon;
+use Cloudmazing\Tikkie\Tests\Helpers\Helper;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -69,7 +70,7 @@ class ListPaymentRequestsResponseMock
                         'paymentRequests' => [
                             [
                                 'paymentRequestToken' => $paymentRequestToken1,
-                                'amountInCents' => (int) ($amount1 * 100),
+                                'amountInCents' => (new Helper())->getAmount($amount1),
                                 'referenceId' => $referenceId1,
                                 'description' => $description1,
                                 'url' => $url1,
@@ -81,7 +82,7 @@ class ListPaymentRequestsResponseMock
                             ],
                             [
                                 'paymentRequestToken' => $paymentRequestToken2,
-                                'amountInCents' => (int) ($amount2 * 100),
+                                'amountInCents' => (new Helper())->getAmount($amount2),
                                 'referenceId' => $referenceId2,
                                 'description' => $description2,
                                 'url' => $url2,

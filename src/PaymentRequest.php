@@ -58,7 +58,7 @@ class PaymentRequest extends BaseRequest
 
         // Set the amount if it's specified
         if ($amount !== null) {
-            $paymentRequestCreate->setAmountInCents($amount * 100);
+            $paymentRequestCreate->setAmountInCents(round($amount * 100));
         }
 
         // Make the call and check the response

@@ -1,0 +1,19 @@
+{
+  "name": "laravel-tikkie",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwiegant/laravel-tikkie.git"
+  },
+  "author": "Job Wiegant",
+  "bugs": {
+    "url": "https://github.com/jwiegant/laravel-tikkie/issues"
+  },
+  "homepage": "https://github.com/jwiegant/laravel-tikkie#readme"
+}

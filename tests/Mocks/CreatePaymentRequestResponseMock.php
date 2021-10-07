@@ -3,6 +3,7 @@
 namespace Cloudmazing\Tikkie\Tests\Mocks;
 
 use Carbon\Carbon;
+use Cloudmazing\Tikkie\Tests\Helpers\Helper;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -41,7 +42,7 @@ class CreatePaymentRequestResponseMock
                 '*.abnamro.com/v2/tikkie/paymentrequests' => Http::response(
                     [
                         'paymentRequestToken' => $paymentRequestToken,
-                        'amountInCents' => (int) ($amount * 100),
+                        'amountInCents' => (new Helper())->getAmount($amount),
                         'referenceId' => $referenceId,
                         'description' => $description,
                         'url' => $url,

@@ -58,4 +58,9 @@ class Helper
     {
         return 'https://'.self::getRandomString(3).'.'.self::getRandomString(10).'.com';
     }
+
+    public function getAmount($value): int
+    {
+        return (int) round($value * 100);
+    }
 }

@@ -250,7 +250,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount * 100),
+            (new Helper())->getAmount($amount),
             $payment->getAmountInCents()
         );
 
@@ -353,7 +353,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount1 * 100),
+            (new Helper())->getAmount($amount1),
             $payment->getAmountInCents()
         );
 
@@ -410,7 +410,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount2 * 100),
+            (new Helper())->getAmount($amount2),
             $payment->getAmountInCents()
         );
 
@@ -517,7 +517,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount * 100),
+            (new Helper())->getAmount($amount),
             $payment->getAmountInCents()
         );
 
@@ -731,7 +731,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount * 100),
+            (new Helper())->getAmount($amount),
             $payment->getAmountInCents()
         );
 
@@ -755,7 +755,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($refundAmount * 100),
+            (new Helper())->getAmount($refundAmount),
             $refund->getAmountInCents()
         );
 
@@ -863,7 +863,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount * 100),
+            (new Helper())->getAmount($amount),
             $paymentResponse->getAmountInCents()
         );
 
@@ -887,7 +887,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($refundAmount * 100),
+            (new Helper())->getAmount($refundAmount),
             $refund->getAmountInCents()
         );
 
@@ -969,7 +969,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount * 100),
+            (new Helper())->getAmount($amount),
             $refundResponse->getAmountInCents()
         );
 
@@ -1056,7 +1056,7 @@ class TestCase extends OrchestraTestCase
         );
 
         $this->assertEquals(
-            (int) ($amount * 100),
+            (new Helper())->getAmount($amount),
             $refundResponse->getAmountInCents()
         );
 
@@ -1160,4 +1160,14 @@ class TestCase extends OrchestraTestCase
             $subscriptionResponse
         );
     }
+
+    /** @test */
+    public function testRoundingOfValue()
+    {
+        $this->assertEquals(
+            1990,
+            (int) round(19.90*100)
+        );
+    }
+
 }

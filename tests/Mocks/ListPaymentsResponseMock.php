@@ -3,6 +3,7 @@
 namespace Cloudmazing\Tikkie\Tests\Mocks;
 
 use Carbon\Carbon;
+use Cloudmazing\Tikkie\Tests\Helpers\Helper;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -59,13 +60,13 @@ class ListPaymentsResponseMock
                                 'tikkieId' => $tikkieId,
                                 'counterPartyName' => $counterPartyName,
                                 'counterPartyAccountNumber' => $counterPartyAccountNumber,
-                                'amountInCents' => (int) ($amount * 100),
+                                'amountInCents' => (new Helper())->getAmount($amount),
                                 'description' => $description,
                                 'createdDateTime' => $createdDateTime,
                                 'refunds' => [
                                     [
                                         'refundToken' => $refundToken,
-                                        'amountInCents' => (int) ($refundAmount * 100),
+                                        'amountInCents' => (new Helper())->getAmount($refundAmount),
                                         'description' => $refundDescription,
                                         'referenceId' => $refundReferenceId,
                                         'createdDateTime' => $refundCreatedDateTime,
