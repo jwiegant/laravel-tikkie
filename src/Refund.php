@@ -11,6 +11,7 @@ use Exception;
  * Class Refund.
  *
  * @category Calls
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -24,8 +25,8 @@ class Refund extends BaseRequest
      * @param  string  $description
      * @param  float  $amount
      * @param  string  $referenceId
-     *
      * @return Response\RefundResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function create(
@@ -60,8 +61,8 @@ class Refund extends BaseRequest
      * @param  string  $paymentRequestToken
      * @param  string  $paymentToken
      * @param  string  $refundToken
-     *
      * @return Response\RefundResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function get(

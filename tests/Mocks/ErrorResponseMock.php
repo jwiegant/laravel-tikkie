@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
  * Class ErrorResponseMock.
  *
  * @category Tests\Mocks
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -16,11 +17,11 @@ class ErrorResponseMock
     /**
      * ErrorResponseMock constructor.
      *
-     * @param string $code
-     * @param string $message
-     * @param string $reference
-     * @param string $traceId
-     * @param int $status
+     * @param  string  $code
+     * @param  string  $message
+     * @param  string  $reference
+     * @param  string  $traceId
+     * @param  int  $status
      */
     public function __construct(
         string $code,

@@ -6,6 +6,7 @@ namespace Cloudmazing\Tikkie;
  * Class Tikkie.
  *
  * @category Calls
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

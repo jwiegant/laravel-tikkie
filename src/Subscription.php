@@ -12,6 +12,7 @@ use Exception;
  * Class Subscription.
  *
  * @category Calls
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -21,8 +22,8 @@ class Subscription extends BaseRequest
      * Create a subscription.
      *
      * @param  string  $url
-     *
      * @return Response\SubscriptionResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function create(string $url)
@@ -46,6 +47,7 @@ class Subscription extends BaseRequest
      * Delete a subscription.
      *
      * @return Response\SubscriptionDeleteResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function delete()

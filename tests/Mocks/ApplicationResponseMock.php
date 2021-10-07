@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
  * Class ApplicationResponseMock.
  *
  * @category Tests\Mocks
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -16,7 +17,7 @@ class ApplicationResponseMock
     /**
      * ApplicationResponseMock constructor.
      *
-     * @param string $appToken
+     * @param  string  $appToken
      */
     public function __construct(string $appToken)
     {

@@ -8,6 +8,7 @@ use Cloudmazing\Tikkie\Response\BaseResponse;
  * Class BaseNotification.
  *
  * @category Notification
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

@@ -10,7 +10,7 @@ class Helper
     /**
      * Get a random string of a given size.
      *
-     * @param int $size
+     * @param  int  $size
      * @return string
      */
     public function getRandomString(int $size = 20): string
@@ -21,7 +21,7 @@ class Helper
     /**
      * Get a random number of a given size.
      *
-     * @param int $size
+     * @param  int  $size
      * @return int
      */
     public function getRandomNumber(int $size = 4): int

@@ -15,6 +15,7 @@ use RuntimeException;
  * Class PaymentRequest.
  *
  * @category Calls
+ *
  * @author  Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -27,8 +28,8 @@ class PaymentRequest extends BaseRequest
      * @param  string  $referenceId
      * @param  null  $expiryDate
      * @param  float|null  $amount
-     *
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function create(string $description,
@@ -77,8 +78,8 @@ class PaymentRequest extends BaseRequest
      * @param  int  $pageSize
      * @param  null  $fromDateTime
      * @param  null  $toDateTime
-     *
      * @return Response\PaymentRequestListResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function list(
@@ -110,8 +111,8 @@ class PaymentRequest extends BaseRequest
      * Get a payment request.
      *
      * @param  string  $paymentRequestToken
-     *
      * @return Response\PaymentRequestResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function get(string $paymentRequestToken)

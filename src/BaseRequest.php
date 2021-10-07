@@ -13,6 +13,7 @@ use RuntimeException;
  * Class BaseRequest.
  *
  * @category Calls
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -62,8 +63,8 @@ abstract class BaseRequest
      * Do a post request.
      *
      * @param  Request\BaseRequest  $baseRequest
-     *
      * @return Response
+     *
      * @throws Exception
      */
     protected function postRequest(
@@ -103,8 +104,8 @@ abstract class BaseRequest
      * Get the API endpoint.
      *
      * @param  Request\BaseRequest  $baseRequest
-     *
      * @return string
+     *
      * @throws Exception
      */
     protected function getEndPoint(Request\BaseRequest $baseRequest): string
@@ -122,8 +123,8 @@ abstract class BaseRequest
      * Perform a delete request.
      *
      * @param  Request\BaseRequest  $baseRequest
-     *
      * @return Response
+     *
      * @throws Exception
      */
     protected function deleteRequest(
@@ -142,8 +143,8 @@ abstract class BaseRequest
      * Perform a get request.
      *
      * @param  Request\BaseRequest  $baseRequest
-     *
      * @return Response
+     *
      * @throws Exception
      */
     protected function getRequest(
@@ -163,8 +164,8 @@ abstract class BaseRequest
      * @param  Response  $response
      * @param  string  $responseClass
      * @param  int  $status
-     *
      * @return ErrorListResponse
+     *
      * @throws Exception
      */
     protected function checkResponse(

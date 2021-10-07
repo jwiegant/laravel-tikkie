@@ -14,6 +14,7 @@ use Exception;
  * Class TikkieNotificationController.
  *
  * @category Controller
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

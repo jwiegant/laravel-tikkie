@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Tikkie.
+ *
  * @method static Application application()
  * @method static Payment payment()
  * @method static PaymentRequest paymentRequest()

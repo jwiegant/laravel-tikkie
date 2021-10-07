@@ -12,6 +12,7 @@ use Exception;
  * Class Payment.
  *
  * @category Calls
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -22,8 +23,8 @@ class Payment extends BaseRequest
      *
      * @param  string  $paymentRequestToken
      * @param  string  $paymentToken
-     *
      * @return Response\PaymentResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function get(
@@ -56,8 +57,8 @@ class Payment extends BaseRequest
      * @param  int  $pageSize
      * @param  null  $fromDateTime
      * @param  null  $toDateTime
-     *
      * @return Response\PaymentListResponse|Response\ErrorListResponse
+     *
      * @throws Exception
      */
     public function list(

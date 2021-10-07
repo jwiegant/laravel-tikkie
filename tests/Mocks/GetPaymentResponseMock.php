@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
  * Class GetPaymentResponseMock.
  *
  * @category Tests\Mocks
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */

@@ -34,6 +34,7 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
  * This is the abstract test case class.
  *
  * @category Tests
+ *
  * @author  Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -66,7 +67,6 @@ class TestCase extends OrchestraTestCase
      * Get the service provider class.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
-     *
      * @return array
      */
     protected function getPackageProviders($app)
@@ -95,7 +95,6 @@ class TestCase extends OrchestraTestCase
      * Get the facade class.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
-     *
      * @return array
      */
     protected function getPackageAliases($app)
@@ -109,6 +108,7 @@ class TestCase extends OrchestraTestCase
      * Creation of a Tikkie application.
      *
      * @return string
+     *
      * @throws Exception
      */
     public function createTikkieApplication()
@@ -1166,8 +1166,7 @@ class TestCase extends OrchestraTestCase
     {
         $this->assertEquals(
             1990,
-            (int) round(19.90*100)
+            (int) round(19.90 * 100)
         );
     }
-
 }

@@ -10,6 +10,7 @@ use Exception;
  * Class BaseRequest.
  *
  * @category Request
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -98,6 +99,7 @@ abstract class BaseRequest
      * Get the payload for the request.
      *
      * @return array
+     *
      * @throws Exception
      */
     public function getPayload(): array

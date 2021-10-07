@@ -6,6 +6,7 @@ namespace Cloudmazing\Tikkie\Request;
  * Class RefundCreate.
  *
  * @category Request
+ *
  * @author   Job Wiegant <job@cloudmazing.nl>
  * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
  */
@@ -83,7 +84,7 @@ class RefundCreate extends BaseRequest
     /**
      * Set the payment request token.
      *
-     * @param string $paymentRequestToken
+     * @param  string  $paymentRequestToken
      */
     public function setPaymentRequestToken(string $paymentRequestToken): void
     {
@@ -103,7 +104,7 @@ class RefundCreate extends BaseRequest
     /**
      * Set the payment token.
      *
-     * @param string $paymentToken
+     * @param  string  $paymentToken
      */
     public function setPaymentToken(string $paymentToken): void
     {
