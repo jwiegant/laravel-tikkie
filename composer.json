@@ -28,9 +28,10 @@
     "nesbot/carbon": "^2.17"
   },
   "require-dev": {
-    "illuminate/support": "^7.0|^8.0",
+    "phpunit/phpunit": "^9.0",
     "orchestra/testbench": "^6.4",
     "roave/security-advisories": "dev-master",
+    "illuminate/support": "^7.0|^8.0",
     "phpmd/phpmd": "^2.8"
   },
   "extra": {
